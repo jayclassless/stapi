@@ -51,6 +51,6 @@ export class SeriesConnection {
   @Field(() => PageInfo)
   pageInfo: PageInfo
 
-  @Field(() => Int, { nullable: true })
-  totalCount?: number
+  @Field(() => Int)
+  totalCount: number
 }
