@@ -33,9 +33,7 @@ export class FavoritesResolver {
 
   @Query(() => [Episode])
   favoriteEpisodes(@Context() ctx: { req: Req }): Episode[] {
-    return readIds(ctx.req)
-      .map((id) => this.episodesService.findById(id))
-      .filter((e): e is Episode => e !== undefined)
+    return this.episodesService.findByIds(readIds(ctx.req))
   }
 
   @Mutation(() => [Episode])
@@ -46,9 +44,7 @@ export class FavoritesResolver {
     const ids = readIds(ctx.req)
     if (!ids.includes(id)) ids.push(id)
     writeIds(ctx.res, ids)
-    return ids
-      .map((i) => this.episodesService.findById(i))
-      .filter((e): e is Episode => e !== undefined)
+    return this.episodesService.findByIds(ids)
   }
 
   @Mutation(() => [Episode])
@@ -58,8 +54,6 @@ export class FavoritesResolver {
   ): Episode[] {
     const ids = readIds(ctx.req).filter((i) => i !== id)
     writeIds(ctx.res, ids)
-    return ids
-      .map((i) => this.episodesService.findById(i))
-      .filter((e): e is Episode => e !== undefined)
+    return this.episodesService.findByIds(ids)
   }
 }

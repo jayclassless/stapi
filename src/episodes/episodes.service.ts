@@ -38,6 +38,17 @@ export class EpisodesService {
     return this.db.queryOne<Episode>('SELECT * FROM Episodes WHERE episode_id = ?', [id])
   }
 
+  findByIds(ids: number[]): Episode[] {
+    if (ids.length === 0) return []
+    const placeholders = ids.map(() => '?').join(',')
+    const rows = this.db.query<Episode>(
+      `SELECT * FROM Episodes WHERE episode_id IN (${placeholders})`,
+      ids
+    )
+    const byId = new Map(rows.map((e) => [e.episode_id, e]))
+    return ids.flatMap((id) => (byId.has(id) ? [byId.get(id)!] : []))
+  }
+
   findBySeriesId(
     seriesId: number,
     filters: { series?: number; season?: number } = {},

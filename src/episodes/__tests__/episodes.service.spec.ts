@@ -83,6 +83,47 @@ describe('EpisodesService', () => {
     })
   })
 
+  describe('findByIds', () => {
+    it('returns [] for an empty ids array without querying', () => {
+      expect(service.findByIds([])).toEqual([])
+      expect(mockDb.query).not.toHaveBeenCalled()
+    })
+
+    it('fetches all ids in a single IN query', () => {
+      const db = { query: vi.fn().mockReturnValue([]), queryOne: vi.fn() } as any
+      const svc = new EpisodesService(db)
+      svc.findByIds([1, 2])
+      expect(db.query).toHaveBeenCalledWith(
+        'SELECT * FROM Episodes WHERE episode_id IN (?,?)',
+        [1, 2]
+      )
+    })
+
+    it('preserves the input order of ids', () => {
+      // DB returns rows in id-ascending order; we requested 2 then 1
+      const rows = [
+        { episode_id: 1, title: 'A' },
+        { episode_id: 2, title: 'B' },
+      ]
+      const db = { query: vi.fn().mockReturnValue(rows), queryOne: vi.fn() } as any
+      const svc = new EpisodesService(db)
+      const result = svc.findByIds([2, 1])
+      expect(result[0].episode_id).toBe(2)
+      expect(result[1].episode_id).toBe(1)
+    })
+
+    it('omits ids whose episodes are not found', () => {
+      const db = {
+        query: vi.fn().mockReturnValue([{ episode_id: 3, title: 'C' }]),
+        queryOne: vi.fn(),
+      } as any
+      const svc = new EpisodesService(db)
+      const result = svc.findByIds([3, 999])
+      expect(result).toHaveLength(1)
+      expect(result[0].episode_id).toBe(3)
+    })
+  })
+
   describe('findBySeriesId', () => {
     it('queries episodes for a series with WHERE clause', () => {
       mockDb = makeMockDb(3, [{ episode_id: 1 }, { episode_id: 2 }])
