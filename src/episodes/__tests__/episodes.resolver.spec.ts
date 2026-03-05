@@ -1,15 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { CharactersService } from '../../characters/characters.service'
+import { SeriesService } from '../../series/series.service'
+import { Episode } from '../episode.model'
 import { EpisodesResolver } from '../episodes.resolver'
+import { EpisodesService } from '../episodes.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('EpisodesResolver', () => {
-  let mockEpisodesService: any
-  let mockSeriesService: any
-  let mockCharactersService: any
+  let mockEpisodesService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+    randomEpisodeStream: ReturnType<typeof vi.fn>
+  }
+  let mockSeriesService: { findById: ReturnType<typeof vi.fn> }
+  let mockCharactersService: { findByEpisodeId: ReturnType<typeof vi.fn> }
   let resolver: EpisodesResolver
 
   beforeEach(() => {
@@ -24,7 +32,11 @@ describe('EpisodesResolver', () => {
     mockCharactersService = {
       findByEpisodeId: vi.fn().mockReturnValue(makeConnection()),
     }
-    resolver = new EpisodesResolver(mockEpisodesService, mockSeriesService, mockCharactersService)
+    resolver = new EpisodesResolver(
+      mockEpisodesService as Partial<EpisodesService> as EpisodesService,
+      mockSeriesService as Partial<SeriesService> as SeriesService,
+      mockCharactersService as Partial<CharactersService> as CharactersService
+    )
   })
 
   describe('findAll', () => {
@@ -94,7 +106,7 @@ describe('EpisodesResolver', () => {
 
   describe('series (ResolveField)', () => {
     it('delegates to seriesService.findById with episode.series_id', () => {
-      const episode = { episode_id: 1, series_id: 3 } as any
+      const episode = { episode_id: 1, series_id: 3 } as Episode
       const seriesRow = { series_id: 3, name: 'TNG' }
       mockSeriesService.findById.mockReturnValue(seriesRow)
       const result = resolver.series(episode)
@@ -105,7 +117,7 @@ describe('EpisodesResolver', () => {
 
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByEpisodeId with episode and pagination', () => {
-      const episode = { episode_id: 10 } as any
+      const episode = { episode_id: 10 } as Episode
       resolver.characters(episode, undefined, undefined, 3, undefined, undefined, undefined)
       expect(mockCharactersService.findByEpisodeId).toHaveBeenCalledWith(
         10,
@@ -115,7 +127,7 @@ describe('EpisodesResolver', () => {
     })
 
     it('passes gender filter to service', () => {
-      const episode = { episode_id: 10 } as any
+      const episode = { episode_id: 10 } as Episode
       resolver.characters(episode, 'F', undefined, undefined, undefined, undefined, undefined)
       expect(mockCharactersService.findByEpisodeId).toHaveBeenCalledWith(
         10,
@@ -127,7 +139,7 @@ describe('EpisodesResolver', () => {
     it('returns the service result', () => {
       const conn = makeConnection()
       mockCharactersService.findByEpisodeId.mockReturnValue(conn)
-      expect(resolver.characters({ episode_id: 1 } as any)).toBe(conn)
+      expect(resolver.characters({ episode_id: 1 } as Episode)).toBe(conn)
     })
   })
 })

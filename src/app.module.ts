@@ -2,6 +2,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
 import cookieParser from 'cookie-parser'
+import type { Request, Response } from 'express'
 
 import { ActorsModule } from './actors/actors.module'
 import { CharactersModule } from './characters/characters.module'
@@ -24,7 +25,7 @@ import { SpeciesModule } from './species/species.module'
       csrfPrevention: false,
       introspection: true,
       allowBatchedHttpRequests: true,
-      context: ({ req, res }: { req: unknown; res: unknown }) => ({ req, res }),
+      context: ({ req, res }: { req: Request; res: Response }) => ({ req, res }),
       subscriptions: {
         'graphql-ws': { path: '/graphql' },
       },

@@ -1,25 +1,30 @@
+import type { Request, Response } from 'express'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { Episode } from '../../episodes/episode.model'
+import { EpisodesService } from '../../episodes/episodes.service'
 import { FavoritesResolver } from '../favorites.resolver'
 
 function makeEpisode(id: number) {
-  return { episode_id: id, title: `Episode ${id}` } as any
+  return { episode_id: id, title: `Episode ${id}` } as Episode
 }
 
 function makeCtx(cookieVal?: string) {
   return {
     req: { cookies: cookieVal !== undefined ? { favoriteEpisodes: cookieVal } : {} },
     res: { cookie: vi.fn() },
-  }
+  } as object as { req: Request; res: Response }
 }
 
 describe('FavoritesResolver', () => {
-  let mockEpisodesService: any
+  let mockEpisodesService: { findByIds: ReturnType<typeof vi.fn> }
   let resolver: FavoritesResolver
 
   beforeEach(() => {
     mockEpisodesService = { findByIds: vi.fn().mockReturnValue([]) }
-    resolver = new FavoritesResolver(mockEpisodesService)
+    resolver = new FavoritesResolver(
+      mockEpisodesService as Partial<EpisodesService> as EpisodesService
+    )
   })
 
   describe('favoriteEpisodes', () => {

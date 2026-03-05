@@ -1,14 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { CharactersService } from '../../characters/characters.service'
+import { Species } from '../species.model'
 import { SpeciesResolver } from '../species.resolver'
+import { SpeciesService } from '../species.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('SpeciesResolver', () => {
-  let mockSpeciesService: any
-  let mockCharactersService: any
+  let mockSpeciesService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+  }
+  let mockCharactersService: { findBySpeciesId: ReturnType<typeof vi.fn> }
   let resolver: SpeciesResolver
 
   beforeEach(() => {
@@ -19,7 +25,10 @@ describe('SpeciesResolver', () => {
     mockCharactersService = {
       findBySpeciesId: vi.fn().mockReturnValue(makeConnection()),
     }
-    resolver = new SpeciesResolver(mockSpeciesService, mockCharactersService)
+    resolver = new SpeciesResolver(
+      mockSpeciesService as Partial<SpeciesService> as SpeciesService,
+      mockCharactersService as Partial<CharactersService> as CharactersService
+    )
   })
 
   describe('findAll', () => {
@@ -61,7 +70,7 @@ describe('SpeciesResolver', () => {
 
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findBySpeciesId with species and pagination', () => {
-      const species = { species_id: 5 } as any
+      const species = { species_id: 5 } as Species
       resolver.characters(species, undefined, undefined, 3, undefined, undefined, undefined)
       expect(mockCharactersService.findBySpeciesId).toHaveBeenCalledWith(
         5,
@@ -71,7 +80,7 @@ describe('SpeciesResolver', () => {
     })
 
     it('passes gender filter to service', () => {
-      const species = { species_id: 5 } as any
+      const species = { species_id: 5 } as Species
       resolver.characters(species, 'M', undefined, undefined, undefined, undefined, undefined)
       expect(mockCharactersService.findBySpeciesId).toHaveBeenCalledWith(
         5,
@@ -83,7 +92,7 @@ describe('SpeciesResolver', () => {
     it('returns the service result', () => {
       const conn = makeConnection()
       mockCharactersService.findBySpeciesId.mockReturnValue(conn)
-      expect(resolver.characters({ species_id: 1 } as any)).toBe(conn)
+      expect(resolver.characters({ species_id: 1 } as Species)).toBe(conn)
     })
   })
 })

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService } from '../database/database.service'
+import { DatabaseService, SqlParam } from '../database/database.service'
 import { Species, SpeciesConnection } from './species.model'
 
 @Injectable()
@@ -14,7 +14,7 @@ export class SpeciesService {
     pagination: PaginationInput = {}
   ): SpeciesConnection {
     const conditions: string[] = []
-    const params: unknown[] = []
+    const params: SqlParam[] = []
     if (filters.warpCapable != null) {
       conditions.push('warp_capable = ?')
       params.push(filters.warpCapable ? 1 : 0)
@@ -44,7 +44,7 @@ export class SpeciesService {
       .map(this.coerce)
   }
 
-  private coerce(row: Species): Species {
-    return { ...row, warp_capable: Boolean((row as any).warp_capable) }
+  private coerce(row: Omit<Species, 'warp_capable'> & { warp_capable: number | boolean }): Species {
+    return { ...row, warp_capable: Boolean(row.warp_capable) }
   }
 }

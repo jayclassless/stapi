@@ -3,13 +3,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { CharactersService } from '../characters.service'
 
-function makeMockDb(totalCount = 0, rows: any[] = []) {
+function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
   return {
     query: vi
       .fn()
       .mockReturnValueOnce([{ count: totalCount }])
       .mockReturnValueOnce(rows),
     queryOne: vi.fn().mockReturnValue(undefined),
+    count: vi.fn().mockReturnValue(0),
   }
 }
 
@@ -19,13 +20,13 @@ describe('CharactersService', () => {
 
   beforeEach(() => {
     mockDb = makeMockDb()
-    service = new CharactersService(mockDb as unknown as DatabaseService)
+    service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
   })
 
   describe('findAll', () => {
     it('returns a connection from Characters table', () => {
       mockDb = makeMockDb(1, [{ character_id: 1 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({}, {})
       expect(result.totalCount).toBe(1)
       const countSql: string = mockDb.query.mock.calls[0][0]
@@ -39,7 +40,7 @@ describe('CharactersService', () => {
 
     it('filters by gender', () => {
       mockDb = makeMockDb(1, [{ character_id: 1 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ gender: 'Female' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -48,7 +49,7 @@ describe('CharactersService', () => {
 
     it('filters by primaryActor', () => {
       mockDb = makeMockDb(1, [{ character_id: 2 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ primaryActor: 5 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('primary_actor_id = ?')
@@ -57,7 +58,7 @@ describe('CharactersService', () => {
 
     it('combines multiple filters', () => {
       mockDb = makeMockDb(1, [{ character_id: 3 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ gender: 'Male', primaryActor: 7 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -85,7 +86,7 @@ describe('CharactersService', () => {
   describe('findByEpisodeId', () => {
     it('queries via Character_Episodes join', () => {
       mockDb = makeMockDb(1, [{ character_id: 5 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByEpisodeId(10, {}, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Episodes')
@@ -95,7 +96,7 @@ describe('CharactersService', () => {
 
     it('applies gender filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 5 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByEpisodeId(10, { gender: 'F' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -104,7 +105,7 @@ describe('CharactersService', () => {
 
     it('applies primaryActor filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 5 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByEpisodeId(10, { primaryActor: 3 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('primary_actor_id = ?')
@@ -119,7 +120,7 @@ describe('CharactersService', () => {
   describe('findBySpeciesId', () => {
     it('queries characters by species_id', () => {
       mockDb = makeMockDb(2, [{ character_id: 1 }, { character_id: 2 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findBySpeciesId(3, {}, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('species_id = ?')
@@ -128,7 +129,7 @@ describe('CharactersService', () => {
 
     it('applies gender filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 1 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findBySpeciesId(3, { gender: 'M' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -137,7 +138,7 @@ describe('CharactersService', () => {
 
     it('applies primaryActor filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 1 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findBySpeciesId(3, { primaryActor: 9 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('primary_actor_id = ?')
@@ -152,7 +153,7 @@ describe('CharactersService', () => {
   describe('findByActorId', () => {
     it('queries via Character_Actors join', () => {
       mockDb = makeMockDb(1, [{ character_id: 2 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByActorId(5, {}, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Actors')
@@ -162,7 +163,7 @@ describe('CharactersService', () => {
 
     it('applies gender filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 2 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByActorId(5, { gender: 'F' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -171,7 +172,7 @@ describe('CharactersService', () => {
 
     it('applies primaryActor filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 2 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByActorId(5, { primaryActor: 7 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('primary_actor_id = ?')
@@ -186,7 +187,7 @@ describe('CharactersService', () => {
   describe('findByOrganizationId', () => {
     it('queries via Character_Organizations join', () => {
       mockDb = makeMockDb(1, [{ character_id: 3 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByOrganizationId(8, {}, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Organizations')
@@ -196,7 +197,7 @@ describe('CharactersService', () => {
 
     it('applies gender filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 3 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByOrganizationId(8, { gender: 'F' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('gender = ?')
@@ -205,7 +206,7 @@ describe('CharactersService', () => {
 
     it('applies primaryActor filter', () => {
       mockDb = makeMockDb(1, [{ character_id: 3 }])
-      service = new CharactersService(mockDb as unknown as DatabaseService)
+      service = new CharactersService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByOrganizationId(8, { primaryActor: 2 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('primary_actor_id = ?')

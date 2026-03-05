@@ -3,13 +3,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { ActorsService } from '../actors.service'
 
-function makeMockDb(totalCount = 0, rows: any[] = []) {
+function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
   return {
     query: vi
       .fn()
       .mockReturnValueOnce([{ count: totalCount }])
       .mockReturnValueOnce(rows),
     queryOne: vi.fn().mockReturnValue(undefined),
+    count: vi.fn().mockReturnValue(0),
   }
 }
 
@@ -19,13 +20,13 @@ describe('ActorsService', () => {
 
   beforeEach(() => {
     mockDb = makeMockDb()
-    service = new ActorsService(mockDb as unknown as DatabaseService)
+    service = new ActorsService(mockDb as Partial<DatabaseService> as DatabaseService)
   })
 
   describe('findAll', () => {
     it('returns a connection from Actors table', () => {
       mockDb = makeMockDb(2, [{ actor_id: 1 }, { actor_id: 2 }])
-      service = new ActorsService(mockDb as unknown as DatabaseService)
+      service = new ActorsService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({})
       expect(result.totalCount).toBe(2)
       expect(result.edges).toHaveLength(2)
@@ -56,7 +57,7 @@ describe('ActorsService', () => {
   describe('findByCharacterId', () => {
     it('queries actors via Character_Actors join', () => {
       mockDb = makeMockDb(1, [{ actor_id: 10 }])
-      service = new ActorsService(mockDb as unknown as DatabaseService)
+      service = new ActorsService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByCharacterId(4, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Actors')

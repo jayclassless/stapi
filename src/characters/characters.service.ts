@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService } from '../database/database.service'
+import { DatabaseService, SqlParam } from '../database/database.service'
 import { Character, CharacterConnection } from './character.model'
 
 @Injectable()
@@ -14,7 +14,7 @@ export class CharactersService {
     pagination: PaginationInput = {}
   ): CharacterConnection {
     const conditions: string[] = []
-    const params: unknown[] = []
+    const params: SqlParam[] = []
     if (filters.gender != null) {
       conditions.push('gender = ?')
       params.push(filters.gender)
@@ -43,7 +43,7 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: unknown[] = [episodeId]
+    const params: SqlParam[] = [episodeId]
     const andConds: string[] = []
     if (filters.gender != null) {
       andConds.push('c.gender = ?')
@@ -69,7 +69,7 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: unknown[] = [speciesId]
+    const params: SqlParam[] = [speciesId]
     const andConds: string[] = []
     if (filters.gender != null) {
       andConds.push('gender = ?')
@@ -95,7 +95,7 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: unknown[] = [actorId]
+    const params: SqlParam[] = [actorId]
     const andConds: string[] = []
     if (filters.gender != null) {
       andConds.push('c.gender = ?')
@@ -121,7 +121,7 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: unknown[] = [organizationId]
+    const params: SqlParam[] = [organizationId]
     const andConds: string[] = []
     if (filters.gender != null) {
       andConds.push('c.gender = ?')

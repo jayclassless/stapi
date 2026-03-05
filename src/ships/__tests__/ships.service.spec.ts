@@ -3,13 +3,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { ShipsService } from '../ships.service'
 
-function makeMockDb(totalCount = 0, rows: any[] = []) {
+function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
   return {
     query: vi
       .fn()
       .mockReturnValueOnce([{ count: totalCount }])
       .mockReturnValueOnce(rows),
     queryOne: vi.fn().mockReturnValue(undefined),
+    count: vi.fn().mockReturnValue(0),
   }
 }
 
@@ -19,13 +20,13 @@ describe('ShipsService', () => {
 
   beforeEach(() => {
     mockDb = makeMockDb()
-    service = new ShipsService(mockDb as unknown as DatabaseService)
+    service = new ShipsService(mockDb as Partial<DatabaseService> as DatabaseService)
   })
 
   describe('findAll', () => {
     it('returns a connection from Ships table', () => {
       mockDb = makeMockDb(3, [{ ship_id: 1 }, { ship_id: 2 }, { ship_id: 3 }])
-      service = new ShipsService(mockDb as unknown as DatabaseService)
+      service = new ShipsService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({}, {})
       expect(result.totalCount).toBe(3)
       expect(result.edges).toHaveLength(3)
@@ -40,7 +41,7 @@ describe('ShipsService', () => {
 
     it('filters by status', () => {
       mockDb = makeMockDb(1, [{ ship_id: 1 }])
-      service = new ShipsService(mockDb as unknown as DatabaseService)
+      service = new ShipsService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ status: 'Active' }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('status = ?')

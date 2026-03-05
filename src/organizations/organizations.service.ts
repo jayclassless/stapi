@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService } from '../database/database.service'
+import { DatabaseService, SqlParam } from '../database/database.service'
 import { Organization, OrganizationConnection } from './organization.model'
 
 @Injectable()
@@ -14,7 +14,7 @@ export class OrganizationsService {
     pagination: PaginationInput = {}
   ): OrganizationConnection {
     const conditions: string[] = []
-    const params: unknown[] = []
+    const params: SqlParam[] = []
     if (filters.type != null) {
       conditions.push('type = ?')
       params.push(filters.type)
@@ -41,7 +41,7 @@ export class OrganizationsService {
     filters: { type?: string } = {},
     pagination: PaginationInput = {}
   ): OrganizationConnection {
-    const params: unknown[] = [characterId]
+    const params: SqlParam[] = [characterId]
     const andConds: string[] = []
     if (filters.type != null) {
       andConds.push('o.type = ?')

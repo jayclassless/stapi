@@ -1,15 +1,23 @@
 import { UserInputError } from '@nestjs/apollo'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { EpisodesService } from '../../episodes/episodes.service'
+import { Series } from '../series.model'
 import { SeriesResolver } from '../series.resolver'
+import { SeriesService } from '../series.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('SeriesResolver', () => {
-  let mockSeriesService: any
-  let mockEpisodesService: any
+  let mockSeriesService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+    findByAbbreviation: ReturnType<typeof vi.fn>
+    findByImdbId: ReturnType<typeof vi.fn>
+  }
+  let mockEpisodesService: { findBySeriesId: ReturnType<typeof vi.fn> }
   let resolver: SeriesResolver
 
   beforeEach(() => {
@@ -22,7 +30,10 @@ describe('SeriesResolver', () => {
     mockEpisodesService = {
       findBySeriesId: vi.fn().mockReturnValue(makeConnection()),
     }
-    resolver = new SeriesResolver(mockSeriesService, mockEpisodesService)
+    resolver = new SeriesResolver(
+      mockSeriesService as Partial<SeriesService> as SeriesService,
+      mockEpisodesService as Partial<EpisodesService> as EpisodesService
+    )
   })
 
   describe('findAll', () => {
@@ -92,7 +103,7 @@ describe('SeriesResolver', () => {
 
   describe('episodes (ResolveField)', () => {
     it('delegates to episodesService.findBySeriesId with series and pagination', () => {
-      const series = { series_id: 7 } as any
+      const series = { series_id: 7 } as Series
       resolver.episodes(series, undefined, 5, undefined, undefined, undefined)
       expect(mockEpisodesService.findBySeriesId).toHaveBeenCalledWith(
         7,
@@ -102,7 +113,7 @@ describe('SeriesResolver', () => {
     })
 
     it('passes season filter to service', () => {
-      const series = { series_id: 7 } as any
+      const series = { series_id: 7 } as Series
       resolver.episodes(series, 2, undefined, undefined, undefined, undefined)
       expect(mockEpisodesService.findBySeriesId).toHaveBeenCalledWith(
         7,
@@ -114,7 +125,7 @@ describe('SeriesResolver', () => {
     it('returns the service result', () => {
       const conn = makeConnection()
       mockEpisodesService.findBySeriesId.mockReturnValue(conn)
-      expect(resolver.episodes({ series_id: 1 } as any)).toBe(conn)
+      expect(resolver.episodes({ series_id: 1 } as Series)).toBe(conn)
     })
   })
 })

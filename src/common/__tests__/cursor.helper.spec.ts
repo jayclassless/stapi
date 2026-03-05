@@ -1,9 +1,11 @@
 import { UserInputError } from '@nestjs/apollo'
 import { describe, expect, it, vi } from 'vitest'
 
+import { SqlParam } from '../../database/database.service'
 import { decodeCursor, encodeCursor, queryConnection } from '../cursor.helper'
+import { PaginationInput } from '../pagination.input'
 
-function makeDb(totalCount: number, rows: any[]) {
+function makeDb(totalCount: number, rows: Record<string, number>[]) {
   return {
     query: vi
       .fn()
@@ -72,7 +74,7 @@ describe('queryConnection', () => {
       const dataSql: string = db.query.mock.calls[1][0]
       expect(dataSql).toContain('LIMIT ?')
       expect(dataSql).toContain('ORDER BY series_id ASC')
-      const dataParams: unknown[] = db.query.mock.calls[1][1]
+      const dataParams: SqlParam[] = db.query.mock.calls[1][1]
       expect(dataParams[dataParams.length - 1]).toBe(21)
     })
 
@@ -84,7 +86,7 @@ describe('queryConnection', () => {
       })
       expect(result.edges).toHaveLength(2)
       expect(result.pageInfo.hasNextPage).toBe(false)
-      const dataParams: unknown[] = db.query.mock.calls[1][1]
+      const dataParams: SqlParam[] = db.query.mock.calls[1][1]
       expect(dataParams[dataParams.length - 1]).toBe(6) // first + 1
     })
 
@@ -129,7 +131,7 @@ describe('queryConnection', () => {
       queryConnection(db, 'SELECT * FROM Series', [], 'series_id', 'Series', { after })
       const dataSql: string = db.query.mock.calls[1][0]
       expect(dataSql).toContain('WHERE series_id > ?')
-      const dataParams: unknown[] = db.query.mock.calls[1][1]
+      const dataParams: SqlParam[] = db.query.mock.calls[1][1]
       expect(dataParams).toContain(5)
     })
 
@@ -193,7 +195,7 @@ describe('queryConnection', () => {
         'Episode',
         {}
       )
-      const countParams: unknown[] = db.query.mock.calls[0][1]
+      const countParams: SqlParam[] = db.query.mock.calls[0][1]
       expect(countParams).toEqual([42])
     })
 
@@ -229,7 +231,7 @@ describe('queryConnection', () => {
         [],
         'series_id',
         'Series',
-        null as any
+        null as null | PaginationInput as PaginationInput
       )
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
     })
@@ -249,9 +251,14 @@ describe('queryConnection', () => {
     it('uses ORDER BY DESC and reverses results', () => {
       const rows = [{ series_id: 3 }, { series_id: 2 }, { series_id: 1 }]
       const db = makeDb(3, rows)
-      const result = queryConnection(db, 'SELECT * FROM Series', [], 'series_id', 'Series', {
-        last: 3,
-      })
+      const result = queryConnection<{ series_id: number }>(
+        db,
+        'SELECT * FROM Series',
+        [],
+        'series_id',
+        'Series',
+        { last: 3 }
+      )
       expect(result.edges[0].node.series_id).toBe(1)
       expect(result.edges[1].node.series_id).toBe(2)
       expect(result.edges[2].node.series_id).toBe(3)
@@ -320,7 +327,7 @@ describe('queryConnection', () => {
     it('uses LIMIT last+1', () => {
       const db = makeDb(10, [{ series_id: 5 }])
       queryConnection(db, 'SELECT * FROM Series', [], 'series_id', 'Series', { last: 4 })
-      const dataParams: unknown[] = db.query.mock.calls[1][1]
+      const dataParams: SqlParam[] = db.query.mock.calls[1][1]
       expect(dataParams[dataParams.length - 1]).toBe(5) // last + 1
     })
 

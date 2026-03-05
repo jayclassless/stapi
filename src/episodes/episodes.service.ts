@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService } from '../database/database.service'
+import { DatabaseService, SqlParam } from '../database/database.service'
 import { Episode, EpisodeConnection } from './episode.model'
 
 @Injectable()
@@ -14,7 +14,7 @@ export class EpisodesService {
     pagination: PaginationInput = {}
   ): EpisodeConnection {
     const conditions: string[] = []
-    const params: unknown[] = []
+    const params: SqlParam[] = []
     if (filters.series != null) {
       conditions.push('series_id = ?')
       params.push(filters.series)
@@ -54,7 +54,7 @@ export class EpisodesService {
     filters: { series?: number; season?: number } = {},
     pagination: PaginationInput = {}
   ): EpisodeConnection {
-    const params: unknown[] = [seriesId]
+    const params: SqlParam[] = [seriesId]
     const andConds: string[] = []
     if (filters.series != null) {
       andConds.push('series_id = ?')
@@ -95,7 +95,7 @@ export class EpisodesService {
     filters: { series?: number; season?: number } = {},
     pagination: PaginationInput = {}
   ): EpisodeConnection {
-    const params: unknown[] = [characterId]
+    const params: SqlParam[] = [characterId]
     const andConds: string[] = []
     if (filters.series != null) {
       andConds.push('e.series_id = ?')

@@ -1,13 +1,17 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ShipsResolver } from '../ships.resolver'
+import { ShipsService } from '../ships.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('ShipsResolver', () => {
-  let mockShipsService: any
+  let mockShipsService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+  }
   let resolver: ShipsResolver
 
   beforeEach(() => {
@@ -15,7 +19,7 @@ describe('ShipsResolver', () => {
       findAll: vi.fn().mockReturnValue(makeConnection()),
       findById: vi.fn().mockReturnValue(undefined),
     }
-    resolver = new ShipsResolver(mockShipsService)
+    resolver = new ShipsResolver(mockShipsService as Partial<ShipsService> as ShipsService)
   })
 
   describe('findAll', () => {

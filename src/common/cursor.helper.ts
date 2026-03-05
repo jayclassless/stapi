@@ -1,5 +1,6 @@
 import { UserInputError } from '@nestjs/apollo'
 
+import { SqlParam } from '../database/database.service'
 import { PageInfo } from './page-info.type'
 import { PaginationInput } from './pagination.input'
 
@@ -32,10 +33,10 @@ export interface ConnectionResult<T> {
  * @param typeName  - name used in cursor encoding (e.g. "Series")
  * @param pagination - PaginationInput with first/last/after/before
  */
-export function queryConnection<T extends Record<string, any>>(
-  db: { query<R>(sql: string, params?: unknown[]): R[] },
+export function queryConnection<T extends object>(
+  db: { query<R>(sql: string, params?: SqlParam[]): R[] },
   baseSql: string,
-  baseParams: unknown[],
+  baseParams: SqlParam[],
   pkCol: string,
   typeName: string,
   pagination: PaginationInput
@@ -45,7 +46,7 @@ export function queryConnection<T extends Record<string, any>>(
 
   const { first, last, after, before } = pagination ?? {}
   const extraConditions: string[] = []
-  const params: unknown[] = [...baseParams]
+  const params: SqlParam[] = [...baseParams]
 
   const afterId = after ? decodeCursor(after) : null
   const beforeId = before ? decodeCursor(before) : null
@@ -76,7 +77,7 @@ export function queryConnection<T extends Record<string, any>>(
     if (hasPreviousPage) rows.pop()
     rows.reverse()
     const edges = rows.map((node) => ({
-      cursor: encodeCursor(typeName, node[pkCol]),
+      cursor: encodeCursor(typeName, (node as Record<string, unknown>)[pkCol] as number),
       node,
     }))
     return {
@@ -98,7 +99,7 @@ export function queryConnection<T extends Record<string, any>>(
     const hasNextPage = rows.length > limit
     if (hasNextPage) rows.pop()
     const edges = rows.map((node) => ({
-      cursor: encodeCursor(typeName, node[pkCol]),
+      cursor: encodeCursor(typeName, (node as Record<string, unknown>)[pkCol] as number),
       node,
     }))
     return {

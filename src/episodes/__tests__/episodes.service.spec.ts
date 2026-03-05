@@ -3,13 +3,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { EpisodesService } from '../episodes.service'
 
-function makeMockDb(totalCount = 0, rows: any[] = []) {
+function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
   return {
     query: vi
       .fn()
       .mockReturnValueOnce([{ count: totalCount }])
       .mockReturnValueOnce(rows),
     queryOne: vi.fn().mockReturnValue(undefined),
+    count: vi.fn().mockReturnValue(0),
   }
 }
 
@@ -19,13 +20,13 @@ describe('EpisodesService', () => {
 
   beforeEach(() => {
     mockDb = makeMockDb()
-    service = new EpisodesService(mockDb as unknown as DatabaseService)
+    service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
   })
 
   describe('findAll', () => {
     it('uses SELECT * FROM Episodes and returns connection', () => {
       mockDb = makeMockDb(1, [{ episode_id: 1 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({}, {})
       expect(result.totalCount).toBe(1)
       const countSql: string = mockDb.query.mock.calls[0][0]
@@ -39,7 +40,7 @@ describe('EpisodesService', () => {
 
     it('filters by series', () => {
       mockDb = makeMockDb(2, [{ episode_id: 1 }, { episode_id: 2 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ series: 3 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('series_id = ?')
@@ -48,7 +49,7 @@ describe('EpisodesService', () => {
 
     it('filters by season', () => {
       mockDb = makeMockDb(1, [{ episode_id: 5 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ season: 2 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('season = ?')
@@ -57,7 +58,7 @@ describe('EpisodesService', () => {
 
     it('combines series and season filters', () => {
       mockDb = makeMockDb(1, [{ episode_id: 6 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findAll({ series: 1, season: 3 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('series_id = ?')
@@ -90,7 +91,11 @@ describe('EpisodesService', () => {
     })
 
     it('fetches all ids in a single IN query', () => {
-      const db = { query: vi.fn().mockReturnValue([]), queryOne: vi.fn() } as any
+      const db = {
+        query: vi.fn().mockReturnValue([]),
+        queryOne: vi.fn(),
+        count: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
       svc.findByIds([1, 2])
       expect(db.query).toHaveBeenCalledWith(
@@ -105,7 +110,11 @@ describe('EpisodesService', () => {
         { episode_id: 1, title: 'A' },
         { episode_id: 2, title: 'B' },
       ]
-      const db = { query: vi.fn().mockReturnValue(rows), queryOne: vi.fn() } as any
+      const db = {
+        query: vi.fn().mockReturnValue(rows),
+        queryOne: vi.fn(),
+        count: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
       const result = svc.findByIds([2, 1])
       expect(result[0].episode_id).toBe(2)
@@ -116,7 +125,8 @@ describe('EpisodesService', () => {
       const db = {
         query: vi.fn().mockReturnValue([{ episode_id: 3, title: 'C' }]),
         queryOne: vi.fn(),
-      } as any
+        count: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
       const result = svc.findByIds([3, 999])
       expect(result).toHaveLength(1)
@@ -127,7 +137,7 @@ describe('EpisodesService', () => {
   describe('findBySeriesId', () => {
     it('queries episodes for a series with WHERE clause', () => {
       mockDb = makeMockDb(3, [{ episode_id: 1 }, { episode_id: 2 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findBySeriesId(2, {}, {})
       expect(result.edges).toHaveLength(2)
       const countSql: string = mockDb.query.mock.calls[0][0]
@@ -137,7 +147,7 @@ describe('EpisodesService', () => {
 
     it('applies series filter', () => {
       mockDb = makeMockDb(1, [{ episode_id: 1 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findBySeriesId(2, { series: 2 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('series_id = ?')
@@ -146,7 +156,7 @@ describe('EpisodesService', () => {
 
     it('applies season filter', () => {
       mockDb = makeMockDb(1, [{ episode_id: 1 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findBySeriesId(2, { season: 3 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('season = ?')
@@ -162,7 +172,7 @@ describe('EpisodesService', () => {
   describe('findByCharacterId', () => {
     it('queries episodes via Character_Episodes join', () => {
       mockDb = makeMockDb(2, [{ episode_id: 10 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findByCharacterId(7, {}, {})
       expect(result.edges).toHaveLength(1)
       const dataSql: string = mockDb.query.mock.calls[1][0]
@@ -173,7 +183,7 @@ describe('EpisodesService', () => {
 
     it('applies series filter', () => {
       mockDb = makeMockDb(1, [{ episode_id: 10 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByCharacterId(7, { series: 1 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('series_id = ?')
@@ -182,7 +192,7 @@ describe('EpisodesService', () => {
 
     it('applies season filter', () => {
       mockDb = makeMockDb(1, [{ episode_id: 10 }])
-      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service = new EpisodesService(mockDb as Partial<DatabaseService> as DatabaseService)
       service.findByCharacterId(7, { season: 2 }, {})
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('season = ?')
@@ -197,7 +207,11 @@ describe('EpisodesService', () => {
 
   describe('getRandomEpisode', () => {
     it('returns undefined when there are no episodes', () => {
-      const db = { count: vi.fn().mockReturnValue(0), queryOne: vi.fn() } as any
+      const db = {
+        count: vi.fn().mockReturnValue(0),
+        queryOne: vi.fn(),
+        query: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
       expect(svc.getRandomEpisode()).toBeUndefined()
       expect(db.queryOne).not.toHaveBeenCalled()
@@ -205,14 +219,16 @@ describe('EpisodesService', () => {
 
     it('calls count() then queryOne with OFFSET in range [0, total)', () => {
       const episode = { episode_id: 7, title: 'The City on the Edge of Forever' }
+      const queryOne = vi.fn().mockReturnValue(episode)
       const db = {
         count: vi.fn().mockReturnValue(100),
-        queryOne: vi.fn().mockReturnValue(episode),
-      } as any
+        queryOne,
+        query: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
       const result = svc.getRandomEpisode()
       expect(db.count).toHaveBeenCalledWith('SELECT COUNT(*) AS count FROM Episodes', [])
-      const offset: number = db.queryOne.mock.calls[0][1][0]
+      const offset: number = queryOne.mock.calls[0][1][0]
       expect(offset).toBeGreaterThanOrEqual(0)
       expect(offset).toBeLessThan(100)
       expect(result).toBe(episode)
@@ -230,7 +246,8 @@ describe('EpisodesService', () => {
       const db = {
         count: vi.fn().mockReturnValue(10),
         queryOne: vi.fn().mockReturnValue(episode),
-      } as any
+        query: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
 
       const gen = svc.randomEpisodeStream(2)
@@ -253,7 +270,11 @@ describe('EpisodesService', () => {
 
     it('skips yield when getRandomEpisode returns undefined', async () => {
       vi.useFakeTimers()
-      const db = { count: vi.fn().mockReturnValue(0), queryOne: vi.fn() } as any
+      const db = {
+        count: vi.fn().mockReturnValue(0),
+        queryOne: vi.fn(),
+        query: vi.fn(),
+      } as Partial<DatabaseService> as DatabaseService
       const svc = new EpisodesService(db)
 
       const gen = svc.randomEpisodeStream(1)

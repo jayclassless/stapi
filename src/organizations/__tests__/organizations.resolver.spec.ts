@@ -1,14 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { CharactersService } from '../../characters/characters.service'
+import { Organization } from '../organization.model'
 import { OrganizationsResolver } from '../organizations.resolver'
+import { OrganizationsService } from '../organizations.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('OrganizationsResolver', () => {
-  let mockOrganizationsService: any
-  let mockCharactersService: any
+  let mockOrganizationsService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+  }
+  let mockCharactersService: { findByOrganizationId: ReturnType<typeof vi.fn> }
   let resolver: OrganizationsResolver
 
   beforeEach(() => {
@@ -19,7 +25,10 @@ describe('OrganizationsResolver', () => {
     mockCharactersService = {
       findByOrganizationId: vi.fn().mockReturnValue(makeConnection()),
     }
-    resolver = new OrganizationsResolver(mockOrganizationsService, mockCharactersService)
+    resolver = new OrganizationsResolver(
+      mockOrganizationsService as Partial<OrganizationsService> as OrganizationsService,
+      mockCharactersService as Partial<CharactersService> as CharactersService
+    )
   })
 
   describe('findAll', () => {
@@ -61,7 +70,7 @@ describe('OrganizationsResolver', () => {
 
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByOrganizationId with organization and pagination', () => {
-      const organization = { organization_id: 2 } as any
+      const organization = { organization_id: 2 } as Organization
       resolver.characters(organization, undefined, undefined, 10, undefined, undefined, undefined)
       expect(mockCharactersService.findByOrganizationId).toHaveBeenCalledWith(
         2,
@@ -71,7 +80,7 @@ describe('OrganizationsResolver', () => {
     })
 
     it('passes gender filter to service', () => {
-      const organization = { organization_id: 2 } as any
+      const organization = { organization_id: 2 } as Organization
       resolver.characters(organization, 'F', undefined, undefined, undefined, undefined, undefined)
       expect(mockCharactersService.findByOrganizationId).toHaveBeenCalledWith(
         2,
@@ -83,7 +92,7 @@ describe('OrganizationsResolver', () => {
     it('returns the service result', () => {
       const conn = makeConnection()
       mockCharactersService.findByOrganizationId.mockReturnValue(conn)
-      expect(resolver.characters({ organization_id: 1 } as any)).toBe(conn)
+      expect(resolver.characters({ organization_id: 1 } as Organization)).toBe(conn)
     })
   })
 })

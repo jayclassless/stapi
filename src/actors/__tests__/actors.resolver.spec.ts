@@ -1,14 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { CharactersService } from '../../characters/characters.service'
+import { Actor } from '../actor.model'
 import { ActorsResolver } from '../actors.resolver'
+import { ActorsService } from '../actors.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('ActorsResolver', () => {
-  let mockActorsService: any
-  let mockCharactersService: any
+  let mockActorsService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+  }
+  let mockCharactersService: { findByActorId: ReturnType<typeof vi.fn> }
   let resolver: ActorsResolver
 
   beforeEach(() => {
@@ -19,7 +25,10 @@ describe('ActorsResolver', () => {
     mockCharactersService = {
       findByActorId: vi.fn().mockReturnValue(makeConnection()),
     }
-    resolver = new ActorsResolver(mockActorsService, mockCharactersService)
+    resolver = new ActorsResolver(
+      mockActorsService as Partial<ActorsService> as ActorsService,
+      mockCharactersService as Partial<CharactersService> as CharactersService
+    )
   })
 
   describe('findAll', () => {
@@ -55,7 +64,7 @@ describe('ActorsResolver', () => {
 
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByActorId with actor and pagination', () => {
-      const actor = { actor_id: 2 } as any
+      const actor = { actor_id: 2 } as Actor
       resolver.characters(actor, undefined, undefined, 10, undefined, undefined, undefined)
       expect(mockCharactersService.findByActorId).toHaveBeenCalledWith(
         2,
@@ -65,7 +74,7 @@ describe('ActorsResolver', () => {
     })
 
     it('passes gender filter to service', () => {
-      const actor = { actor_id: 2 } as any
+      const actor = { actor_id: 2 } as Actor
       resolver.characters(actor, 'M', undefined, undefined, undefined, undefined, undefined)
       expect(mockCharactersService.findByActorId).toHaveBeenCalledWith(
         2,
@@ -77,7 +86,7 @@ describe('ActorsResolver', () => {
     it('returns the service result', () => {
       const conn = makeConnection()
       mockCharactersService.findByActorId.mockReturnValue(conn)
-      expect(resolver.characters({ actor_id: 1 } as any)).toBe(conn)
+      expect(resolver.characters({ actor_id: 1 } as Actor)).toBe(conn)
     })
   })
 })

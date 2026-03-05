@@ -3,13 +3,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { SeriesService } from '../series.service'
 
-function makeMockDb(totalCount = 0, rows: any[] = []) {
+function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
   return {
     query: vi
       .fn()
       .mockReturnValueOnce([{ count: totalCount }])
       .mockReturnValueOnce(rows),
     queryOne: vi.fn().mockReturnValue(undefined),
+    count: vi.fn().mockReturnValue(0),
   }
 }
 
@@ -19,13 +20,13 @@ describe('SeriesService', () => {
 
   beforeEach(() => {
     mockDb = makeMockDb()
-    service = new SeriesService(mockDb as unknown as DatabaseService)
+    service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
   })
 
   describe('findAll', () => {
     it('calls queryConnection with correct sql and returns connection', () => {
       mockDb = makeMockDb(2, [{ series_id: 1 }, { series_id: 2 }])
-      service = new SeriesService(mockDb as unknown as DatabaseService)
+      service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({})
       expect(result.totalCount).toBe(2)
       expect(result.edges).toHaveLength(2)
@@ -41,7 +42,7 @@ describe('SeriesService', () => {
 
     it('respects first pagination', () => {
       mockDb = makeMockDb(10, [{ series_id: 1 }, { series_id: 2 }])
-      service = new SeriesService(mockDb as unknown as DatabaseService)
+      service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({ first: 5 })
       expect(result.edges).toHaveLength(2)
     })

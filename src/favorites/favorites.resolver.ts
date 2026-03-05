@@ -1,4 +1,5 @@
 import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql'
+import type { Request, Response } from 'express'
 
 import { Episode } from '../episodes/episode.model'
 import { EpisodesService } from '../episodes/episodes.service'
@@ -6,15 +7,7 @@ import { EpisodesService } from '../episodes/episodes.service'
 const COOKIE = 'favoriteEpisodes'
 const COOKIE_OPTS = { httpOnly: true, maxAge: 365 * 24 * 60 * 60 * 1000 }
 
-interface Req {
-  cookies?: Record<string, string>
-}
-
-interface Res {
-  cookie(name: string, value: string, options: object): void
-}
-
-function readIds(req: Req): number[] {
+function readIds(req: Request): number[] {
   const raw = req.cookies?.[COOKIE]
   if (!raw) return []
   return raw
@@ -23,7 +16,7 @@ function readIds(req: Req): number[] {
     .filter((n: number) => Number.isFinite(n) && n > 0)
 }
 
-function writeIds(res: Res, ids: number[]) {
+function writeIds(res: Response, ids: number[]) {
   res.cookie(COOKIE, ids.join(','), COOKIE_OPTS)
 }
 
@@ -32,14 +25,14 @@ export class FavoritesResolver {
   constructor(private readonly episodesService: EpisodesService) {}
 
   @Query(() => [Episode])
-  favoriteEpisodes(@Context() ctx: { req: Req }): Episode[] {
+  favoriteEpisodes(@Context() ctx: { req: Request }): Episode[] {
     return this.episodesService.findByIds(readIds(ctx.req))
   }
 
   @Mutation(() => [Episode])
   addFavoriteEpisode(
     @Args('id', { type: () => Int }) id: number,
-    @Context() ctx: { req: Req; res: Res }
+    @Context() ctx: { req: Request; res: Response }
   ): Episode[] {
     const ids = readIds(ctx.req)
     if (!ids.includes(id)) ids.push(id)
@@ -50,7 +43,7 @@ export class FavoritesResolver {
   @Mutation(() => [Episode])
   removeFavoriteEpisode(
     @Args('id', { type: () => Int }) id: number,
-    @Context() ctx: { req: Req; res: Res }
+    @Context() ctx: { req: Request; res: Response }
   ): Episode[] {
     const ids = readIds(ctx.req).filter((i) => i !== id)
     writeIds(ctx.res, ids)

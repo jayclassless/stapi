@@ -1,17 +1,29 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { ActorsService } from '../../actors/actors.service'
+import { EpisodesService } from '../../episodes/episodes.service'
+import { OrganizationsService } from '../../organizations/organizations.service'
+import { SpeciesService } from '../../species/species.service'
+import { Character } from '../character.model'
 import { CharactersResolver } from '../characters.resolver'
+import { CharactersService } from '../characters.service'
 
 function makeConnection() {
   return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
 }
 
 describe('CharactersResolver', () => {
-  let mockCharactersService: any
-  let mockSpeciesService: any
-  let mockActorsService: any
-  let mockOrganizationsService: any
-  let mockEpisodesService: any
+  let mockCharactersService: {
+    findAll: ReturnType<typeof vi.fn>
+    findById: ReturnType<typeof vi.fn>
+  }
+  let mockSpeciesService: { findById: ReturnType<typeof vi.fn> }
+  let mockActorsService: {
+    findById: ReturnType<typeof vi.fn>
+    findByCharacterId: ReturnType<typeof vi.fn>
+  }
+  let mockOrganizationsService: { findByCharacterId: ReturnType<typeof vi.fn> }
+  let mockEpisodesService: { findByCharacterId: ReturnType<typeof vi.fn> }
   let resolver: CharactersResolver
 
   beforeEach(() => {
@@ -33,11 +45,11 @@ describe('CharactersResolver', () => {
       findByCharacterId: vi.fn().mockReturnValue(makeConnection()),
     }
     resolver = new CharactersResolver(
-      mockCharactersService,
-      mockSpeciesService,
-      mockActorsService,
-      mockOrganizationsService,
-      mockEpisodesService
+      mockCharactersService as Partial<CharactersService> as CharactersService,
+      mockSpeciesService as Partial<SpeciesService> as SpeciesService,
+      mockActorsService as Partial<ActorsService> as ActorsService,
+      mockOrganizationsService as Partial<OrganizationsService> as OrganizationsService,
+      mockEpisodesService as Partial<EpisodesService> as EpisodesService
     )
   })
 
@@ -84,14 +96,14 @@ describe('CharactersResolver', () => {
 
   describe('species (ResolveField)', () => {
     it('returns null when character has no species_id', () => {
-      expect(resolver.species({ character_id: 1 } as any)).toBeNull()
+      expect(resolver.species({ character_id: 1 } as Character)).toBeNull()
       expect(mockSpeciesService.findById).not.toHaveBeenCalled()
     })
 
     it('delegates to speciesService.findById when species_id present', () => {
       const speciesRow = { species_id: 5, name: 'Vulcan' }
       mockSpeciesService.findById.mockReturnValue(speciesRow)
-      const result = resolver.species({ character_id: 1, species_id: 5 } as any)
+      const result = resolver.species({ character_id: 1, species_id: 5 } as Character)
       expect(mockSpeciesService.findById).toHaveBeenCalledWith(5)
       expect(result).toBe(speciesRow)
     })
@@ -99,14 +111,14 @@ describe('CharactersResolver', () => {
 
   describe('primaryActor (ResolveField)', () => {
     it('returns null when character has no primary_actor_id', () => {
-      expect(resolver.primaryActor({ character_id: 1 } as any)).toBeNull()
+      expect(resolver.primaryActor({ character_id: 1 } as Character)).toBeNull()
       expect(mockActorsService.findById).not.toHaveBeenCalled()
     })
 
     it('delegates to actorsService.findById when primary_actor_id present', () => {
       const actorRow = { actor_id: 10, first_name: 'Patrick' }
       mockActorsService.findById.mockReturnValue(actorRow)
-      const result = resolver.primaryActor({ character_id: 1, primary_actor_id: 10 } as any)
+      const result = resolver.primaryActor({ character_id: 1, primary_actor_id: 10 } as Character)
       expect(mockActorsService.findById).toHaveBeenCalledWith(10)
       expect(result).toBe(actorRow)
     })
@@ -114,7 +126,7 @@ describe('CharactersResolver', () => {
 
   describe('actors (ResolveField)', () => {
     it('delegates to actorsService.findByCharacterId with character and pagination', () => {
-      const character = { character_id: 3 } as any
+      const character = { character_id: 3 } as Character
       resolver.actors(character, 5, undefined, undefined, undefined)
       expect(mockActorsService.findByCharacterId).toHaveBeenCalledWith(3, {
         first: 5,
@@ -127,7 +139,7 @@ describe('CharactersResolver', () => {
 
   describe('organizations (ResolveField)', () => {
     it('delegates to organizationsService.findByCharacterId with character and pagination', () => {
-      const character = { character_id: 4 } as any
+      const character = { character_id: 4 } as Character
       resolver.organizations(character, undefined, undefined, 3, undefined, undefined)
       expect(mockOrganizationsService.findByCharacterId).toHaveBeenCalledWith(
         4,
@@ -137,7 +149,7 @@ describe('CharactersResolver', () => {
     })
 
     it('passes type filter to service', () => {
-      const character = { character_id: 4 } as any
+      const character = { character_id: 4 } as Character
       resolver.organizations(character, 'Military', undefined, undefined, undefined, undefined)
       expect(mockOrganizationsService.findByCharacterId).toHaveBeenCalledWith(
         4,
@@ -149,7 +161,7 @@ describe('CharactersResolver', () => {
 
   describe('episodes (ResolveField)', () => {
     it('delegates to episodesService.findByCharacterId with character and pagination', () => {
-      const character = { character_id: 7 } as any
+      const character = { character_id: 7 } as Character
       resolver.episodes(character, undefined, undefined, undefined, undefined, 'cur1', 'cur2')
       expect(mockEpisodesService.findByCharacterId).toHaveBeenCalledWith(
         7,
@@ -159,7 +171,7 @@ describe('CharactersResolver', () => {
     })
 
     it('passes season filter to service', () => {
-      const character = { character_id: 7 } as any
+      const character = { character_id: 7 } as Character
       resolver.episodes(character, undefined, 3, undefined, undefined, undefined, undefined)
       expect(mockEpisodesService.findByCharacterId).toHaveBeenCalledWith(
         7,
