@@ -671,6 +671,99 @@ describe('batched queries', () => {
 })
 
 // ---------------------------------------------------------------------------
+// Favorites
+// ---------------------------------------------------------------------------
+
+describe('favorites', () => {
+  it('starts with an empty favorites list', async () => {
+    const { gql } = testApp
+    const res = await gql('{ favoriteEpisodes { id title } }')
+    expect(res.status).toBe(200)
+    expect(res.body.data.favoriteEpisodes).toEqual([])
+  })
+
+  it('addFavoriteEpisode persists the episode in the cookie', async () => {
+    const agent = supertest(app.getHttpServer())
+
+    // Pick a real episode ID
+    const listRes = await agent
+      .post('/graphql')
+      .send({ query: '{ episodes(first: 1) { edges { node { id title } } } }' })
+    const { id, title } = listRes.body.data.episodes.edges[0].node
+
+    // Add to favorites
+    const addRes = await agent
+      .post('/graphql')
+      .send({ query: `mutation { addFavoriteEpisode(id: ${id}) { id title } }` })
+    expect(addRes.status).toBe(200)
+    expect(addRes.body.data.addFavoriteEpisode).toHaveLength(1)
+    expect(addRes.body.data.addFavoriteEpisode[0]).toEqual({ id, title })
+
+    // Cookie must be set
+    const setCookie = addRes.headers['set-cookie'] as string[] | string
+    expect(setCookie).toBeTruthy()
+
+    // Query favorites with the cookie
+    const favRes = await agent
+      .post('/graphql')
+      .set('Cookie', setCookie)
+      .send({ query: '{ favoriteEpisodes { id title } }' })
+    expect(favRes.status).toBe(200)
+    expect(favRes.body.data.favoriteEpisodes).toHaveLength(1)
+    expect(favRes.body.data.favoriteEpisodes[0]).toEqual({ id, title })
+  })
+
+  it('addFavoriteEpisode is idempotent', async () => {
+    const agent = supertest(app.getHttpServer())
+    const listRes = await agent
+      .post('/graphql')
+      .send({ query: '{ episodes(first: 1) { edges { node { id } } } }' })
+    const { id } = listRes.body.data.episodes.edges[0].node
+
+    const addRes = await agent
+      .post('/graphql')
+      .send({ query: `mutation { addFavoriteEpisode(id: ${id}) { id } }` })
+    const cookie = addRes.headers['set-cookie']
+
+    // Add same ID again
+    const addAgainRes = await agent
+      .post('/graphql')
+      .set('Cookie', cookie)
+      .send({ query: `mutation { addFavoriteEpisode(id: ${id}) { id } }` })
+    expect(addAgainRes.body.data.addFavoriteEpisode).toHaveLength(1)
+  })
+
+  it('removeFavoriteEpisode removes the episode from the cookie', async () => {
+    const agent = supertest(app.getHttpServer())
+    const listRes = await agent
+      .post('/graphql')
+      .send({ query: '{ episodes(first: 1) { edges { node { id } } } }' })
+    const { id } = listRes.body.data.episodes.edges[0].node
+
+    // Add then remove
+    const addRes = await agent
+      .post('/graphql')
+      .send({ query: `mutation { addFavoriteEpisode(id: ${id}) { id } }` })
+    const addCookie = addRes.headers['set-cookie']
+
+    const removeRes = await agent
+      .post('/graphql')
+      .set('Cookie', addCookie)
+      .send({ query: `mutation { removeFavoriteEpisode(id: ${id}) { id } }` })
+    expect(removeRes.status).toBe(200)
+    expect(removeRes.body.data.removeFavoriteEpisode).toEqual([])
+
+    // Favorites should now be empty with the updated cookie
+    const removeCookie = removeRes.headers['set-cookie']
+    const favRes = await agent
+      .post('/graphql')
+      .set('Cookie', removeCookie)
+      .send({ query: '{ favoriteEpisodes { id } }' })
+    expect(favRes.body.data.favoriteEpisodes).toEqual([])
+  })
+})
+
+// ---------------------------------------------------------------------------
 // GET request support
 // ---------------------------------------------------------------------------
 
