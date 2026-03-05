@@ -1,0 +1,41 @@
+import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql';
+import { Inject, forwardRef } from '@nestjs/common';
+import { SpeciesService } from './species.service';
+import { Species, SpeciesConnection } from './species.model';
+import { CharactersService } from '../characters/characters.service';
+import { CharacterConnection } from '../characters/character.model';
+
+@Resolver(() => Species)
+export class SpeciesResolver {
+  constructor(
+    private readonly speciesService: SpeciesService,
+    @Inject(forwardRef(() => CharactersService))
+    private readonly charactersService: CharactersService,
+  ) {}
+
+  @Query(() => SpeciesConnection, { name: 'species' })
+  findAll(
+    @Args('first', { nullable: true, type: () => Int }) first?: number,
+    @Args('last', { nullable: true, type: () => Int }) last?: number,
+    @Args('before', { nullable: true }) before?: string,
+    @Args('after', { nullable: true }) after?: string,
+  ) {
+    return this.speciesService.findAll({ first, last, before, after });
+  }
+
+  @Query(() => Species, { name: 'speciesById', nullable: true })
+  findById(@Args('id', { type: () => Int }) id: number) {
+    return this.speciesService.findById(id);
+  }
+
+  @ResolveField(() => CharacterConnection)
+  characters(
+    @Parent() species: Species,
+    @Args('first', { nullable: true, type: () => Int }) first?: number,
+    @Args('last', { nullable: true, type: () => Int }) last?: number,
+    @Args('before', { nullable: true }) before?: string,
+    @Args('after', { nullable: true }) after?: string,
+  ) {
+    return this.charactersService.findBySpeciesId(species.species_id, { first, last, before, after });
+  }
+}
