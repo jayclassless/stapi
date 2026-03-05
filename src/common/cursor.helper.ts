@@ -40,7 +40,7 @@ export function queryConnection<T extends Record<string, any>>(
   typeName: string,
   pagination: PaginationInput
 ): ConnectionResult<T> {
-  const countSql = baseSql.replace(/^\s*SELECT\s+.+?\s+FROM\s+/is, 'SELECT COUNT(*) AS count FROM ')
+  const countSql = `SELECT COUNT(*) AS count FROM (${baseSql}) _sub`
   const [{ count }] = db.query<{ count: number }>(countSql, baseParams)
 
   const { first, last, after, before } = pagination ?? {}

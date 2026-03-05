@@ -197,25 +197,20 @@ describe('queryConnection', () => {
       expect(countParams).toEqual([42])
     })
 
-    it('rewrites SELECT list to COUNT(*) for count query', () => {
+    it('wraps base query in subquery for count', () => {
       const db = makeDb(0, [])
       queryConnection(db, 'SELECT * FROM Series', [], 'series_id', 'Series', {})
       const countSql: string = db.query.mock.calls[0][0]
-      expect(countSql).toBe('SELECT COUNT(*) AS count FROM Series')
+      expect(countSql).toBe('SELECT COUNT(*) AS count FROM (SELECT * FROM Series) _sub')
     })
 
-    it('rewrites aliased SELECT to COUNT(*)', () => {
+    it('wraps joined query in subquery for count', () => {
       const db = makeDb(0, [])
-      queryConnection(
-        db,
-        'SELECT e.* FROM Episodes e JOIN Character_Episodes ce ON ce.episode_id = e.episode_id WHERE ce.character_id = ?',
-        [1],
-        'episode_id',
-        'Episode',
-        {}
-      )
+      const baseSql =
+        'SELECT e.* FROM Episodes e JOIN Character_Episodes ce ON ce.episode_id = e.episode_id WHERE ce.character_id = ?'
+      queryConnection(db, baseSql, [1], 'episode_id', 'Episode', {})
       const countSql: string = db.query.mock.calls[0][0]
-      expect(countSql).toMatch(/^SELECT COUNT\(\*\) AS count FROM Episodes/)
+      expect(countSql).toBe(`SELECT COUNT(*) AS count FROM (${baseSql}) _sub`)
     })
 
     it('produces edge cursors with correct typeName and pk', () => {
