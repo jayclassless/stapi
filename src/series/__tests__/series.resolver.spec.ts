@@ -17,6 +17,7 @@ describe('SeriesResolver', () => {
       findAll: vi.fn().mockReturnValue(makeConnection()),
       findById: vi.fn().mockReturnValue(undefined),
       findByAbbreviation: vi.fn().mockReturnValue(undefined),
+      findByImdbId: vi.fn().mockReturnValue(undefined),
     }
     mockEpisodesService = {
       findBySeriesId: vi.fn().mockReturnValue(makeConnection()),
@@ -53,21 +54,21 @@ describe('SeriesResolver', () => {
   })
 
   describe('findById', () => {
-    it('throws UserInputError when both id and abbreviation are provided', () => {
-      expect(() => resolver.findById(1, 'TNG')).toThrow(UserInputError)
-      expect(() => resolver.findById(1, 'TNG')).toThrow(
-        'Exactly one of id or abbreviation is required'
+    it('throws UserInputError when multiple args are provided', () => {
+      expect(() => resolver.findById(1, 'TNG', undefined)).toThrow(UserInputError)
+      expect(() => resolver.findById(1, 'TNG', undefined)).toThrow(
+        'Exactly one of id, abbreviation, or imdbId is required'
       )
     })
 
-    it('throws UserInputError when neither id nor abbreviation are provided', () => {
-      expect(() => resolver.findById(undefined, undefined)).toThrow(UserInputError)
+    it('throws UserInputError when no args are provided', () => {
+      expect(() => resolver.findById(undefined, undefined, undefined)).toThrow(UserInputError)
     })
 
     it('calls findById when only id is provided', () => {
       const row = { series_id: 1, name: 'TNG' }
       mockSeriesService.findById.mockReturnValue(row)
-      const result = resolver.findById(1, undefined)
+      const result = resolver.findById(1, undefined, undefined)
       expect(mockSeriesService.findById).toHaveBeenCalledWith(1)
       expect(result).toBe(row)
     })
@@ -75,8 +76,16 @@ describe('SeriesResolver', () => {
     it('calls findByAbbreviation when only abbreviation is provided', () => {
       const row = { series_id: 2, abbreviation: 'DS9' }
       mockSeriesService.findByAbbreviation.mockReturnValue(row)
-      const result = resolver.findById(undefined, 'DS9')
+      const result = resolver.findById(undefined, 'DS9', undefined)
       expect(mockSeriesService.findByAbbreviation).toHaveBeenCalledWith('DS9')
+      expect(result).toBe(row)
+    })
+
+    it('calls findByImdbId when only imdbId is provided', () => {
+      const row = { series_id: 3, imdb_id: 'tt0092455' }
+      mockSeriesService.findByImdbId.mockReturnValue(row)
+      const result = resolver.findById(undefined, undefined, 'tt0092455')
+      expect(mockSeriesService.findByImdbId).toHaveBeenCalledWith('tt0092455')
       expect(result).toBe(row)
     })
   })

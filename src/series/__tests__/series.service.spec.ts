@@ -76,4 +76,20 @@ describe('SeriesService', () => {
       expect(service.findByAbbreviation('FAKE')).toBeUndefined()
     })
   })
+
+  describe('findByImdbId', () => {
+    it('queries by imdb_id and returns the row', () => {
+      const row = { series_id: 3, imdb_id: 'tt0092455' }
+      mockDb.queryOne.mockReturnValue(row)
+      const result = service.findByImdbId('tt0092455')
+      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Series WHERE imdb_id = ?', [
+        'tt0092455',
+      ])
+      expect(result).toEqual(row)
+    })
+
+    it('returns undefined when not found', () => {
+      expect(service.findByImdbId('tt9999999')).toBeUndefined()
+    })
+  })
 })

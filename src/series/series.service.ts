@@ -27,4 +27,8 @@ export class SeriesService {
   findByAbbreviation(abbreviation: string): Series | undefined {
     return this.db.queryOne<Series>('SELECT * FROM Series WHERE abbreviation = ?', [abbreviation])
   }
+
+  findByImdbId(imdbId: string): Series | undefined {
+    return this.db.queryOne<Series>('SELECT * FROM Series WHERE imdb_id = ?', [imdbId])
+  }
 }

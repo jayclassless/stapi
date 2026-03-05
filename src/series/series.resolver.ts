@@ -30,15 +30,16 @@ export class SeriesResolver {
   @Query(() => Series, { name: 'seriesById', nullable: true })
   findById(
     @Args('id', { type: () => Int, nullable: true }) id?: number,
-    @Args('abbreviation', { nullable: true }) abbreviation?: string
+    @Args('abbreviation', { nullable: true }) abbreviation?: string,
+    @Args('imdbId', { nullable: true }) imdbId?: string
   ) {
-    const hasId = id != null
-    const hasAbbreviation = abbreviation != null
-    if (hasId === hasAbbreviation) {
-      throw new UserInputError('Exactly one of id or abbreviation is required')
+    const args = [id, abbreviation, imdbId].filter((v) => v != null)
+    if (args.length !== 1) {
+      throw new UserInputError('Exactly one of id, abbreviation, or imdbId is required')
     }
-    if (hasId) return this.seriesService.findById(id)
-    return this.seriesService.findByAbbreviation(abbreviation!)
+    if (id != null) return this.seriesService.findById(id)
+    if (abbreviation != null) return this.seriesService.findByAbbreviation(abbreviation)
+    return this.seriesService.findByImdbId(imdbId!)
   }
 
   @ResolveField(() => EpisodeConnection)

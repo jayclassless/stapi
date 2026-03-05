@@ -95,6 +95,20 @@ describe('series', () => {
     expect(res.body.data.seriesById?.abbreviation).toBe(abbreviation)
   })
 
+  it('looks up a series by imdbId', async () => {
+    const { gql } = testApp
+    // Fetch the imdbId of any series
+    const listRes = await gql(`{ series(first: 10) { edges { node { id imdbId } } } }`)
+    const edge = listRes.body.data.series.edges.find((e: any) => e.node.imdbId)
+    if (!edge) return // no series with imdbId; skip
+
+    const { id, imdbId } = edge.node
+    const res = await gql(`{ seriesById(imdbId: "${imdbId}") { id imdbId } }`)
+    expect(res.status).toBe(200)
+    expect(res.body.data.seriesById?.id).toBe(id)
+    expect(res.body.data.seriesById?.imdbId).toBe(imdbId)
+  })
+
   it('returns an error when seriesById is called without args', async () => {
     const { gql } = testApp
     const res = await gql(`{ seriesById { id } }`)
