@@ -23,9 +23,6 @@ export class Series {
   @Field(() => Int, { nullable: true, name: 'numSeasons' })
   num_seasons?: number
 
-  @Field(() => Int, { nullable: true, name: 'numEpisodes' })
-  num_episodes?: number
-
   @Field({ nullable: true })
   description?: string
 

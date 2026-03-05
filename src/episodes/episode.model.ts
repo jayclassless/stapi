@@ -8,7 +8,6 @@ export class Episode {
   @Field(() => ID, { name: 'id' })
   episode_id: number
 
-  @Field(() => Int, { name: 'seriesId' })
   series_id: number
 
   @Field()

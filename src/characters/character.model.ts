@@ -34,7 +34,6 @@ export class Character {
   @Field({ nullable: true })
   occupation?: string
 
-  @Field(() => Int, { nullable: true, name: 'primaryActorId' })
   primary_actor_id?: number
 
   // Relationship fields (resolved by @ResolveField)
