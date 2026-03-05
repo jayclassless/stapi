@@ -1,7 +1,7 @@
 {
   "name": "stapi",
   "version": "0.1.0",
-  "private": "true",
+  "private": true,
   "description": "Star Trek: The GraphQL API",
   "license": "MIT",
   "author": "Jason Simeone",
