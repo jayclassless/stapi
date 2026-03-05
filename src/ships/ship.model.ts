@@ -1,48 +1,48 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
-import { PageInfo } from '../common/page-info.type';
+import { ObjectType, Field, Int, ID } from '@nestjs/graphql'
+
+import { PageInfo } from '../common/page-info.type'
 
 @ObjectType()
 export class Ship {
   @Field(() => ID, { name: 'id' })
-  ship_id: number;
+  ship_id: number
 
   @Field()
-  name: string;
+  name: string
 
   @Field({ nullable: true })
-  registry?: string;
+  registry?: string
 
   @Field({ nullable: true })
-  class?: string;
+  class?: string
 
   @Field({ nullable: true })
-  type?: string;
+  type?: string
 
   @Field(() => Int, { nullable: true, name: 'launchedYear' })
-  launched_year?: number;
+  launched_year?: number
 
   @Field({ nullable: true })
-  status?: string;
-
+  status?: string
 }
 
 @ObjectType()
 export class ShipEdge {
   @Field()
-  cursor: string;
+  cursor: string
 
   @Field(() => Ship)
-  node: Ship;
+  node: Ship
 }
 
 @ObjectType()
 export class ShipConnection {
   @Field(() => [ShipEdge])
-  edges: ShipEdge[];
+  edges: ShipEdge[]
 
   @Field(() => PageInfo)
-  pageInfo: PageInfo;
+  pageInfo: PageInfo
 
   @Field(() => Int, { nullable: true })
-  totalCount?: number;
+  totalCount?: number
 }

@@ -1,7 +1,8 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { OrganizationsResolver } from './organizations.resolver';
-import { OrganizationsService } from './organizations.service';
-import { CharactersModule } from '../characters/characters.module';
+import { Module, forwardRef } from '@nestjs/common'
+
+import { CharactersModule } from '../characters/characters.module'
+import { OrganizationsResolver } from './organizations.resolver'
+import { OrganizationsService } from './organizations.service'
 
 @Module({
   imports: [forwardRef(() => CharactersModule)],

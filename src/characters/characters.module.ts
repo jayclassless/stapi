@@ -1,16 +1,17 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { CharactersResolver } from './characters.resolver';
-import { CharactersService } from './characters.service';
-import { SpeciesModule } from '../species/species.module';
-import { ActorsModule } from '../actors/actors.module';
-import { OrganizationsModule } from '../organizations/organizations.module';
-import { EpisodesModule } from '../episodes/episodes.module';
+import { Module, forwardRef } from '@nestjs/common'
+
+import { ActorsModule } from '../actors/actors.module'
+import { EpisodesModule } from '../episodes/episodes.module'
+import { OrganizationsModule } from '../organizations/organizations.module'
+import { SpeciesModule } from '../species/species.module'
+import { CharactersResolver } from './characters.resolver'
+import { CharactersService } from './characters.service'
 
 @Module({
   imports: [
-    SpeciesModule,
-    ActorsModule,
-    OrganizationsModule,
+    forwardRef(() => SpeciesModule),
+    forwardRef(() => ActorsModule),
+    forwardRef(() => OrganizationsModule),
     forwardRef(() => EpisodesModule),
   ],
   providers: [CharactersResolver, CharactersService],

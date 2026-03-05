@@ -1,19 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { Actor, ActorConnection } from './actor.model';
-import { PaginationInput } from '../common/pagination.input';
-import { queryConnection } from '../common/cursor.helper';
+import { Injectable } from '@nestjs/common'
+
+import { queryConnection } from '../common/cursor.helper'
+import { PaginationInput } from '../common/pagination.input'
+import { DatabaseService } from '../database/database.service'
+import { Actor, ActorConnection } from './actor.model'
 
 @Injectable()
 export class ActorsService {
   constructor(private readonly db: DatabaseService) {}
 
   findAll(pagination: PaginationInput = {}): ActorConnection {
-    return queryConnection<Actor>(this.db, 'SELECT * FROM Actors', [], 'actor_id', 'Actor', pagination);
+    return queryConnection<Actor>(
+      this.db,
+      'SELECT * FROM Actors',
+      [],
+      'actor_id',
+      'Actor',
+      pagination
+    )
   }
 
   findById(id: number): Actor | undefined {
-    return this.db.queryOne<Actor>('SELECT * FROM Actors WHERE actor_id = ?', [id]);
+    return this.db.queryOne<Actor>('SELECT * FROM Actors WHERE actor_id = ?', [id])
   }
 
   findByCharacterId(characterId: number, pagination: PaginationInput = {}): ActorConnection {
@@ -23,7 +31,7 @@ export class ActorsService {
       [characterId],
       'actor_id',
       'Actor',
-      pagination,
-    );
+      pagination
+    )
   }
 }

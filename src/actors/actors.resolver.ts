@@ -1,16 +1,17 @@
-import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql';
-import { Inject, forwardRef } from '@nestjs/common';
-import { ActorsService } from './actors.service';
-import { Actor, ActorConnection } from './actor.model';
-import { CharactersService } from '../characters/characters.service';
-import { CharacterConnection } from '../characters/character.model';
+import { Inject, forwardRef } from '@nestjs/common'
+import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql'
+
+import { CharacterConnection } from '../characters/character.model'
+import { CharactersService } from '../characters/characters.service'
+import { Actor, ActorConnection } from './actor.model'
+import { ActorsService } from './actors.service'
 
 @Resolver(() => Actor)
 export class ActorsResolver {
   constructor(
     private readonly actorsService: ActorsService,
     @Inject(forwardRef(() => CharactersService))
-    private readonly charactersService: CharactersService,
+    private readonly charactersService: CharactersService
   ) {}
 
   @Query(() => ActorConnection, { name: 'actors' })
@@ -18,14 +19,14 @@ export class ActorsResolver {
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
-    @Args('after', { nullable: true }) after?: string,
+    @Args('after', { nullable: true }) after?: string
   ) {
-    return this.actorsService.findAll({ first, last, before, after });
+    return this.actorsService.findAll({ first, last, before, after })
   }
 
   @Query(() => Actor, { name: 'actor', nullable: true })
   findById(@Args('id', { type: () => Int }) id: number) {
-    return this.actorsService.findById(id);
+    return this.actorsService.findById(id)
   }
 
   @ResolveField(() => CharacterConnection)
@@ -34,8 +35,8 @@ export class ActorsResolver {
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
-    @Args('after', { nullable: true }) after?: string,
+    @Args('after', { nullable: true }) after?: string
   ) {
-    return this.charactersService.findByActorId(actor.actor_id, { first, last, before, after });
+    return this.charactersService.findByActorId(actor.actor_id, { first, last, before, after })
   }
 }

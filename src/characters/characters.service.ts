@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { Character, CharacterConnection } from './character.model';
-import { PaginationInput } from '../common/pagination.input';
-import { queryConnection } from '../common/cursor.helper';
+import { Injectable } from '@nestjs/common'
+
+import { queryConnection } from '../common/cursor.helper'
+import { PaginationInput } from '../common/pagination.input'
+import { DatabaseService } from '../database/database.service'
+import { Character, CharacterConnection } from './character.model'
 
 @Injectable()
 export class CharactersService {
@@ -15,12 +16,12 @@ export class CharactersService {
       [],
       'character_id',
       'Character',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findById(id: number): Character | undefined {
-    return this.db.queryOne<Character>('SELECT * FROM Characters WHERE character_id = ?', [id]);
+    return this.db.queryOne<Character>('SELECT * FROM Characters WHERE character_id = ?', [id])
   }
 
   findByEpisodeId(episodeId: number, pagination: PaginationInput = {}): CharacterConnection {
@@ -30,8 +31,8 @@ export class CharactersService {
       [episodeId],
       'character_id',
       'Character',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findBySpeciesId(speciesId: number, pagination: PaginationInput = {}): CharacterConnection {
@@ -41,8 +42,8 @@ export class CharactersService {
       [speciesId],
       'character_id',
       'Character',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findByActorId(actorId: number, pagination: PaginationInput = {}): CharacterConnection {
@@ -52,18 +53,21 @@ export class CharactersService {
       [actorId],
       'character_id',
       'Character',
-      pagination,
-    );
+      pagination
+    )
   }
 
-  findByOrganizationId(organizationId: number, pagination: PaginationInput = {}): CharacterConnection {
+  findByOrganizationId(
+    organizationId: number,
+    pagination: PaginationInput = {}
+  ): CharacterConnection {
     return queryConnection<Character>(
       this.db,
       'SELECT c.* FROM Characters c JOIN Character_Organizations co ON co.character_id = c.character_id WHERE co.organization_id = ?',
       [organizationId],
       'character_id',
       'Character',
-      pagination,
-    );
+      pagination
+    )
   }
 }

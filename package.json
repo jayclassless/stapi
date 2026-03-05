@@ -1,23 +1,20 @@
 {
   "name": "stapi",
   "version": "0.1.0",
+  "private": "true",
   "description": "Star Trek: The GraphQL API",
+  "license": "MIT",
+  "author": "Jason Simeone",
   "main": "index.js",
   "scripts": {
     "build": "nest build",
     "start": "nest start",
-    "start:dev": "nest start --watch"
-  },
-  "author": "Jason Simeone",
-  "private": "true",
-  "license": "MIT",
-  "packageManager": "pnpm@10.28.2",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@apollo/protobufjs",
-      "@nestjs/core",
-      "better-sqlite3"
-    ]
+    "start:dev": "nest start --watch",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint",
+    "typecheck": "tsc --noEmit",
+    "fullcheck": "pnpm run typecheck && pnpm run lint && pnpm run format"
   },
   "dependencies": {
     "@apollo/server": "^5.4.0",
@@ -36,7 +33,17 @@
     "@nestjs/cli": "^11.0.16",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.3.3",
+    "oxfmt": "^0.36.0",
+    "oxlint": "^1.51.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@apollo/protobufjs",
+      "@nestjs/core",
+      "better-sqlite3"
+    ]
   }
 }

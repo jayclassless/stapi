@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { Episode, EpisodeConnection } from './episode.model';
-import { PaginationInput } from '../common/pagination.input';
-import { queryConnection } from '../common/cursor.helper';
+import { Injectable } from '@nestjs/common'
+
+import { queryConnection } from '../common/cursor.helper'
+import { PaginationInput } from '../common/pagination.input'
+import { DatabaseService } from '../database/database.service'
+import { Episode, EpisodeConnection } from './episode.model'
 
 @Injectable()
 export class EpisodesService {
@@ -15,12 +16,12 @@ export class EpisodesService {
       [],
       'episode_id',
       'Episode',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findById(id: number): Episode | undefined {
-    return this.db.queryOne<Episode>('SELECT * FROM Episodes WHERE episode_id = ?', [id]);
+    return this.db.queryOne<Episode>('SELECT * FROM Episodes WHERE episode_id = ?', [id])
   }
 
   findBySeriesId(seriesId: number, pagination: PaginationInput = {}): EpisodeConnection {
@@ -30,8 +31,8 @@ export class EpisodesService {
       [seriesId],
       'episode_id',
       'Episode',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findByCharacterId(characterId: number, pagination: PaginationInput = {}): EpisodeConnection {
@@ -41,7 +42,7 @@ export class EpisodesService {
       [characterId],
       'episode_id',
       'Episode',
-      pagination,
-    );
+      pagination
+    )
   }
 }

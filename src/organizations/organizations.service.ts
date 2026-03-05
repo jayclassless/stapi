@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
-import { Organization, OrganizationConnection } from './organization.model';
-import { PaginationInput } from '../common/pagination.input';
-import { queryConnection } from '../common/cursor.helper';
+import { Injectable } from '@nestjs/common'
+
+import { queryConnection } from '../common/cursor.helper'
+import { PaginationInput } from '../common/pagination.input'
+import { DatabaseService } from '../database/database.service'
+import { Organization, OrganizationConnection } from './organization.model'
 
 @Injectable()
 export class OrganizationsService {
@@ -15,15 +16,14 @@ export class OrganizationsService {
       [],
       'organization_id',
       'Organization',
-      pagination,
-    );
+      pagination
+    )
   }
 
   findById(id: number): Organization | undefined {
-    return this.db.queryOne<Organization>(
-      'SELECT * FROM Organizations WHERE organization_id = ?',
-      [id],
-    );
+    return this.db.queryOne<Organization>('SELECT * FROM Organizations WHERE organization_id = ?', [
+      id,
+    ])
   }
 
   findByCharacterId(characterId: number, pagination: PaginationInput = {}): OrganizationConnection {
@@ -33,7 +33,7 @@ export class OrganizationsService {
       [characterId],
       'organization_id',
       'Organization',
-      pagination,
-    );
+      pagination
+    )
   }
 }

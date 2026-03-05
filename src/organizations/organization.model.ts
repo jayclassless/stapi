@@ -1,40 +1,41 @@
-import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
-import { PageInfo } from '../common/page-info.type';
-import { CharacterConnection } from '../characters/character.model';
+import { ObjectType, Field, Int, ID } from '@nestjs/graphql'
+
+import { CharacterConnection } from '../characters/character.model'
+import { PageInfo } from '../common/page-info.type'
 
 @ObjectType()
 export class Organization {
   @Field(() => ID, { name: 'id' })
-  organization_id: number;
+  organization_id: number
 
   @Field()
-  name: string;
+  name: string
 
   @Field({ nullable: true })
-  type?: string;
+  type?: string
 
   // Relationship (resolved by @ResolveField)
   @Field(() => CharacterConnection)
-  characters: CharacterConnection;
+  characters: CharacterConnection
 }
 
 @ObjectType()
 export class OrganizationEdge {
   @Field()
-  cursor: string;
+  cursor: string
 
   @Field(() => Organization)
-  node: Organization;
+  node: Organization
 }
 
 @ObjectType()
 export class OrganizationConnection {
   @Field(() => [OrganizationEdge])
-  edges: OrganizationEdge[];
+  edges: OrganizationEdge[]
 
   @Field(() => PageInfo)
-  pageInfo: PageInfo;
+  pageInfo: PageInfo
 
   @Field(() => Int, { nullable: true })
-  totalCount?: number;
+  totalCount?: number
 }

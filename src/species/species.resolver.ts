@@ -1,16 +1,17 @@
-import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql';
-import { Inject, forwardRef } from '@nestjs/common';
-import { SpeciesService } from './species.service';
-import { Species, SpeciesConnection } from './species.model';
-import { CharactersService } from '../characters/characters.service';
-import { CharacterConnection } from '../characters/character.model';
+import { Inject, forwardRef } from '@nestjs/common'
+import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql'
+
+import { CharacterConnection } from '../characters/character.model'
+import { CharactersService } from '../characters/characters.service'
+import { Species, SpeciesConnection } from './species.model'
+import { SpeciesService } from './species.service'
 
 @Resolver(() => Species)
 export class SpeciesResolver {
   constructor(
     private readonly speciesService: SpeciesService,
     @Inject(forwardRef(() => CharactersService))
-    private readonly charactersService: CharactersService,
+    private readonly charactersService: CharactersService
   ) {}
 
   @Query(() => SpeciesConnection, { name: 'species' })
@@ -18,14 +19,14 @@ export class SpeciesResolver {
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
-    @Args('after', { nullable: true }) after?: string,
+    @Args('after', { nullable: true }) after?: string
   ) {
-    return this.speciesService.findAll({ first, last, before, after });
+    return this.speciesService.findAll({ first, last, before, after })
   }
 
   @Query(() => Species, { name: 'speciesById', nullable: true })
   findById(@Args('id', { type: () => Int }) id: number) {
-    return this.speciesService.findById(id);
+    return this.speciesService.findById(id)
   }
 
   @ResolveField(() => CharacterConnection)
@@ -34,8 +35,13 @@ export class SpeciesResolver {
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
-    @Args('after', { nullable: true }) after?: string,
+    @Args('after', { nullable: true }) after?: string
   ) {
-    return this.charactersService.findBySpeciesId(species.species_id, { first, last, before, after });
+    return this.charactersService.findBySpeciesId(species.species_id, {
+      first,
+      last,
+      before,
+      after,
+    })
   }
 }
