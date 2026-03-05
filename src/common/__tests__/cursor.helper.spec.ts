@@ -1,3 +1,4 @@
+import { UserInputError } from '@nestjs/apollo'
 import { describe, expect, it, vi } from 'vitest'
 
 import { decodeCursor, encodeCursor, queryConnection } from '../cursor.helper'
@@ -40,6 +41,20 @@ describe('decodeCursor', () => {
 
   it('decodes different ids correctly', () => {
     expect(decodeCursor(encodeCursor('Episode', 100))).toBe(100)
+  })
+
+  it('throws UserInputError for a cursor with no colon separator', () => {
+    const bad = Buffer.from('nocursor').toString('base64')
+    expect(() => decodeCursor(bad)).toThrow(UserInputError)
+  })
+
+  it('throws UserInputError for a cursor with a non-numeric id', () => {
+    const bad = Buffer.from('Series:abc').toString('base64')
+    expect(() => decodeCursor(bad)).toThrow(UserInputError)
+  })
+
+  it('throws UserInputError for a completely invalid base64 string', () => {
+    expect(() => decodeCursor('not-a-valid-cursor!')).toThrow(UserInputError)
   })
 })
 

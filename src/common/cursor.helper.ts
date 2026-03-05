@@ -1,3 +1,5 @@
+import { UserInputError } from '@nestjs/apollo'
+
 import { PageInfo } from './page-info.type'
 import { PaginationInput } from './pagination.input'
 
@@ -7,7 +9,11 @@ export function encodeCursor(typeName: string, id: number): string {
 
 export function decodeCursor(cursor: string): number {
   const decoded = Buffer.from(cursor, 'base64').toString('utf8')
-  return parseInt(decoded.split(':')[1], 10)
+  const id = parseInt(decoded.split(':')[1], 10)
+  if (!Number.isFinite(id)) {
+    throw new UserInputError(`Invalid cursor: "${cursor}"`)
+  }
+  return id
 }
 
 export interface ConnectionResult<T> {
