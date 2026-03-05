@@ -1,4 +1,5 @@
 import { INestApplication } from '@nestjs/common'
+import supertest from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 import { TestApp, createApp } from './helpers/app'
@@ -632,6 +633,40 @@ describe('organizations', () => {
     const res = await gql(`{ organization(id: 999999) { id } }`)
     expect(res.status).toBe(200)
     expect(res.body.data.organization).toBeNull()
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Batched queries
+// ---------------------------------------------------------------------------
+
+describe('batched queries', () => {
+  it('executes multiple operations in a single request', async () => {
+    const agent = supertest(app.getHttpServer())
+    const res = await agent
+      .post('/graphql')
+      .send([
+        { query: '{ series(first: 2) { totalCount edges { node { id name } } } }' },
+        { query: '{ ships(first: 2) { totalCount edges { node { id name } } } }' },
+      ])
+    expect(res.status).toBe(200)
+    expect(Array.isArray(res.body)).toBe(true)
+    expect(res.body).toHaveLength(2)
+    expect(res.body[0].data.series.totalCount).toBeGreaterThan(0)
+    expect(res.body[1].data.ships.totalCount).toBeGreaterThan(0)
+  })
+
+  it('returns independent results per operation', async () => {
+    const agent = supertest(app.getHttpServer())
+    const res = await agent
+      .post('/graphql')
+      .send([
+        { query: '{ series(first: 1) { edges { node { id } } } }' },
+        { query: '{ series(first: 3) { edges { node { id } } } }' },
+      ])
+    expect(res.status).toBe(200)
+    expect(res.body[0].data.series.edges).toHaveLength(1)
+    expect(res.body[1].data.series.edges).toHaveLength(3)
   })
 })
 
