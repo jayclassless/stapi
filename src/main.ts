@@ -26,7 +26,8 @@ async function bootstrap() {
       await sseHandler(req, res)
     })
 
-  await app.listen(3000)
-  console.log('GraphQL API running at http://localhost:3000/graphql')
+  const port = process.env.PORT ?? 3000
+  await app.listen(port)
+  console.log(`GraphQL API running at http://localhost:${port}/graphql`)
 }
 bootstrap()
