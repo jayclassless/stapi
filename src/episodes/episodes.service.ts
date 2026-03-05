@@ -64,6 +64,21 @@ export class EpisodesService {
     )
   }
 
+  getRandomEpisode(): Episode | undefined {
+    const total = this.db.count('SELECT COUNT(*) AS count FROM Episodes', [])
+    if (total === 0) return undefined
+    const offset = Math.floor(Math.random() * total)
+    return this.db.queryOne<Episode>('SELECT * FROM Episodes LIMIT 1 OFFSET ?', [offset])
+  }
+
+  async *randomEpisodeStream(count: number): AsyncGenerator<Episode> {
+    for (let i = 0; i < count; i++) {
+      await new Promise<void>((r) => setTimeout(r, 3000))
+      const episode = this.getRandomEpisode()
+      if (episode) yield episode
+    }
+  }
+
   findByCharacterId(
     characterId: number,
     filters: { series?: number; season?: number } = {},

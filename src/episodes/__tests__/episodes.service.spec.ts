@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { DatabaseService } from '../../database/database.service'
 import { EpisodesService } from '../episodes.service'
@@ -151,6 +151,76 @@ describe('EpisodesService', () => {
     it('uses default pagination when not provided', () => {
       const result = service.findByCharacterId(1)
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
+    })
+  })
+
+  describe('getRandomEpisode', () => {
+    it('returns undefined when there are no episodes', () => {
+      const db = { count: vi.fn().mockReturnValue(0), queryOne: vi.fn() } as any
+      const svc = new EpisodesService(db)
+      expect(svc.getRandomEpisode()).toBeUndefined()
+      expect(db.queryOne).not.toHaveBeenCalled()
+    })
+
+    it('calls count() then queryOne with OFFSET in range [0, total)', () => {
+      const episode = { episode_id: 7, title: 'The City on the Edge of Forever' }
+      const db = {
+        count: vi.fn().mockReturnValue(100),
+        queryOne: vi.fn().mockReturnValue(episode),
+      } as any
+      const svc = new EpisodesService(db)
+      const result = svc.getRandomEpisode()
+      expect(db.count).toHaveBeenCalledWith('SELECT COUNT(*) AS count FROM Episodes', [])
+      const offset: number = db.queryOne.mock.calls[0][1][0]
+      expect(offset).toBeGreaterThanOrEqual(0)
+      expect(offset).toBeLessThan(100)
+      expect(result).toBe(episode)
+    })
+  })
+
+  describe('randomEpisodeStream', () => {
+    afterEach(() => {
+      vi.useRealTimers()
+    })
+
+    it('yields count episodes separated by 3s and then completes', async () => {
+      vi.useFakeTimers()
+      const episode = { episode_id: 1, title: 'Pilot' }
+      const db = {
+        count: vi.fn().mockReturnValue(10),
+        queryOne: vi.fn().mockReturnValue(episode),
+      } as any
+      const svc = new EpisodesService(db)
+
+      const gen = svc.randomEpisodeStream(2)
+
+      const p1 = gen.next()
+      await vi.advanceTimersByTimeAsync(3000)
+      const r1 = await p1
+      expect(r1.done).toBe(false)
+      expect(r1.value).toBe(episode)
+
+      const p2 = gen.next()
+      await vi.advanceTimersByTimeAsync(3000)
+      const r2 = await p2
+      expect(r2.done).toBe(false)
+      expect(r2.value).toBe(episode)
+
+      const r3 = await gen.next()
+      expect(r3.done).toBe(true)
+    })
+
+    it('skips yield when getRandomEpisode returns undefined', async () => {
+      vi.useFakeTimers()
+      const db = { count: vi.fn().mockReturnValue(0), queryOne: vi.fn() } as any
+      const svc = new EpisodesService(db)
+
+      const gen = svc.randomEpisodeStream(1)
+      const p1 = gen.next()
+      await vi.advanceTimersByTimeAsync(3000)
+      const r1 = await p1
+      // undefined episode → no yield → generator completes
+      expect(r1.done).toBe(true)
     })
   })
 })

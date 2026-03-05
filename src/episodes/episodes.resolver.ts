@@ -1,5 +1,5 @@
 import { Inject, forwardRef } from '@nestjs/common'
-import { Resolver, Query, Args, Int, ResolveField, Parent } from '@nestjs/graphql'
+import { Resolver, Query, Args, Int, ResolveField, Parent, Subscription } from '@nestjs/graphql'
 
 import { CharacterConnection } from '../characters/character.model'
 import { CharactersService } from '../characters/characters.service'
@@ -37,6 +37,16 @@ export class EpisodesResolver {
   @Query(() => Episode, { name: 'episode', nullable: true })
   findById(@Args('id', { type: () => Int }) id: number) {
     return this.episodesService.findById(id)
+  }
+
+  @Subscription(() => Episode, {
+    name: 'randomEpisode',
+    resolve: (episode: Episode) => episode,
+  })
+  randomEpisode(
+    @Args('count', { type: () => Int, defaultValue: 10 }) count: number
+  ): AsyncGenerator<Episode> {
+    return this.episodesService.randomEpisodeStream(count)
   }
 
   @ResolveField(() => Series, { nullable: true })

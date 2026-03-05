@@ -16,6 +16,7 @@ describe('EpisodesResolver', () => {
     mockEpisodesService = {
       findAll: vi.fn().mockReturnValue(makeConnection()),
       findById: vi.fn().mockReturnValue(undefined),
+      randomEpisodeStream: vi.fn().mockReturnValue((async function* () {})()),
     }
     mockSeriesService = {
       findById: vi.fn().mockReturnValue(undefined),
@@ -68,6 +69,21 @@ describe('EpisodesResolver', () => {
 
     it('returns undefined when not found', () => {
       expect(resolver.findById(999)).toBeUndefined()
+    })
+  })
+
+  describe('randomEpisode (Subscription)', () => {
+    it('delegates to episodesService.randomEpisodeStream with count arg', () => {
+      const gen = (async function* () {})()
+      mockEpisodesService.randomEpisodeStream.mockReturnValue(gen)
+      const result = resolver.randomEpisode(5)
+      expect(mockEpisodesService.randomEpisodeStream).toHaveBeenCalledWith(5)
+      expect(result).toBe(gen)
+    })
+
+    it('uses default count of 10 when arg matches default', () => {
+      resolver.randomEpisode(10)
+      expect(mockEpisodesService.randomEpisodeStream).toHaveBeenCalledWith(10)
     })
   })
 

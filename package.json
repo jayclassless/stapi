@@ -31,8 +31,11 @@
     "@nestjs/platform-express": "^11.1.16",
     "better-sqlite3": "^12.6.2",
     "graphql": "^16.13.1",
+    "graphql-sse": "^2.6.0",
+    "graphql-ws": "^6.0.7",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "ws": "^8.19.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.16",
@@ -41,6 +44,7 @@
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.3.3",
     "@types/supertest": "^7.2.0",
+    "@types/ws": "^8.18.1",
     "@vitest/coverage-v8": "^4.0.18",
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",

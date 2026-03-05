@@ -21,6 +21,9 @@ import { SpeciesModule } from './species/species.module'
       playground: true,
       csrfPrevention: false,
       introspection: true,
+      subscriptions: {
+        'graphql-ws': { path: '/graphql' },
+      },
     }),
     SeriesModule,
     EpisodesModule,
