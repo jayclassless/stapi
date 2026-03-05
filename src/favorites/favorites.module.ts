@@ -1,10 +1,10 @@
-import { Module, forwardRef } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 
 import { EpisodesModule } from '../episodes/episodes.module'
 import { FavoritesResolver } from './favorites.resolver'
 
 @Module({
-  imports: [forwardRef(() => EpisodesModule)],
+  imports: [EpisodesModule],
   providers: [FavoritesResolver],
 })
 export class FavoritesModule {}
