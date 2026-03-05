@@ -10,7 +10,9 @@ import { OrganizationsService } from './organizations.service'
 export class OrganizationsResolver {
   constructor(
     private readonly organizationsService: OrganizationsService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => CharactersService))
+    /* v8 ignore stop */
     private readonly charactersService: CharactersService
   ) {}
 

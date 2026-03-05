@@ -10,7 +10,9 @@ import { ActorsService } from './actors.service'
 export class ActorsResolver {
   constructor(
     private readonly actorsService: ActorsService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => CharactersService))
+    /* v8 ignore stop */
     private readonly charactersService: CharactersService
   ) {}
 

@@ -10,7 +10,9 @@ import { SpeciesService } from './species.service'
 export class SpeciesResolver {
   constructor(
     private readonly speciesService: SpeciesService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => CharactersService))
+    /* v8 ignore stop */
     private readonly charactersService: CharactersService
   ) {}
 

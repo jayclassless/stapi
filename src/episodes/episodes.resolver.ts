@@ -12,9 +12,13 @@ import { EpisodesService } from './episodes.service'
 export class EpisodesResolver {
   constructor(
     private readonly episodesService: EpisodesService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => SeriesService))
+    /* v8 ignore stop */
     private readonly seriesService: SeriesService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => CharactersService))
+    /* v8 ignore stop */
     private readonly charactersService: CharactersService
   ) {}
 

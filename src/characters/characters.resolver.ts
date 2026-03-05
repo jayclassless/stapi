@@ -19,7 +19,9 @@ export class CharactersResolver {
     private readonly speciesService: SpeciesService,
     private readonly actorsService: ActorsService,
     private readonly organizationsService: OrganizationsService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => EpisodesService))
+    /* v8 ignore stop */
     private readonly episodesService: EpisodesService
   ) {}
 

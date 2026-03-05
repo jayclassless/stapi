@@ -11,7 +11,9 @@ import { SeriesService } from './series.service'
 export class SeriesResolver {
   constructor(
     private readonly seriesService: SeriesService,
+    /* v8 ignore start */
     @Inject(forwardRef(() => EpisodesService))
+    /* v8 ignore stop */
     private readonly episodesService: EpisodesService
   ) {}
 
