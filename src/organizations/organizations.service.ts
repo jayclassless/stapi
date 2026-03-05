@@ -9,11 +9,21 @@ import { Organization, OrganizationConnection } from './organization.model'
 export class OrganizationsService {
   constructor(private readonly db: DatabaseService) {}
 
-  findAll(pagination: PaginationInput = {}): OrganizationConnection {
+  findAll(
+    filters: { type?: string } = {},
+    pagination: PaginationInput = {}
+  ): OrganizationConnection {
+    const conditions: string[] = []
+    const params: unknown[] = []
+    if (filters.type != null) {
+      conditions.push('type = ?')
+      params.push(filters.type)
+    }
+    const whereSql = conditions.length ? ` WHERE ${conditions.join(' AND ')}` : ''
     return queryConnection<Organization>(
       this.db,
-      'SELECT * FROM Organizations',
-      [],
+      `SELECT * FROM Organizations${whereSql}`,
+      params,
       'organization_id',
       'Organization',
       pagination
@@ -26,11 +36,22 @@ export class OrganizationsService {
     ])
   }
 
-  findByCharacterId(characterId: number, pagination: PaginationInput = {}): OrganizationConnection {
+  findByCharacterId(
+    characterId: number,
+    filters: { type?: string } = {},
+    pagination: PaginationInput = {}
+  ): OrganizationConnection {
+    const params: unknown[] = [characterId]
+    const andConds: string[] = []
+    if (filters.type != null) {
+      andConds.push('o.type = ?')
+      params.push(filters.type)
+    }
+    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
     return queryConnection<Organization>(
       this.db,
-      'SELECT o.* FROM Organizations o JOIN Character_Organizations co ON co.organization_id = o.organization_id WHERE co.character_id = ?',
-      [characterId],
+      `SELECT o.* FROM Organizations o JOIN Character_Organizations co ON co.organization_id = o.organization_id WHERE co.character_id = ?${andSql}`,
+      params,
       'organization_id',
       'Organization',
       pagination

@@ -93,13 +93,22 @@ describe('SeriesResolver', () => {
   describe('episodes (ResolveField)', () => {
     it('delegates to episodesService.findBySeriesId with series and pagination', () => {
       const series = { series_id: 7 } as any
-      resolver.episodes(series, 5, undefined, undefined, undefined)
-      expect(mockEpisodesService.findBySeriesId).toHaveBeenCalledWith(7, {
-        first: 5,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.episodes(series, undefined, 5, undefined, undefined, undefined)
+      expect(mockEpisodesService.findBySeriesId).toHaveBeenCalledWith(
+        7,
+        { season: undefined },
+        { first: 5, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes season filter to service', () => {
+      const series = { series_id: 7 } as any
+      resolver.episodes(series, 2, undefined, undefined, undefined, undefined)
+      expect(mockEpisodesService.findBySeriesId).toHaveBeenCalledWith(
+        7,
+        { season: 2 },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {

@@ -9,11 +9,21 @@ import { Species, SpeciesConnection } from './species.model'
 export class SpeciesService {
   constructor(private readonly db: DatabaseService) {}
 
-  findAll(pagination: PaginationInput = {}): SpeciesConnection {
+  findAll(
+    filters: { warpCapable?: boolean } = {},
+    pagination: PaginationInput = {}
+  ): SpeciesConnection {
+    const conditions: string[] = []
+    const params: unknown[] = []
+    if (filters.warpCapable != null) {
+      conditions.push('warp_capable = ?')
+      params.push(filters.warpCapable ? 1 : 0)
+    }
+    const whereSql = conditions.length ? ` WHERE ${conditions.join(' AND ')}` : ''
     const result = queryConnection<Species>(
       this.db,
-      'SELECT * FROM Species',
-      [],
+      `SELECT * FROM Species${whereSql}`,
+      params,
       'species_id',
       'Species',
       pagination

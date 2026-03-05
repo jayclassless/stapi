@@ -24,13 +24,19 @@ describe('OrganizationsResolver', () => {
 
   describe('findAll', () => {
     it('delegates to organizationsService.findAll with pagination args', () => {
-      resolver.findAll(5, undefined, undefined, undefined)
-      expect(mockOrganizationsService.findAll).toHaveBeenCalledWith({
-        first: 5,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.findAll(undefined, 5, undefined, undefined, undefined)
+      expect(mockOrganizationsService.findAll).toHaveBeenCalledWith(
+        { type: undefined },
+        { first: 5, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes type filter to service', () => {
+      resolver.findAll('Military', undefined, undefined, undefined, undefined)
+      expect(mockOrganizationsService.findAll).toHaveBeenCalledWith(
+        { type: 'Military' },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {
@@ -56,13 +62,22 @@ describe('OrganizationsResolver', () => {
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByOrganizationId with organization and pagination', () => {
       const organization = { organization_id: 2 } as any
-      resolver.characters(organization, 10, undefined, undefined, undefined)
-      expect(mockCharactersService.findByOrganizationId).toHaveBeenCalledWith(2, {
-        first: 10,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.characters(organization, undefined, undefined, 10, undefined, undefined, undefined)
+      expect(mockCharactersService.findByOrganizationId).toHaveBeenCalledWith(
+        2,
+        { gender: undefined, primaryActor: undefined },
+        { first: 10, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes gender filter to service', () => {
+      const organization = { organization_id: 2 } as any
+      resolver.characters(organization, 'F', undefined, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findByOrganizationId).toHaveBeenCalledWith(
+        2,
+        { gender: 'F', primaryActor: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {

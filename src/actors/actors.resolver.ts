@@ -34,11 +34,17 @@ export class ActorsResolver {
   @ResolveField(() => CharacterConnection)
   characters(
     @Parent() actor: Actor,
+    @Args('gender', { nullable: true }) gender?: string,
+    @Args('primaryActor', { nullable: true, type: () => Int }) primaryActor?: number,
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
     @Args('after', { nullable: true }) after?: string
   ) {
-    return this.charactersService.findByActorId(actor.actor_id, { first, last, before, after })
+    return this.charactersService.findByActorId(
+      actor.actor_id,
+      { gender, primaryActor },
+      { first, last, before, after }
+    )
   }
 }

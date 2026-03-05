@@ -56,13 +56,22 @@ describe('ActorsResolver', () => {
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByActorId with actor and pagination', () => {
       const actor = { actor_id: 2 } as any
-      resolver.characters(actor, 10, undefined, undefined, undefined)
-      expect(mockCharactersService.findByActorId).toHaveBeenCalledWith(2, {
-        first: 10,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.characters(actor, undefined, undefined, 10, undefined, undefined, undefined)
+      expect(mockCharactersService.findByActorId).toHaveBeenCalledWith(
+        2,
+        { gender: undefined, primaryActor: undefined },
+        { first: 10, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes gender filter to service', () => {
+      const actor = { actor_id: 2 } as any
+      resolver.characters(actor, 'M', undefined, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findByActorId).toHaveBeenCalledWith(
+        2,
+        { gender: 'M', primaryActor: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {

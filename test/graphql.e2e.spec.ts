@@ -117,6 +117,20 @@ describe('series', () => {
     expect(res.body.errors.length).toBeGreaterThan(0)
   })
 
+  it('filters nested episodes by season', async () => {
+    const { gql } = testApp
+    const listRes = await gql(`{ series(first: 1) { edges { node { id } } } }`)
+    const seriesId = Number(listRes.body.data.series.edges[0].node.id)
+
+    const res = await gql(
+      `{ seriesById(id: ${seriesId}) { episodes(season: 1, first: 5) { edges { node { id season } } totalCount } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.seriesById.episodes.edges) {
+      expect(edge.node.season).toBe(1)
+    }
+  })
+
   it('returns null for a non-existent series ID', async () => {
     const { gql } = testApp
     const res = await gql(`{ seriesById(id: 999999) { id } }`)
@@ -182,6 +196,32 @@ describe('episodes', () => {
     expect(episode.series.name).toBeTruthy()
   })
 
+  it('filters episodes by series', async () => {
+    const { gql } = testApp
+    const listRes = await gql(`{ series(first: 1) { edges { node { id } } } }`)
+    const seriesId = Number(listRes.body.data.series.edges[0].node.id)
+
+    const res = await gql(
+      `{ episodes(series: ${seriesId}, first: 5) { edges { node { id series { id } } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    expect(res.body.data.episodes.totalCount).toBeGreaterThan(0)
+    for (const edge of res.body.data.episodes.edges) {
+      expect(edge.node.series.id).toBe(String(seriesId))
+    }
+  })
+
+  it('filters episodes by season', async () => {
+    const { gql } = testApp
+    const res = await gql(
+      `{ episodes(season: 1, first: 5) { edges { node { id season } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.episodes.edges) {
+      expect(edge.node.season).toBe(1)
+    }
+  })
+
   it('returns null for a non-existent episode ID', async () => {
     const { gql } = testApp
     const res = await gql(`{ episode(id: 999999) { id } }`)
@@ -234,6 +274,80 @@ describe('characters', () => {
     expect(Array.isArray(character.organizations.edges)).toBe(true)
   })
 
+  it('filters characters by gender', async () => {
+    const { gql } = testApp
+    // Fetch a gender value from the db first
+    const listRes = await gql(`{ characters(first: 20) { edges { node { gender } } } }`)
+    const edge = listRes.body.data.characters.edges.find((e: any) => e.node.gender)
+    if (!edge) return // no characters with gender; skip
+
+    const gender = edge.node.gender
+    const res = await gql(
+      `{ characters(gender: "${gender}", first: 5) { edges { node { id gender } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    expect(res.body.data.characters.totalCount).toBeGreaterThan(0)
+    for (const e of res.body.data.characters.edges) {
+      expect(e.node.gender).toBe(gender)
+    }
+  })
+
+  it('filters characters by primaryActor', async () => {
+    const { gql } = testApp
+    // Fetch any actor id first
+    const actorRes = await gql(`{ actors(first: 1) { edges { node { id } } } }`)
+    const actorId = Number(actorRes.body.data.actors.edges[0].node.id)
+
+    const res = await gql(
+      `{ characters(primaryActor: ${actorId}, first: 5) { edges { node { id primaryActor { id } } } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.characters.edges) {
+      expect(edge.node.primaryActor?.id).toBe(String(actorId))
+    }
+  })
+
+  it('filters nested episodes by season', async () => {
+    const { gql } = testApp
+    const listRes = await gql(`{ characters(first: 1) { edges { node { id } } } }`)
+    const characterId = Number(listRes.body.data.characters.edges[0].node.id)
+
+    const res = await gql(
+      `{ character(id: ${characterId}) { episodes(season: 1, first: 5) { edges { node { id season } } } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.character.episodes.edges) {
+      expect(edge.node.season).toBe(1)
+    }
+  })
+
+  it('filters nested organizations by type', async () => {
+    const { gql } = testApp
+    // Find a character with organizations that have a type
+    const listRes = await gql(
+      `{ characters(first: 50) { edges { node { id organizations(first: 5) { edges { node { type } } } } } } }`
+    )
+    let characterId: number | null = null
+    let orgType: string | null = null
+    for (const ce of listRes.body.data.characters.edges) {
+      const edge = ce.node.organizations.edges.find((e: any) => e.node.type)
+      if (edge) {
+        characterId = Number(ce.node.id)
+        orgType = edge.node.type
+        break
+      }
+    }
+    if (!characterId || !orgType) return // skip if no suitable data
+
+    const res = await gql(
+      `{ character(id: ${characterId}) { organizations(type: "${orgType}", first: 5) { edges { node { id type } } } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.character.organizations.edges) {
+      expect(edge.node.type).toBe(orgType)
+    }
+  })
+
   it('returns null for a non-existent character ID', async () => {
     const { gql } = testApp
     const res = await gql(`{ character(id: 999999) { id } }`)
@@ -259,6 +373,28 @@ describe('actors', () => {
     const { actors } = res.body.data
     expect(actors.totalCount).toBeGreaterThan(0)
     expect(actors.edges[0].node.firstName).toBeTruthy()
+  })
+
+  it('filters nested characters by gender', async () => {
+    const { gql } = testApp
+    const listRes = await gql(`{ actors(first: 1) { edges { node { id } } } }`)
+    const actorId = Number(listRes.body.data.actors.edges[0].node.id)
+
+    // Fetch a gender value from db first
+    const charsRes = await gql(
+      `{ actor(id: ${actorId}) { characters(first: 10) { edges { node { gender } } } } }`
+    )
+    const edge = charsRes.body.data.actor.characters.edges.find((e: any) => e.node.gender)
+    if (!edge) return // skip if no characters with gender
+
+    const gender = edge.node.gender
+    const res = await gql(
+      `{ actor(id: ${actorId}) { characters(gender: "${gender}", first: 5) { edges { node { id gender } } } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const e of res.body.data.actor.characters.edges) {
+      expect(e.node.gender).toBe(gender)
+    }
   })
 
   it('fetches a single actor with nested characters', async () => {
@@ -307,6 +443,50 @@ describe('species', () => {
     expect(typeof species.edges[0].node.warpCapable).toBe('boolean')
   })
 
+  it('filters species by warpCapable=true', async () => {
+    const { gql } = testApp
+    const res = await gql(
+      `{ species(warpCapable: true, first: 5) { edges { node { id warpCapable } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    expect(res.body.data.species.totalCount).toBeGreaterThan(0)
+    for (const edge of res.body.data.species.edges) {
+      expect(edge.node.warpCapable).toBe(true)
+    }
+  })
+
+  it('filters species by warpCapable=false', async () => {
+    const { gql } = testApp
+    const res = await gql(
+      `{ species(warpCapable: false, first: 5) { edges { node { id warpCapable } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    for (const edge of res.body.data.species.edges) {
+      expect(edge.node.warpCapable).toBe(false)
+    }
+  })
+
+  it('filters nested characters by gender', async () => {
+    const { gql } = testApp
+    const listRes = await gql(`{ species(first: 1) { edges { node { id } } } }`)
+    const speciesId = Number(listRes.body.data.species.edges[0].node.id)
+
+    const charsRes = await gql(
+      `{ speciesById(id: ${speciesId}) { characters(first: 10) { edges { node { gender } } } } }`
+    )
+    const edge = charsRes.body.data.speciesById?.characters.edges.find((e: any) => e.node.gender)
+    if (!edge) return // skip if no characters with gender
+
+    const gender = edge.node.gender
+    const res = await gql(
+      `{ speciesById(id: ${speciesId}) { characters(gender: "${gender}", first: 5) { edges { node { id gender } } } } }`
+    )
+    expect(res.status).toBe(200)
+    for (const e of res.body.data.speciesById.characters.edges) {
+      expect(e.node.gender).toBe(gender)
+    }
+  })
+
   it('fetches a single species with nested characters', async () => {
     const { gql } = testApp
     const listRes = await gql(`{ species(first: 1) { edges { node { id } } } }`)
@@ -352,6 +532,24 @@ describe('ships', () => {
     expect(ships.edges[0].node.name).toBeTruthy()
   })
 
+  it('filters ships by status', async () => {
+    const { gql } = testApp
+    // Fetch a status value from the db first
+    const listRes = await gql(`{ ships(first: 20) { edges { node { status } } } }`)
+    const edge = listRes.body.data.ships.edges.find((e: any) => e.node.status)
+    if (!edge) return // no ships with status; skip
+
+    const status = edge.node.status
+    const res = await gql(
+      `{ ships(status: "${status}", first: 5) { edges { node { id status } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    expect(res.body.data.ships.totalCount).toBeGreaterThan(0)
+    for (const e of res.body.data.ships.edges) {
+      expect(e.node.status).toBe(status)
+    }
+  })
+
   it('fetches a single ship by ID', async () => {
     const { gql } = testApp
     const listRes = await gql(`{ ships(first: 1) { edges { node { id } } } }`)
@@ -391,6 +589,24 @@ describe('organizations', () => {
     const { organizations } = res.body.data
     expect(organizations.totalCount).toBeGreaterThan(0)
     expect(organizations.edges[0].node.name).toBeTruthy()
+  })
+
+  it('filters organizations by type', async () => {
+    const { gql } = testApp
+    // Fetch a type value from the db first
+    const listRes = await gql(`{ organizations(first: 20) { edges { node { type } } } }`)
+    const edge = listRes.body.data.organizations.edges.find((e: any) => e.node.type)
+    if (!edge) return // no organizations with type; skip
+
+    const type = edge.node.type
+    const res = await gql(
+      `{ organizations(type: "${type}", first: 5) { edges { node { id type } } totalCount } }`
+    )
+    expect(res.status).toBe(200)
+    expect(res.body.data.organizations.totalCount).toBeGreaterThan(0)
+    for (const e of res.body.data.organizations.edges) {
+      expect(e.node.type).toBe(type)
+    }
   })
 
   it('fetches a single organization with nested characters', async () => {

@@ -45,11 +45,16 @@ export class SeriesResolver {
   @ResolveField(() => EpisodeConnection)
   episodes(
     @Parent() series: Series,
+    @Args('season', { nullable: true, type: () => Int }) season?: number,
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
     @Args('after', { nullable: true }) after?: string
   ) {
-    return this.episodesService.findBySeriesId(series.series_id, { first, last, before, after })
+    return this.episodesService.findBySeriesId(
+      series.series_id,
+      { season },
+      { first, last, before, after }
+    )
   }
 }

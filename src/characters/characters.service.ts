@@ -9,11 +9,25 @@ import { Character, CharacterConnection } from './character.model'
 export class CharactersService {
   constructor(private readonly db: DatabaseService) {}
 
-  findAll(pagination: PaginationInput = {}): CharacterConnection {
+  findAll(
+    filters: { gender?: string; primaryActor?: number } = {},
+    pagination: PaginationInput = {}
+  ): CharacterConnection {
+    const conditions: string[] = []
+    const params: unknown[] = []
+    if (filters.gender != null) {
+      conditions.push('gender = ?')
+      params.push(filters.gender)
+    }
+    if (filters.primaryActor != null) {
+      conditions.push('primary_actor_id = ?')
+      params.push(filters.primaryActor)
+    }
+    const whereSql = conditions.length ? ` WHERE ${conditions.join(' AND ')}` : ''
     return queryConnection<Character>(
       this.db,
-      'SELECT * FROM Characters',
-      [],
+      `SELECT * FROM Characters${whereSql}`,
+      params,
       'character_id',
       'Character',
       pagination
@@ -24,33 +38,78 @@ export class CharactersService {
     return this.db.queryOne<Character>('SELECT * FROM Characters WHERE character_id = ?', [id])
   }
 
-  findByEpisodeId(episodeId: number, pagination: PaginationInput = {}): CharacterConnection {
+  findByEpisodeId(
+    episodeId: number,
+    filters: { gender?: string; primaryActor?: number } = {},
+    pagination: PaginationInput = {}
+  ): CharacterConnection {
+    const params: unknown[] = [episodeId]
+    const andConds: string[] = []
+    if (filters.gender != null) {
+      andConds.push('c.gender = ?')
+      params.push(filters.gender)
+    }
+    if (filters.primaryActor != null) {
+      andConds.push('c.primary_actor_id = ?')
+      params.push(filters.primaryActor)
+    }
+    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
     return queryConnection<Character>(
       this.db,
-      'SELECT c.* FROM Characters c JOIN Character_Episodes ce ON ce.character_id = c.character_id WHERE ce.episode_id = ?',
-      [episodeId],
+      `SELECT c.* FROM Characters c JOIN Character_Episodes ce ON ce.character_id = c.character_id WHERE ce.episode_id = ?${andSql}`,
+      params,
       'character_id',
       'Character',
       pagination
     )
   }
 
-  findBySpeciesId(speciesId: number, pagination: PaginationInput = {}): CharacterConnection {
+  findBySpeciesId(
+    speciesId: number,
+    filters: { gender?: string; primaryActor?: number } = {},
+    pagination: PaginationInput = {}
+  ): CharacterConnection {
+    const params: unknown[] = [speciesId]
+    const andConds: string[] = []
+    if (filters.gender != null) {
+      andConds.push('gender = ?')
+      params.push(filters.gender)
+    }
+    if (filters.primaryActor != null) {
+      andConds.push('primary_actor_id = ?')
+      params.push(filters.primaryActor)
+    }
+    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
     return queryConnection<Character>(
       this.db,
-      'SELECT * FROM Characters WHERE species_id = ?',
-      [speciesId],
+      `SELECT * FROM Characters WHERE species_id = ?${andSql}`,
+      params,
       'character_id',
       'Character',
       pagination
     )
   }
 
-  findByActorId(actorId: number, pagination: PaginationInput = {}): CharacterConnection {
+  findByActorId(
+    actorId: number,
+    filters: { gender?: string; primaryActor?: number } = {},
+    pagination: PaginationInput = {}
+  ): CharacterConnection {
+    const params: unknown[] = [actorId]
+    const andConds: string[] = []
+    if (filters.gender != null) {
+      andConds.push('c.gender = ?')
+      params.push(filters.gender)
+    }
+    if (filters.primaryActor != null) {
+      andConds.push('c.primary_actor_id = ?')
+      params.push(filters.primaryActor)
+    }
+    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
     return queryConnection<Character>(
       this.db,
-      'SELECT c.* FROM Characters c JOIN Character_Actors ca ON ca.character_id = c.character_id WHERE ca.actor_id = ?',
-      [actorId],
+      `SELECT c.* FROM Characters c JOIN Character_Actors ca ON ca.character_id = c.character_id WHERE ca.actor_id = ?${andSql}`,
+      params,
       'character_id',
       'Character',
       pagination
@@ -59,12 +118,24 @@ export class CharactersService {
 
   findByOrganizationId(
     organizationId: number,
+    filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
+    const params: unknown[] = [organizationId]
+    const andConds: string[] = []
+    if (filters.gender != null) {
+      andConds.push('c.gender = ?')
+      params.push(filters.gender)
+    }
+    if (filters.primaryActor != null) {
+      andConds.push('c.primary_actor_id = ?')
+      params.push(filters.primaryActor)
+    }
+    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
     return queryConnection<Character>(
       this.db,
-      'SELECT c.* FROM Characters c JOIN Character_Organizations co ON co.character_id = c.character_id WHERE co.organization_id = ?',
-      [organizationId],
+      `SELECT c.* FROM Characters c JOIN Character_Organizations co ON co.character_id = c.character_id WHERE co.organization_id = ?${andSql}`,
+      params,
       'character_id',
       'Character',
       pagination

@@ -26,7 +26,7 @@ describe('ShipsService', () => {
     it('returns a connection from Ships table', () => {
       mockDb = makeMockDb(3, [{ ship_id: 1 }, { ship_id: 2 }, { ship_id: 3 }])
       service = new ShipsService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.totalCount).toBe(3)
       expect(result.edges).toHaveLength(3)
       const countSql: string = mockDb.query.mock.calls[0][0]
@@ -36,6 +36,15 @@ describe('ShipsService', () => {
     it('uses default pagination when called with no args', () => {
       const result = service.findAll()
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
+    })
+
+    it('filters by status', () => {
+      mockDb = makeMockDb(1, [{ ship_id: 1 }])
+      service = new ShipsService(mockDb as unknown as DatabaseService)
+      service.findAll({ status: 'Active' }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('status = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual(['Active'])
     })
   })
 

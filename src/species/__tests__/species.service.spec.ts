@@ -24,21 +24,21 @@ describe('SpeciesService', () => {
     it('coerces warp_capable integer 1 to true', () => {
       const mockDb = makeMockDb(1, [{ species_id: 1, name: 'Vulcan', warp_capable: 1 }])
       service = new SpeciesService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.edges[0].node.warp_capable).toBe(true)
     })
 
     it('coerces warp_capable integer 0 to false', () => {
       const mockDb = makeMockDb(1, [{ species_id: 2, name: 'Ferengi', warp_capable: 0 }])
       service = new SpeciesService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.edges[0].node.warp_capable).toBe(false)
     })
 
     it('returns connection with correct totalCount', () => {
       const mockDb = makeMockDb(5, [{ species_id: 1, warp_capable: 1 }])
       service = new SpeciesService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.totalCount).toBe(5)
     })
 
@@ -47,6 +47,24 @@ describe('SpeciesService', () => {
       service = new SpeciesService(mockDb as unknown as DatabaseService)
       const result = service.findAll()
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
+    })
+
+    it('filters by warpCapable=true (passes 1 to db)', () => {
+      const mockDb = makeMockDb(1, [{ species_id: 1, warp_capable: 1 }])
+      service = new SpeciesService(mockDb as unknown as DatabaseService)
+      service.findAll({ warpCapable: true }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('warp_capable = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([1])
+    })
+
+    it('filters by warpCapable=false (passes 0 to db)', () => {
+      const mockDb = makeMockDb(1, [{ species_id: 2, warp_capable: 0 }])
+      service = new SpeciesService(mockDb as unknown as DatabaseService)
+      service.findAll({ warpCapable: false }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('warp_capable = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([0])
     })
   })
 

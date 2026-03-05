@@ -20,13 +20,19 @@ describe('ShipsResolver', () => {
 
   describe('findAll', () => {
     it('delegates to shipsService.findAll with pagination args', () => {
-      resolver.findAll(10, undefined, undefined, undefined)
-      expect(mockShipsService.findAll).toHaveBeenCalledWith({
-        first: 10,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.findAll(undefined, 10, undefined, undefined, undefined)
+      expect(mockShipsService.findAll).toHaveBeenCalledWith(
+        { status: undefined },
+        { first: 10, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes status filter to service', () => {
+      resolver.findAll('Active', undefined, undefined, undefined, undefined)
+      expect(mockShipsService.findAll).toHaveBeenCalledWith(
+        { status: 'Active' },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {

@@ -28,13 +28,27 @@ describe('EpisodesResolver', () => {
 
   describe('findAll', () => {
     it('delegates to episodesService.findAll with pagination args', () => {
-      resolver.findAll(5, undefined, undefined, undefined)
-      expect(mockEpisodesService.findAll).toHaveBeenCalledWith({
-        first: 5,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.findAll(undefined, undefined, 5, undefined, undefined, undefined)
+      expect(mockEpisodesService.findAll).toHaveBeenCalledWith(
+        { series: undefined, season: undefined },
+        { first: 5, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes series filter to service', () => {
+      resolver.findAll(2, undefined, undefined, undefined, undefined, undefined)
+      expect(mockEpisodesService.findAll).toHaveBeenCalledWith(
+        { series: 2, season: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes season filter to service', () => {
+      resolver.findAll(undefined, 3, undefined, undefined, undefined, undefined)
+      expect(mockEpisodesService.findAll).toHaveBeenCalledWith(
+        { series: undefined, season: 3 },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {
@@ -71,13 +85,22 @@ describe('EpisodesResolver', () => {
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findByEpisodeId with episode and pagination', () => {
       const episode = { episode_id: 10 } as any
-      resolver.characters(episode, 3, undefined, undefined, undefined)
-      expect(mockCharactersService.findByEpisodeId).toHaveBeenCalledWith(10, {
-        first: 3,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.characters(episode, undefined, undefined, 3, undefined, undefined, undefined)
+      expect(mockCharactersService.findByEpisodeId).toHaveBeenCalledWith(
+        10,
+        { gender: undefined, primaryActor: undefined },
+        { first: 3, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes gender filter to service', () => {
+      const episode = { episode_id: 10 } as any
+      resolver.characters(episode, 'F', undefined, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findByEpisodeId).toHaveBeenCalledWith(
+        10,
+        { gender: 'F', primaryActor: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {

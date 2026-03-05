@@ -18,12 +18,13 @@ export class SpeciesResolver {
 
   @Query(() => SpeciesConnection, { name: 'species' })
   findAll(
+    @Args('warpCapable', { nullable: true }) warpCapable?: boolean,
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
     @Args('after', { nullable: true }) after?: string
   ) {
-    return this.speciesService.findAll({ first, last, before, after })
+    return this.speciesService.findAll({ warpCapable }, { first, last, before, after })
   }
 
   @Query(() => Species, { name: 'speciesById', nullable: true })
@@ -34,16 +35,17 @@ export class SpeciesResolver {
   @ResolveField(() => CharacterConnection)
   characters(
     @Parent() species: Species,
+    @Args('gender', { nullable: true }) gender?: string,
+    @Args('primaryActor', { nullable: true, type: () => Int }) primaryActor?: number,
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
     @Args('after', { nullable: true }) after?: string
   ) {
-    return this.charactersService.findBySpeciesId(species.species_id, {
-      first,
-      last,
-      before,
-      after,
-    })
+    return this.charactersService.findBySpeciesId(
+      species.species_id,
+      { gender, primaryActor },
+      { first, last, before, after }
+    )
   }
 }

@@ -9,12 +9,13 @@ export class ShipsResolver {
 
   @Query(() => ShipConnection, { name: 'ships' })
   findAll(
+    @Args('status', { nullable: true }) status?: string,
     @Args('first', { nullable: true, type: () => Int }) first?: number,
     @Args('last', { nullable: true, type: () => Int }) last?: number,
     @Args('before', { nullable: true }) before?: string,
     @Args('after', { nullable: true }) after?: string
   ) {
-    return this.shipsService.findAll({ first, last, before, after })
+    return this.shipsService.findAll({ status }, { first, last, before, after })
   }
 
   @Query(() => Ship, { name: 'ship', nullable: true })

@@ -26,7 +26,7 @@ describe('OrganizationsService', () => {
     it('returns a connection from Organizations table', () => {
       mockDb = makeMockDb(2, [{ organization_id: 1 }, { organization_id: 2 }])
       service = new OrganizationsService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.totalCount).toBe(2)
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('FROM Organizations')
@@ -35,6 +35,15 @@ describe('OrganizationsService', () => {
     it('uses default pagination when called with no args', () => {
       const result = service.findAll()
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
+    })
+
+    it('filters by type', () => {
+      mockDb = makeMockDb(1, [{ organization_id: 1 }])
+      service = new OrganizationsService(mockDb as unknown as DatabaseService)
+      service.findAll({ type: 'Military' }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('type = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual(['Military'])
     })
   })
 
@@ -59,11 +68,20 @@ describe('OrganizationsService', () => {
     it('queries organizations via Character_Organizations join', () => {
       mockDb = makeMockDb(1, [{ organization_id: 1 }])
       service = new OrganizationsService(mockDb as unknown as DatabaseService)
-      service.findByCharacterId(3, {})
+      service.findByCharacterId(3, {}, {})
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Organizations')
       expect(dataSql).toContain('character_id = ?')
       expect(mockDb.query.mock.calls[0][1]).toEqual([3])
+    })
+
+    it('applies type filter', () => {
+      mockDb = makeMockDb(1, [{ organization_id: 1 }])
+      service = new OrganizationsService(mockDb as unknown as DatabaseService)
+      service.findByCharacterId(3, { type: 'Military' }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('type = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([3, 'Military'])
     })
 
     it('uses default pagination when not provided', () => {

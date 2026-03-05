@@ -26,7 +26,7 @@ describe('EpisodesService', () => {
     it('uses SELECT * FROM Episodes and returns connection', () => {
       mockDb = makeMockDb(1, [{ episode_id: 1 }])
       service = new EpisodesService(mockDb as unknown as DatabaseService)
-      const result = service.findAll({})
+      const result = service.findAll({}, {})
       expect(result.totalCount).toBe(1)
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('FROM Episodes')
@@ -35,6 +35,34 @@ describe('EpisodesService', () => {
     it('uses default pagination when called with no args', () => {
       const result = service.findAll()
       expect(result).toMatchObject({ edges: [], totalCount: 0 })
+    })
+
+    it('filters by series', () => {
+      mockDb = makeMockDb(2, [{ episode_id: 1 }, { episode_id: 2 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findAll({ series: 3 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('series_id = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([3])
+    })
+
+    it('filters by season', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 5 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findAll({ season: 2 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('season = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([2])
+    })
+
+    it('combines series and season filters', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 6 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findAll({ series: 1, season: 3 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('series_id = ?')
+      expect(countSql).toContain('season = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([1, 3])
     })
   })
 
@@ -59,13 +87,29 @@ describe('EpisodesService', () => {
     it('queries episodes for a series with WHERE clause', () => {
       mockDb = makeMockDb(3, [{ episode_id: 1 }, { episode_id: 2 }])
       service = new EpisodesService(mockDb as unknown as DatabaseService)
-      const result = service.findBySeriesId(2, {})
+      const result = service.findBySeriesId(2, {}, {})
       expect(result.edges).toHaveLength(2)
       const countSql: string = mockDb.query.mock.calls[0][0]
       expect(countSql).toContain('FROM Episodes')
-      // baseParams passed to COUNT
-      const countParams: unknown[] = mockDb.query.mock.calls[0][1]
-      expect(countParams).toEqual([2])
+      expect(mockDb.query.mock.calls[0][1]).toEqual([2])
+    })
+
+    it('applies series filter', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 1 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findBySeriesId(2, { series: 2 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('series_id = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([2, 2])
+    })
+
+    it('applies season filter', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 1 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findBySeriesId(2, { season: 3 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('season = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([2, 3])
     })
 
     it('uses default pagination when not provided', () => {
@@ -78,13 +122,30 @@ describe('EpisodesService', () => {
     it('queries episodes via Character_Episodes join', () => {
       mockDb = makeMockDb(2, [{ episode_id: 10 }])
       service = new EpisodesService(mockDb as unknown as DatabaseService)
-      const result = service.findByCharacterId(7, {})
+      const result = service.findByCharacterId(7, {}, {})
       expect(result.edges).toHaveLength(1)
       const dataSql: string = mockDb.query.mock.calls[1][0]
       expect(dataSql).toContain('Character_Episodes')
       expect(dataSql).toContain('character_id = ?')
-      const countParams: unknown[] = mockDb.query.mock.calls[0][1]
-      expect(countParams).toEqual([7])
+      expect(mockDb.query.mock.calls[0][1]).toEqual([7])
+    })
+
+    it('applies series filter', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 10 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findByCharacterId(7, { series: 1 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('series_id = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([7, 1])
+    })
+
+    it('applies season filter', () => {
+      mockDb = makeMockDb(1, [{ episode_id: 10 }])
+      service = new EpisodesService(mockDb as unknown as DatabaseService)
+      service.findByCharacterId(7, { season: 2 }, {})
+      const countSql: string = mockDb.query.mock.calls[0][0]
+      expect(countSql).toContain('season = ?')
+      expect(mockDb.query.mock.calls[0][1]).toEqual([7, 2])
     })
 
     it('uses default pagination when not provided', () => {

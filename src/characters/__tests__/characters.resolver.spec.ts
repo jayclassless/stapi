@@ -43,13 +43,27 @@ describe('CharactersResolver', () => {
 
   describe('findAll', () => {
     it('delegates to charactersService.findAll with pagination args', () => {
-      resolver.findAll(10, undefined, undefined, undefined)
-      expect(mockCharactersService.findAll).toHaveBeenCalledWith({
-        first: 10,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.findAll(undefined, undefined, 10, undefined, undefined, undefined)
+      expect(mockCharactersService.findAll).toHaveBeenCalledWith(
+        { gender: undefined, primaryActor: undefined },
+        { first: 10, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes gender filter to service', () => {
+      resolver.findAll('Female', undefined, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findAll).toHaveBeenCalledWith(
+        { gender: 'Female', primaryActor: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes primaryActor filter to service', () => {
+      resolver.findAll(undefined, 3, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findAll).toHaveBeenCalledWith(
+        { gender: undefined, primaryActor: 3 },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {
@@ -114,26 +128,44 @@ describe('CharactersResolver', () => {
   describe('organizations (ResolveField)', () => {
     it('delegates to organizationsService.findByCharacterId with character and pagination', () => {
       const character = { character_id: 4 } as any
-      resolver.organizations(character, undefined, 3, undefined, undefined)
-      expect(mockOrganizationsService.findByCharacterId).toHaveBeenCalledWith(4, {
-        first: undefined,
-        last: 3,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.organizations(character, undefined, undefined, 3, undefined, undefined)
+      expect(mockOrganizationsService.findByCharacterId).toHaveBeenCalledWith(
+        4,
+        { type: undefined },
+        { first: undefined, last: 3, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes type filter to service', () => {
+      const character = { character_id: 4 } as any
+      resolver.organizations(character, 'Military', undefined, undefined, undefined, undefined)
+      expect(mockOrganizationsService.findByCharacterId).toHaveBeenCalledWith(
+        4,
+        { type: 'Military' },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
   })
 
   describe('episodes (ResolveField)', () => {
     it('delegates to episodesService.findByCharacterId with character and pagination', () => {
       const character = { character_id: 7 } as any
-      resolver.episodes(character, undefined, undefined, 'cur1', 'cur2')
-      expect(mockEpisodesService.findByCharacterId).toHaveBeenCalledWith(7, {
-        first: undefined,
-        last: undefined,
-        before: 'cur1',
-        after: 'cur2',
-      })
+      resolver.episodes(character, undefined, undefined, undefined, undefined, 'cur1', 'cur2')
+      expect(mockEpisodesService.findByCharacterId).toHaveBeenCalledWith(
+        7,
+        { series: undefined, season: undefined },
+        { first: undefined, last: undefined, before: 'cur1', after: 'cur2' }
+      )
+    })
+
+    it('passes season filter to service', () => {
+      const character = { character_id: 7 } as any
+      resolver.episodes(character, undefined, 3, undefined, undefined, undefined, undefined)
+      expect(mockEpisodesService.findByCharacterId).toHaveBeenCalledWith(
+        7,
+        { series: undefined, season: 3 },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
   })
 })

@@ -24,13 +24,19 @@ describe('SpeciesResolver', () => {
 
   describe('findAll', () => {
     it('delegates to speciesService.findAll with pagination args', () => {
-      resolver.findAll(10, undefined, undefined, undefined)
-      expect(mockSpeciesService.findAll).toHaveBeenCalledWith({
-        first: 10,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.findAll(undefined, 10, undefined, undefined, undefined)
+      expect(mockSpeciesService.findAll).toHaveBeenCalledWith(
+        { warpCapable: undefined },
+        { first: 10, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes warpCapable filter to service', () => {
+      resolver.findAll(true, undefined, undefined, undefined, undefined)
+      expect(mockSpeciesService.findAll).toHaveBeenCalledWith(
+        { warpCapable: true },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {
@@ -56,13 +62,22 @@ describe('SpeciesResolver', () => {
   describe('characters (ResolveField)', () => {
     it('delegates to charactersService.findBySpeciesId with species and pagination', () => {
       const species = { species_id: 5 } as any
-      resolver.characters(species, 3, undefined, undefined, undefined)
-      expect(mockCharactersService.findBySpeciesId).toHaveBeenCalledWith(5, {
-        first: 3,
-        last: undefined,
-        before: undefined,
-        after: undefined,
-      })
+      resolver.characters(species, undefined, undefined, 3, undefined, undefined, undefined)
+      expect(mockCharactersService.findBySpeciesId).toHaveBeenCalledWith(
+        5,
+        { gender: undefined, primaryActor: undefined },
+        { first: 3, last: undefined, before: undefined, after: undefined }
+      )
+    })
+
+    it('passes gender filter to service', () => {
+      const species = { species_id: 5 } as any
+      resolver.characters(species, 'M', undefined, undefined, undefined, undefined, undefined)
+      expect(mockCharactersService.findBySpeciesId).toHaveBeenCalledWith(
+        5,
+        { gender: 'M', primaryActor: undefined },
+        { first: undefined, last: undefined, before: undefined, after: undefined }
+      )
     })
 
     it('returns the service result', () => {
