@@ -20,6 +20,7 @@ import { SpeciesModule } from './species/species.module'
       sortSchema: true,
       playground: true,
       csrfPrevention: false,
+      introspection: true,
     }),
     SeriesModule,
     EpisodesModule,
