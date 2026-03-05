@@ -85,6 +85,11 @@ describe('EpisodesResolver', () => {
       resolver.randomEpisode(10)
       expect(mockEpisodesService.randomEpisodeStream).toHaveBeenCalledWith(10)
     })
+
+    it('clamps count to 100 when given a larger value', () => {
+      resolver.randomEpisode(9999)
+      expect(mockEpisodesService.randomEpisodeStream).toHaveBeenCalledWith(100)
+    })
   })
 
   describe('series (ResolveField)', () => {

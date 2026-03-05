@@ -46,7 +46,7 @@ export class EpisodesResolver {
   randomEpisode(
     @Args('count', { type: () => Int, defaultValue: 10 }) count: number
   ): AsyncGenerator<Episode> {
-    return this.episodesService.randomEpisodeStream(count)
+    return this.episodesService.randomEpisodeStream(Math.min(count, 100))
   }
 
   @ResolveField(() => Series, { nullable: true })
