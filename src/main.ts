@@ -4,12 +4,14 @@ import { GraphQLSchemaHost } from '@nestjs/graphql'
 import type { Request, Response } from 'express'
 import { execute, subscribe } from 'graphql'
 import { createHandler } from 'graphql-sse/lib/use/express'
+import morgan from 'morgan'
 
 import { AppModule } from './app.module'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.enableCors()
+  app.use(morgan('combined'))
 
   // Register the SSE handler before app.init() so it is inserted into the
   // Express middleware chain ahead of Apollo's app.use('/graphql', ...) handler
@@ -29,6 +31,5 @@ async function bootstrap() {
 
   const port = process.env.PORT ?? 3000
   await app.listen(port)
-  console.log(`GraphQL API running at http://localhost:${port}/graphql`)
 }
 bootstrap()
