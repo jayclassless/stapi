@@ -1,0 +1,478 @@
+/* ── Variables ── */
+:root {
+  --bg: #050a14;
+  --panel: #0a1628;
+  --panel2: #0f1f3a;
+  --border: #1e3a5f;
+  --accent: #00d4ff;
+  --gold: #c8a63c;
+  --purple: #9b59b6;
+  --green: #2a9d5a;
+  --red: #c84040;
+  --text: #b8cce4;
+  --dim: #4a6080;
+  --font-mono: 'Courier New', Courier, monospace;
+  --radius: 6px;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.app-header {
+  background: linear-gradient(180deg, #0a1e3c 0%, var(--bg) 100%);
+  border-bottom: 2px solid var(--accent);
+  padding: 24px 32px 20px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.app-header h1 strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.app-header p {
+  color: var(--dim);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ── Main grid ── */
+.app-main {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .app-main {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .app-header {
+    padding: 16px;
+  }
+  .app-header h1 {
+    font-size: 1.4rem;
+  }
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Card header ── */
+.card-header {
+  background: var(--panel2);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+/* ── Badges ── */
+.badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.badge-query {
+  background: var(--accent);
+  color: #000;
+}
+.badge-sub {
+  background: var(--gold);
+  color: #000;
+}
+.badge-mut {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── Card body ── */
+.card-body {
+  padding: 16px 18px;
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+/* ── Buttons ── */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 7px 16px;
+  border-radius: var(--radius);
+  border: 1px solid;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-post {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-post:not(:disabled):hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-get {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-get:not(:disabled):hover {
+  background: var(--gold);
+  color: #000;
+}
+
+.btn-ws {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.btn-ws:not(:disabled):hover {
+  background: var(--purple);
+  color: #fff;
+}
+
+.btn-sse {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-sse:not(:disabled):hover {
+  background: var(--gold);
+  color: #000;
+}
+
+.btn-stop {
+  border-color: var(--red);
+  color: var(--red);
+}
+.btn-stop:not(:disabled):hover {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn-mut {
+  border-color: var(--green);
+  color: var(--green);
+}
+.btn-mut:not(:disabled):hover {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── Method tag ── */
+.method-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+/* ── Inputs ── */
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.input-row label {
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
+input[type='number'],
+input[type='text'] {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input[type='number']:focus,
+input[type='text']:focus {
+  border-color: var(--accent);
+}
+
+input::placeholder {
+  color: var(--dim);
+}
+
+/* ── Output ── */
+.output {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-height: 100px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--dim);
+  font-style: italic;
+}
+
+.output::-webkit-scrollbar {
+  width: 6px;
+}
+.output::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.output-has-content {
+  font-style: normal;
+  color: var(--text);
+}
+
+.out-loading {
+  color: var(--dim);
+  font-style: italic;
+}
+
+.out-error {
+  color: #e07070;
+  font-style: normal;
+}
+
+.out-total {
+  font-size: 0.72rem;
+  color: var(--dim);
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+}
+
+/* ── Tables ── */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+th {
+  background: var(--panel2);
+  color: var(--accent);
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+td {
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+td:last-child {
+  white-space: normal;
+  max-width: 400px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: var(--panel2);
+}
+
+/* ── Batch sub-panels ── */
+.batch-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .batch-results {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sub-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  overflow: hidden;
+}
+
+.sub-panel-title {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sub-panel .output {
+  min-height: 60px;
+  border: none;
+  padding: 0;
+}
+
+/* ── Subscription status ── */
+.sub-status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.sub-status-idle {
+  color: var(--dim);
+}
+
+.sub-status-connecting {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  background: #1a1500;
+}
+
+.sub-status-active {
+  color: var(--green);
+  border: 1px solid var(--green);
+  background: #001510;
+}
+
+.sub-status-done {
+  color: var(--dim);
+  border: 1px solid var(--border);
+}
+
+.sub-status-error {
+  color: #e07070;
+  border: 1px solid var(--red);
+  background: #1a0000;
+}
+
+/* ── Episode cards ── */
+.episodes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.episode-card {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.episode-card-title {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.episode-card-meta {
+  color: var(--dim);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  margin-top: 4px;
+}
+
+.episode-card-series {
+  font-size: 0.78rem;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+/* ── Footer ── */
+.app-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}

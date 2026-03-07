@@ -1,7 +1,10 @@
 import 'reflect-metadata'
+import path from 'path'
+
 import { NestFactory } from '@nestjs/core'
 import { GraphQLSchemaHost } from '@nestjs/graphql'
 import type { Request, Response } from 'express'
+import express from 'express'
 import { execute, subscribe } from 'graphql'
 import { createHandler } from 'graphql-sse/lib/use/express'
 import morgan from 'morgan'
@@ -12,6 +15,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.enableCors()
   app.use(morgan('combined'))
+
+  // Serve the React client app (built to public/) at the root path.
+  // __dirname at runtime is dist/; ../public resolves to the project root public/.
+  app
+    .getHttpAdapter()
+    .getInstance()
+    .use(express.static(path.join(__dirname, '..', 'public')))
 
   // Register the SSE handler before app.init() so it is inserted into the
   // Express middleware chain ahead of Apollo's app.use('/graphql', ...) handler
