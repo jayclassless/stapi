@@ -35,7 +35,7 @@ export function FavoriteSection() {
       })
       setState({
         status: 'success',
-        favorites: result.data?.addFavoriteEpisode ?? [],
+        favorites: (result.data as any)?.addFavoriteEpisode ?? [],
         error: null,
       })
     } catch (err: unknown) {

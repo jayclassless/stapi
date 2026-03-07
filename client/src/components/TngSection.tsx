@@ -34,7 +34,7 @@ export function TngSection() {
         variables: TNG_VARS,
         fetchPolicy: 'no-cache',
       })
-      const conn = result.data?.seriesById?.episodes
+      const conn = (result.data as any)?.seriesById?.episodes
       setState({
         status: 'success',
         rows: conn?.edges.map((e: { node: EpisodeNode }) => e.node) ?? [],

@@ -29,7 +29,7 @@ export function SeriesSection() {
     try {
       const client = method === 'POST' ? postClient : getClient
       const result = await client.query({ query: ALL_SERIES_QUERY, fetchPolicy: 'no-cache' })
-      const conn = result.data?.series
+      const conn = (result.data as any)?.series
       setState({
         status: 'success',
         rows: conn?.edges.map((e: { node: SeriesNode }) => e.node) ?? [],
