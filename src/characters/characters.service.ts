@@ -2,40 +2,34 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService, SqlParam } from '../database/database.service'
+import { DatabaseService } from '../database/database.service'
 import { Character, CharacterConnection } from './character.model'
 
 @Injectable()
 export class CharactersService {
   constructor(private readonly db: DatabaseService) {}
 
+  private applyFilters(
+    items: Character[],
+    filters: { gender?: string; primaryActor?: number }
+  ): Character[] {
+    let result = items
+    if (filters.gender != null) result = result.filter((c) => c.gender === filters.gender)
+    if (filters.primaryActor != null)
+      result = result.filter((c) => c.primary_actor_id === filters.primaryActor)
+    return result
+  }
+
   findAll(
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const conditions: string[] = []
-    const params: SqlParam[] = []
-    if (filters.gender != null) {
-      conditions.push('gender = ?')
-      params.push(filters.gender)
-    }
-    if (filters.primaryActor != null) {
-      conditions.push('primary_actor_id = ?')
-      params.push(filters.primaryActor)
-    }
-    const whereSql = conditions.length ? ` WHERE ${conditions.join(' AND ')}` : ''
-    return queryConnection<Character>(
-      this.db,
-      `SELECT * FROM Characters${whereSql}`,
-      params,
-      'character_id',
-      'Character',
-      pagination
-    )
+    const items = this.applyFilters(this.db.getAll('Characters'), filters)
+    return queryConnection<Character>(items, 'character_id', 'Character', pagination)
   }
 
   findById(id: number): Character | undefined {
-    return this.db.queryOne<Character>('SELECT * FROM Characters WHERE character_id = ?', [id])
+    return this.db.getById('Characters', id)
   }
 
   findByEpisodeId(
@@ -43,25 +37,12 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: SqlParam[] = [episodeId]
-    const andConds: string[] = []
-    if (filters.gender != null) {
-      andConds.push('c.gender = ?')
-      params.push(filters.gender)
-    }
-    if (filters.primaryActor != null) {
-      andConds.push('c.primary_actor_id = ?')
-      params.push(filters.primaryActor)
-    }
-    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
-    return queryConnection<Character>(
-      this.db,
-      `SELECT c.* FROM Characters c JOIN Character_Episodes ce ON ce.character_id = c.character_id WHERE ce.episode_id = ?${andSql}`,
-      params,
-      'character_id',
-      'Character',
-      pagination
+    const relatedIds = new Set(this.db.getRelatedIds('Character_Episodes', 'episode_id', episodeId))
+    const items = this.applyFilters(
+      this.db.getAll('Characters').filter((c) => relatedIds.has(c.character_id)),
+      filters
     )
+    return queryConnection<Character>(items, 'character_id', 'Character', pagination)
   }
 
   findBySpeciesId(
@@ -69,25 +50,11 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: SqlParam[] = [speciesId]
-    const andConds: string[] = []
-    if (filters.gender != null) {
-      andConds.push('gender = ?')
-      params.push(filters.gender)
-    }
-    if (filters.primaryActor != null) {
-      andConds.push('primary_actor_id = ?')
-      params.push(filters.primaryActor)
-    }
-    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
-    return queryConnection<Character>(
-      this.db,
-      `SELECT * FROM Characters WHERE species_id = ?${andSql}`,
-      params,
-      'character_id',
-      'Character',
-      pagination
+    const items = this.applyFilters(
+      this.db.getAll('Characters').filter((c) => c.species_id === speciesId),
+      filters
     )
+    return queryConnection<Character>(items, 'character_id', 'Character', pagination)
   }
 
   findByActorId(
@@ -95,25 +62,12 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: SqlParam[] = [actorId]
-    const andConds: string[] = []
-    if (filters.gender != null) {
-      andConds.push('c.gender = ?')
-      params.push(filters.gender)
-    }
-    if (filters.primaryActor != null) {
-      andConds.push('c.primary_actor_id = ?')
-      params.push(filters.primaryActor)
-    }
-    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
-    return queryConnection<Character>(
-      this.db,
-      `SELECT c.* FROM Characters c JOIN Character_Actors ca ON ca.character_id = c.character_id WHERE ca.actor_id = ?${andSql}`,
-      params,
-      'character_id',
-      'Character',
-      pagination
+    const relatedIds = new Set(this.db.getRelatedIds('Character_Actors', 'actor_id', actorId))
+    const items = this.applyFilters(
+      this.db.getAll('Characters').filter((c) => relatedIds.has(c.character_id)),
+      filters
     )
+    return queryConnection<Character>(items, 'character_id', 'Character', pagination)
   }
 
   findByOrganizationId(
@@ -121,24 +75,13 @@ export class CharactersService {
     filters: { gender?: string; primaryActor?: number } = {},
     pagination: PaginationInput = {}
   ): CharacterConnection {
-    const params: SqlParam[] = [organizationId]
-    const andConds: string[] = []
-    if (filters.gender != null) {
-      andConds.push('c.gender = ?')
-      params.push(filters.gender)
-    }
-    if (filters.primaryActor != null) {
-      andConds.push('c.primary_actor_id = ?')
-      params.push(filters.primaryActor)
-    }
-    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
-    return queryConnection<Character>(
-      this.db,
-      `SELECT c.* FROM Characters c JOIN Character_Organizations co ON co.character_id = c.character_id WHERE co.organization_id = ?${andSql}`,
-      params,
-      'character_id',
-      'Character',
-      pagination
+    const relatedIds = new Set(
+      this.db.getRelatedIds('Character_Organizations', 'organization_id', organizationId)
     )
+    const items = this.applyFilters(
+      this.db.getAll('Characters').filter((c) => relatedIds.has(c.character_id)),
+      filters
+    )
+    return queryConnection<Character>(items, 'character_id', 'Character', pagination)
   }
 }

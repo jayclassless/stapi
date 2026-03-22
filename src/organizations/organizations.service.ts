@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 
 import { queryConnection } from '../common/cursor.helper'
 import { PaginationInput } from '../common/pagination.input'
-import { DatabaseService, SqlParam } from '../database/database.service'
+import { DatabaseService } from '../database/database.service'
 import { Organization, OrganizationConnection } from './organization.model'
 
 @Injectable()
@@ -13,27 +13,13 @@ export class OrganizationsService {
     filters: { type?: string } = {},
     pagination: PaginationInput = {}
   ): OrganizationConnection {
-    const conditions: string[] = []
-    const params: SqlParam[] = []
-    if (filters.type != null) {
-      conditions.push('type = ?')
-      params.push(filters.type)
-    }
-    const whereSql = conditions.length ? ` WHERE ${conditions.join(' AND ')}` : ''
-    return queryConnection<Organization>(
-      this.db,
-      `SELECT * FROM Organizations${whereSql}`,
-      params,
-      'organization_id',
-      'Organization',
-      pagination
-    )
+    let items = this.db.getAll('Organizations')
+    if (filters.type != null) items = items.filter((o) => o.type === filters.type)
+    return queryConnection<Organization>(items, 'organization_id', 'Organization', pagination)
   }
 
   findById(id: number): Organization | undefined {
-    return this.db.queryOne<Organization>('SELECT * FROM Organizations WHERE organization_id = ?', [
-      id,
-    ])
+    return this.db.getById('Organizations', id)
   }
 
   findByCharacterId(
@@ -41,20 +27,11 @@ export class OrganizationsService {
     filters: { type?: string } = {},
     pagination: PaginationInput = {}
   ): OrganizationConnection {
-    const params: SqlParam[] = [characterId]
-    const andConds: string[] = []
-    if (filters.type != null) {
-      andConds.push('o.type = ?')
-      params.push(filters.type)
-    }
-    const andSql = andConds.length ? ` AND ${andConds.join(' AND ')}` : ''
-    return queryConnection<Organization>(
-      this.db,
-      `SELECT o.* FROM Organizations o JOIN Character_Organizations co ON co.organization_id = o.organization_id WHERE co.character_id = ?${andSql}`,
-      params,
-      'organization_id',
-      'Organization',
-      pagination
+    const relatedIds = new Set(
+      this.db.getRelatedIds('Character_Organizations', 'character_id', characterId)
     )
+    let items = this.db.getAll('Organizations').filter((o) => relatedIds.has(o.organization_id))
+    if (filters.type != null) items = items.filter((o) => o.type === filters.type)
+    return queryConnection<Organization>(items, 'organization_id', 'Organization', pagination)
   }
 }

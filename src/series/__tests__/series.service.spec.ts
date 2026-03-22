@@ -3,14 +3,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { SeriesService } from '../series.service'
 
-function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
+function makeMockDb(rows: Record<string, unknown>[] = []) {
   return {
-    query: vi
-      .fn()
-      .mockReturnValueOnce([{ count: totalCount }])
-      .mockReturnValueOnce(rows),
-    queryOne: vi.fn().mockReturnValue(undefined),
-    count: vi.fn().mockReturnValue(0),
+    getAll: vi.fn().mockReturnValue(rows),
+    getById: vi.fn().mockReturnValue(undefined),
+    getByIds: vi.fn().mockReturnValue([]),
+    getRelatedIds: vi.fn().mockReturnValue([]),
+    count: vi.fn().mockReturnValue(rows.length),
   }
 }
 
@@ -24,15 +23,13 @@ describe('SeriesService', () => {
   })
 
   describe('findAll', () => {
-    it('calls queryConnection with correct sql and returns connection', () => {
-      mockDb = makeMockDb(2, [{ series_id: 1 }, { series_id: 2 }])
+    it('returns connection from getAll results', () => {
+      mockDb = makeMockDb([{ series_id: 1 }, { series_id: 2 }])
       service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({})
       expect(result.totalCount).toBe(2)
       expect(result.edges).toHaveLength(2)
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('COUNT(*)')
-      expect(countSql).toContain('FROM Series')
+      expect(mockDb.getAll).toHaveBeenCalledWith('Series')
     })
 
     it('uses default empty pagination when called with no args', () => {
@@ -41,7 +38,7 @@ describe('SeriesService', () => {
     })
 
     it('respects first pagination', () => {
-      mockDb = makeMockDb(10, [{ series_id: 1 }, { series_id: 2 }])
+      mockDb = makeMockDb([{ series_id: 1 }, { series_id: 2 }])
       service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({ first: 5 })
       expect(result.edges).toHaveLength(2)
@@ -49,11 +46,11 @@ describe('SeriesService', () => {
   })
 
   describe('findById', () => {
-    it('queries by series_id and returns the row', () => {
+    it('looks up by series_id and returns the row', () => {
       const row = { series_id: 3, name: 'TNG' }
-      mockDb.queryOne.mockReturnValue(row)
+      mockDb.getById.mockReturnValue(row)
       const result = service.findById(3)
-      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Series WHERE series_id = ?', [3])
+      expect(mockDb.getById).toHaveBeenCalledWith('Series', 3)
       expect(result).toEqual(row)
     })
 
@@ -63,14 +60,15 @@ describe('SeriesService', () => {
   })
 
   describe('findByAbbreviation', () => {
-    it('queries by abbreviation and returns the row', () => {
-      const row = { series_id: 2, abbreviation: 'TNG' }
-      mockDb.queryOne.mockReturnValue(row)
+    it('finds by abbreviation in getAll results', () => {
+      const rows = [
+        { series_id: 1, abbreviation: 'DS9' },
+        { series_id: 2, abbreviation: 'TNG' },
+      ]
+      mockDb = makeMockDb(rows)
+      service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findByAbbreviation('TNG')
-      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Series WHERE abbreviation = ?', [
-        'TNG',
-      ])
-      expect(result).toEqual(row)
+      expect(result).toEqual(rows[1])
     })
 
     it('returns undefined when not found', () => {
@@ -79,14 +77,12 @@ describe('SeriesService', () => {
   })
 
   describe('findByImdbId', () => {
-    it('queries by imdb_id and returns the row', () => {
-      const row = { series_id: 3, imdb_id: 'tt0092455' }
-      mockDb.queryOne.mockReturnValue(row)
+    it('finds by imdb_id in getAll results', () => {
+      const rows = [{ series_id: 3, imdb_id: 'tt0092455' }]
+      mockDb = makeMockDb(rows)
+      service = new SeriesService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findByImdbId('tt0092455')
-      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Series WHERE imdb_id = ?', [
-        'tt0092455',
-      ])
-      expect(result).toEqual(row)
+      expect(result).toEqual(rows[0])
     })
 
     it('returns undefined when not found', () => {

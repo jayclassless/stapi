@@ -1,0 +1,134 @@
+[
+  {
+    "series_id": 1,
+    "name": "Star Trek: Deep Space Nine",
+    "abbreviation": "DS9",
+    "start_year": 1992,
+    "end_year": 1999,
+    "num_seasons": 7,
+    "num_episodes": 173,
+    "description": null,
+    "imdb_id": "tt0106145"
+  },
+  {
+    "series_id": 2,
+    "name": "Star Trek: Discovery",
+    "abbreviation": "DIS",
+    "start_year": 2017,
+    "end_year": null,
+    "num_seasons": 4,
+    "num_episodes": 55,
+    "description": null,
+    "imdb_id": null
+  },
+  {
+    "series_id": 3,
+    "name": "Star Trek: Enterprise",
+    "abbreviation": "ENT",
+    "start_year": 2001,
+    "end_year": 2005,
+    "num_seasons": 4,
+    "num_episodes": 97,
+    "description": null,
+    "imdb_id": "tt0244365"
+  },
+  {
+    "series_id": 4,
+    "name": "Star Trek: Lower Decks",
+    "abbreviation": "LD",
+    "start_year": 2018,
+    "end_year": null,
+    "num_seasons": 3,
+    "num_episodes": 30,
+    "description": null,
+    "imdb_id": "tt9184820"
+  },
+  {
+    "series_id": 5,
+    "name": "Star Trek: Picard",
+    "abbreviation": "PIC",
+    "start_year": 2019,
+    "end_year": 2022,
+    "num_seasons": 3,
+    "num_episodes": 30,
+    "description": null,
+    "imdb_id": "tt8806524"
+  },
+  {
+    "series_id": 6,
+    "name": "Star Trek: Prodigy",
+    "abbreviation": "PRO",
+    "start_year": 2019,
+    "end_year": null,
+    "num_seasons": 1,
+    "num_episodes": 19,
+    "description": null,
+    "imdb_id": "tt9795876"
+  },
+  {
+    "series_id": 7,
+    "name": "Star Trek: Starfleet Academy",
+    "abbreviation": "SA",
+    "start_year": 2024,
+    "end_year": null,
+    "num_seasons": null,
+    "num_episodes": null,
+    "description": null,
+    "imdb_id": null
+  },
+  {
+    "series_id": 8,
+    "name": "Star Trek: Strange New Worlds",
+    "abbreviation": "SNW",
+    "start_year": 2021,
+    "end_year": null,
+    "num_seasons": 1,
+    "num_episodes": 10,
+    "description": null,
+    "imdb_id": "tt12327578"
+  },
+  {
+    "series_id": 9,
+    "name": "Star Trek: The Animated Series",
+    "abbreviation": "TAS",
+    "start_year": 1973,
+    "end_year": 1974,
+    "num_seasons": 2,
+    "num_episodes": 22,
+    "description": null,
+    "imdb_id": "tt0069637"
+  },
+  {
+    "series_id": 10,
+    "name": "Star Trek: The Next Generation",
+    "abbreviation": "TNG",
+    "start_year": 1987,
+    "end_year": 1994,
+    "num_seasons": 7,
+    "num_episodes": 176,
+    "description": null,
+    "imdb_id": "tt0092455"
+  },
+  {
+    "series_id": 11,
+    "name": "Star Trek: The Original Series",
+    "abbreviation": "TOS",
+    "start_year": 1964,
+    "end_year": 1969,
+    "num_seasons": 3,
+    "num_episodes": 79,
+    "description": null,
+    "imdb_id": "tt0060028"
+  },
+  {
+    "series_id": 12,
+    "name": "Star Trek: Voyager",
+    "abbreviation": "VOY",
+    "start_year": 1994,
+    "end_year": 2001,
+    "num_seasons": 7,
+    "num_episodes": 168,
+    "description": null,
+    "imdb_id": "tt0112178"
+  }
+]

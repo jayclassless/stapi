@@ -3,14 +3,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { OrganizationsService } from '../organizations.service'
 
-function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
+function makeMockDb(rows: Record<string, unknown>[] = []) {
   return {
-    query: vi
-      .fn()
-      .mockReturnValueOnce([{ count: totalCount }])
-      .mockReturnValueOnce(rows),
-    queryOne: vi.fn().mockReturnValue(undefined),
-    count: vi.fn().mockReturnValue(0),
+    getAll: vi.fn().mockReturnValue(rows),
+    getById: vi.fn().mockReturnValue(undefined),
+    getByIds: vi.fn().mockReturnValue([]),
+    getRelatedIds: vi.fn().mockReturnValue([]),
+    count: vi.fn().mockReturnValue(rows.length),
   }
 }
 
@@ -25,12 +24,11 @@ describe('OrganizationsService', () => {
 
   describe('findAll', () => {
     it('returns a connection from Organizations table', () => {
-      mockDb = makeMockDb(2, [{ organization_id: 1 }, { organization_id: 2 }])
+      mockDb = makeMockDb([{ organization_id: 1 }, { organization_id: 2 }])
       service = new OrganizationsService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({}, {})
       expect(result.totalCount).toBe(2)
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('FROM Organizations')
+      expect(mockDb.getAll).toHaveBeenCalledWith('Organizations')
     })
 
     it('uses default pagination when called with no args', () => {
@@ -39,24 +37,22 @@ describe('OrganizationsService', () => {
     })
 
     it('filters by type', () => {
-      mockDb = makeMockDb(1, [{ organization_id: 1 }])
+      mockDb = makeMockDb([
+        { organization_id: 1, type: 'Military' },
+        { organization_id: 2, type: 'Civilian' },
+      ])
       service = new OrganizationsService(mockDb as Partial<DatabaseService> as DatabaseService)
-      service.findAll({ type: 'Military' }, {})
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('type = ?')
-      expect(mockDb.query.mock.calls[0][1]).toEqual(['Military'])
+      const result = service.findAll({ type: 'Military' }, {})
+      expect(result.edges).toHaveLength(1)
     })
   })
 
   describe('findById', () => {
-    it('queries by organization_id', () => {
+    it('looks up by organization_id', () => {
       const row = { organization_id: 1, name: 'Starfleet', type: 'Military' }
-      mockDb.queryOne.mockReturnValue(row)
+      mockDb.getById.mockReturnValue(row)
       const result = service.findById(1)
-      expect(mockDb.queryOne).toHaveBeenCalledWith(
-        'SELECT * FROM Organizations WHERE organization_id = ?',
-        [1]
-      )
+      expect(mockDb.getById).toHaveBeenCalledWith('Organizations', 1)
       expect(result).toEqual(row)
     })
 
@@ -66,23 +62,29 @@ describe('OrganizationsService', () => {
   })
 
   describe('findByCharacterId', () => {
-    it('queries organizations via Character_Organizations join', () => {
-      mockDb = makeMockDb(1, [{ organization_id: 1 }])
+    it('queries organizations via junction table', () => {
+      mockDb = makeMockDb([{ organization_id: 1 }, { organization_id: 5 }])
+      mockDb.getRelatedIds.mockReturnValue([1])
       service = new OrganizationsService(mockDb as Partial<DatabaseService> as DatabaseService)
-      service.findByCharacterId(3, {}, {})
-      const dataSql: string = mockDb.query.mock.calls[1][0]
-      expect(dataSql).toContain('Character_Organizations')
-      expect(dataSql).toContain('character_id = ?')
-      expect(mockDb.query.mock.calls[0][1]).toEqual([3])
+      const result = service.findByCharacterId(3, {}, {})
+      expect(mockDb.getRelatedIds).toHaveBeenCalledWith(
+        'Character_Organizations',
+        'character_id',
+        3
+      )
+      expect(result.edges).toHaveLength(1)
+      expect(result.edges[0].node).toEqual({ organization_id: 1 })
     })
 
     it('applies type filter', () => {
-      mockDb = makeMockDb(1, [{ organization_id: 1 }])
+      mockDb = makeMockDb([
+        { organization_id: 1, type: 'Military' },
+        { organization_id: 2, type: 'Civilian' },
+      ])
+      mockDb.getRelatedIds.mockReturnValue([1, 2])
       service = new OrganizationsService(mockDb as Partial<DatabaseService> as DatabaseService)
-      service.findByCharacterId(3, { type: 'Military' }, {})
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('type = ?')
-      expect(mockDb.query.mock.calls[0][1]).toEqual([3, 'Military'])
+      const result = service.findByCharacterId(3, { type: 'Military' }, {})
+      expect(result.edges).toHaveLength(1)
     })
 
     it('uses default pagination when not provided', () => {

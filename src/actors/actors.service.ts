@@ -10,28 +10,18 @@ export class ActorsService {
   constructor(private readonly db: DatabaseService) {}
 
   findAll(pagination: PaginationInput = {}): ActorConnection {
-    return queryConnection<Actor>(
-      this.db,
-      'SELECT * FROM Actors',
-      [],
-      'actor_id',
-      'Actor',
-      pagination
-    )
+    return queryConnection<Actor>(this.db.getAll('Actors'), 'actor_id', 'Actor', pagination)
   }
 
   findById(id: number): Actor | undefined {
-    return this.db.queryOne<Actor>('SELECT * FROM Actors WHERE actor_id = ?', [id])
+    return this.db.getById('Actors', id)
   }
 
   findByCharacterId(characterId: number, pagination: PaginationInput = {}): ActorConnection {
-    return queryConnection<Actor>(
-      this.db,
-      'SELECT a.* FROM Actors a JOIN Character_Actors ca ON ca.actor_id = a.actor_id WHERE ca.character_id = ?',
-      [characterId],
-      'actor_id',
-      'Actor',
-      pagination
+    const relatedIds = new Set(
+      this.db.getRelatedIds('Character_Actors', 'character_id', characterId)
     )
+    const items = this.db.getAll('Actors').filter((a) => relatedIds.has(a.actor_id))
+    return queryConnection<Actor>(items, 'actor_id', 'Actor', pagination)
   }
 }

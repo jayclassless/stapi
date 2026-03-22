@@ -1,6 +1,5 @@
 import { UserInputError } from '@nestjs/apollo'
 
-import { SqlParam } from '../database/database.service'
 import { PageInfo } from './page-info.type'
 import { PaginationInput } from './pagination.input'
 
@@ -24,59 +23,47 @@ export interface ConnectionResult<T> {
 }
 
 /**
- * Execute a cursor-paginated SQLite query.
+ * Paginate a pre-filtered, PK-sorted array using cursor-based pagination.
  *
- * @param db        - object with .query<T>(sql, params) method
- * @param baseSql   - SELECT ... FROM Table [WHERE existing_conditions] — no ORDER BY / LIMIT
- * @param baseParams - params for the existing WHERE clause
- * @param pkCol     - primary key column name (used for cursor encoding and range filtering)
- * @param typeName  - name used in cursor encoding (e.g. "Series")
+ * @param items      - array of rows, sorted by pkCol ascending
+ * @param pkCol      - primary key property name on each row
+ * @param typeName   - name used in cursor encoding (e.g. "Series")
  * @param pagination - PaginationInput with first/last/after/before
  */
 export function queryConnection<T extends object>(
-  db: { query<R>(sql: string, params?: SqlParam[]): R[] },
-  baseSql: string,
-  baseParams: SqlParam[],
+  items: T[],
   pkCol: string,
   typeName: string,
   pagination: PaginationInput
 ): ConnectionResult<T> {
-  const countSql = `SELECT COUNT(*) AS count FROM (${baseSql}) _sub`
-  const [{ count }] = db.query<{ count: number }>(countSql, baseParams)
-
+  const totalCount = items.length
   const { first, last, after, before } = pagination ?? {}
-  const extraConditions: string[] = []
-  const params: SqlParam[] = [...baseParams]
 
   const afterId = after ? decodeCursor(after) : null
   const beforeId = before ? decodeCursor(before) : null
 
+  // Apply cursor bounds
+  let start = 0
+  let end = items.length
   if (afterId != null) {
-    extraConditions.push(`${pkCol} > ?`)
-    params.push(afterId)
+    start = items.findIndex(
+      (item) => ((item as Record<string, unknown>)[pkCol] as number) > afterId
+    )
+    if (start === -1) start = items.length
   }
   if (beforeId != null) {
-    extraConditions.push(`${pkCol} < ?`)
-    params.push(beforeId)
+    const idx = items.findIndex(
+      (item) => ((item as Record<string, unknown>)[pkCol] as number) >= beforeId
+    )
+    end = idx === -1 ? items.length : idx
   }
 
-  const hasExistingWhere = /\bWHERE\b/i.test(baseSql)
-  const whereJoin =
-    extraConditions.length === 0
-      ? ''
-      : hasExistingWhere
-        ? ` AND ${extraConditions.join(' AND ')}`
-        : ` WHERE ${extraConditions.join(' AND ')}`
+  const window = items.slice(start, end)
 
   if (last != null) {
-    // Backward pagination: ORDER BY pk DESC LIMIT last+1, then reverse
-    const sql = `${baseSql}${whereJoin} ORDER BY ${pkCol} DESC LIMIT ?`
-    params.push(last + 1)
-    const rows = db.query<T>(sql, params)
-    const hasPreviousPage = rows.length > last
-    if (hasPreviousPage) rows.pop()
-    rows.reverse()
-    const edges = rows.map((node) => ({
+    const hasPreviousPage = window.length > last
+    const sliced = hasPreviousPage ? window.slice(window.length - last) : window
+    const edges = sliced.map((node) => ({
       cursor: encodeCursor(typeName, (node as Record<string, unknown>)[pkCol] as number),
       node,
     }))
@@ -88,17 +75,13 @@ export function queryConnection<T extends object>(
         startCursor: edges[0]?.cursor ?? null,
         endCursor: edges[edges.length - 1]?.cursor ?? null,
       },
-      totalCount: count,
+      totalCount,
     }
   } else {
-    // Forward pagination (default): ORDER BY pk ASC LIMIT first+1
     const limit = first ?? 20
-    const sql = `${baseSql}${whereJoin} ORDER BY ${pkCol} ASC LIMIT ?`
-    params.push(limit + 1)
-    const rows = db.query<T>(sql, params)
-    const hasNextPage = rows.length > limit
-    if (hasNextPage) rows.pop()
-    const edges = rows.map((node) => ({
+    const hasNextPage = window.length > limit
+    const sliced = hasNextPage ? window.slice(0, limit) : window
+    const edges = sliced.map((node) => ({
       cursor: encodeCursor(typeName, (node as Record<string, unknown>)[pkCol] as number),
       node,
     }))
@@ -110,7 +93,7 @@ export function queryConnection<T extends object>(
         startCursor: edges[0]?.cursor ?? null,
         endCursor: edges[edges.length - 1]?.cursor ?? null,
       },
-      totalCount: count,
+      totalCount,
     }
   }
 }

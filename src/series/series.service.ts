@@ -10,25 +10,18 @@ export class SeriesService {
   constructor(private readonly db: DatabaseService) {}
 
   findAll(pagination: PaginationInput = {}): SeriesConnection {
-    return queryConnection<Series>(
-      this.db,
-      'SELECT * FROM Series',
-      [],
-      'series_id',
-      'Series',
-      pagination
-    )
+    return queryConnection<Series>(this.db.getAll('Series'), 'series_id', 'Series', pagination)
   }
 
   findById(id: number): Series | undefined {
-    return this.db.queryOne<Series>('SELECT * FROM Series WHERE series_id = ?', [id])
+    return this.db.getById('Series', id)
   }
 
   findByAbbreviation(abbreviation: string): Series | undefined {
-    return this.db.queryOne<Series>('SELECT * FROM Series WHERE abbreviation = ?', [abbreviation])
+    return this.db.getAll('Series').find((s) => s.abbreviation === abbreviation)
   }
 
   findByImdbId(imdbId: string): Series | undefined {
-    return this.db.queryOne<Series>('SELECT * FROM Series WHERE imdb_id = ?', [imdbId])
+    return this.db.getAll('Series').find((s) => s.imdb_id === imdbId)
   }
 }

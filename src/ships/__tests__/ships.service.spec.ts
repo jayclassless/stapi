@@ -3,14 +3,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { ShipsService } from '../ships.service'
 
-function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
+function makeMockDb(rows: Record<string, unknown>[] = []) {
   return {
-    query: vi
-      .fn()
-      .mockReturnValueOnce([{ count: totalCount }])
-      .mockReturnValueOnce(rows),
-    queryOne: vi.fn().mockReturnValue(undefined),
-    count: vi.fn().mockReturnValue(0),
+    getAll: vi.fn().mockReturnValue(rows),
+    getById: vi.fn().mockReturnValue(undefined),
+    getByIds: vi.fn().mockReturnValue([]),
+    getRelatedIds: vi.fn().mockReturnValue([]),
+    count: vi.fn().mockReturnValue(rows.length),
   }
 }
 
@@ -25,13 +24,12 @@ describe('ShipsService', () => {
 
   describe('findAll', () => {
     it('returns a connection from Ships table', () => {
-      mockDb = makeMockDb(3, [{ ship_id: 1 }, { ship_id: 2 }, { ship_id: 3 }])
+      mockDb = makeMockDb([{ ship_id: 1 }, { ship_id: 2 }, { ship_id: 3 }])
       service = new ShipsService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({}, {})
       expect(result.totalCount).toBe(3)
       expect(result.edges).toHaveLength(3)
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('FROM Ships')
+      expect(mockDb.getAll).toHaveBeenCalledWith('Ships')
     })
 
     it('uses default pagination when called with no args', () => {
@@ -40,21 +38,23 @@ describe('ShipsService', () => {
     })
 
     it('filters by status', () => {
-      mockDb = makeMockDb(1, [{ ship_id: 1 }])
+      mockDb = makeMockDb([
+        { ship_id: 1, status: 'Active' },
+        { ship_id: 2, status: 'Destroyed' },
+      ])
       service = new ShipsService(mockDb as Partial<DatabaseService> as DatabaseService)
-      service.findAll({ status: 'Active' }, {})
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('status = ?')
-      expect(mockDb.query.mock.calls[0][1]).toEqual(['Active'])
+      const result = service.findAll({ status: 'Active' }, {})
+      expect(result.edges).toHaveLength(1)
+      expect(result.edges[0].node).toEqual({ ship_id: 1, status: 'Active' })
     })
   })
 
   describe('findById', () => {
-    it('queries by ship_id and returns the row', () => {
+    it('looks up by ship_id and returns the row', () => {
       const row = { ship_id: 1, name: 'Enterprise', registry: 'NCC-1701' }
-      mockDb.queryOne.mockReturnValue(row)
+      mockDb.getById.mockReturnValue(row)
       const result = service.findById(1)
-      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Ships WHERE ship_id = ?', [1])
+      expect(mockDb.getById).toHaveBeenCalledWith('Ships', 1)
       expect(result).toEqual(row)
     })
 

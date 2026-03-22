@@ -1,0 +1,2882 @@
+[
+  {
+    "organization_id": 1,
+    "name": "21st Street Mission (Los Angeles)",
+    "type": null
+  },
+  {
+    "organization_id": 2,
+    "name": "23rd Jem'Hadar Division",
+    "type": "military"
+  },
+  {
+    "organization_id": 3,
+    "name": "A-6 excavation team",
+    "type": null
+  },
+  {
+    "organization_id": 4,
+    "name": "Academy of Starfleet Surgeons",
+    "type": "medical"
+  },
+  {
+    "organization_id": 5,
+    "name": "Academy wrestling team",
+    "type": "sport"
+  },
+  {
+    "organization_id": 6,
+    "name": "Acamarian Internal Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 7,
+    "name": "Acamarian Ruling Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 8,
+    "name": "Adams Research Group",
+    "type": "research"
+  },
+  {
+    "organization_id": 9,
+    "name": "Air Defense Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 10,
+    "name": "Air Defense Team",
+    "type": "military"
+  },
+  {
+    "organization_id": 11,
+    "name": "Air Group Ten",
+    "type": "military"
+  },
+  {
+    "organization_id": 12,
+    "name": "Air Materiel Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 13,
+    "name": "Airtrax",
+    "type": null
+  },
+  {
+    "organization_id": 14,
+    "name": "Akira Advanced Genetics Research Unit",
+    "type": "research"
+  },
+  {
+    "organization_id": 15,
+    "name": "Akritirian maximum security detention facility",
+    "type": null
+  },
+  {
+    "organization_id": 16,
+    "name": "Alliance (2154)",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 17,
+    "name": "Allied High Command",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 18,
+    "name": "Alsuran Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 19,
+    "name": "American Continent Institute",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 20,
+    "name": "American Resistance",
+    "type": null
+  },
+  {
+    "organization_id": 21,
+    "name": "Anabar Squadron",
+    "type": "military"
+  },
+  {
+    "organization_id": 22,
+    "name": "Andorian Agricultural Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 23,
+    "name": "Andorian Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 24,
+    "name": "Andorian Imperial Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 25,
+    "name": "Andorian Imperial Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 26,
+    "name": "Andorian Mining Consortium",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 27,
+    "name": "Angosian Senate",
+    "type": "government"
+  },
+  {
+    "organization_id": 28,
+    "name": "Angosian military",
+    "type": "military"
+  },
+  {
+    "organization_id": 29,
+    "name": "Ankeshtan K'til",
+    "type": null
+  },
+  {
+    "organization_id": 30,
+    "name": "Annari Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 31,
+    "name": "Antarian Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 32,
+    "name": "Appellation La Barre Contrôlée",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 33,
+    "name": "Argosy Foundation",
+    "type": null
+  },
+  {
+    "organization_id": 34,
+    "name": "Argrathi Authority",
+    "type": "government"
+  },
+  {
+    "organization_id": 35,
+    "name": "Ariannus Ministry of Health",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 36,
+    "name": "Army of Evil",
+    "type": "military"
+  },
+  {
+    "organization_id": 37,
+    "name": "Atlanta Braves",
+    "type": "sport"
+  },
+  {
+    "organization_id": 38,
+    "name": "Atlanta Falcons",
+    "type": "sport"
+  },
+  {
+    "organization_id": 39,
+    "name": "Atomic Energy Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 40,
+    "name": "Atrean government",
+    "type": "government"
+  },
+  {
+    "organization_id": 41,
+    "name": "B'omar Sovereignty",
+    "type": "government"
+  },
+  {
+    "organization_id": 42,
+    "name": "BMR",
+    "type": null
+  },
+  {
+    "organization_id": 43,
+    "name": "Ba'ul High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 44,
+    "name": "Bajoran Agricultural Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 45,
+    "name": "Bajoran Archaeological Institute",
+    "type": "research"
+  },
+  {
+    "organization_id": 46,
+    "name": "Bajoran Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 47,
+    "name": "Bajoran Executive Committee",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 48,
+    "name": "Bajoran Freight and Shipping Authority",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 49,
+    "name": "Bajoran Intelligence",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 50,
+    "name": "Bajoran Liaison Office",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 51,
+    "name": "Bajoran Militia",
+    "type": "military"
+  },
+  {
+    "organization_id": 52,
+    "name": "Bajoran Ministry of Commerce",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 53,
+    "name": "Bajoran Occupational Government",
+    "type": "government"
+  },
+  {
+    "organization_id": 54,
+    "name": "Bajoran Republic",
+    "type": "government"
+  },
+  {
+    "organization_id": 55,
+    "name": "Bajoran Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 56,
+    "name": "Bajoran Springball Association",
+    "type": "sport"
+  },
+  {
+    "organization_id": 57,
+    "name": "Bajoran civil police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 58,
+    "name": "Bank of Bolias",
+    "type": null
+  },
+  {
+    "organization_id": 59,
+    "name": "Bara Plenum",
+    "type": "government"
+  },
+  {
+    "organization_id": 60,
+    "name": "Barzanian Planetary Republic",
+    "type": "government"
+  },
+  {
+    "organization_id": 61,
+    "name": "Batal",
+    "type": null
+  },
+  {
+    "organization_id": 62,
+    "name": "Bay Area Rapid Transit",
+    "type": null
+  },
+  {
+    "organization_id": 63,
+    "name": "Baylor",
+    "type": "sport"
+  },
+  {
+    "organization_id": 64,
+    "name": "Beirut Research",
+    "type": "research"
+  },
+  {
+    "organization_id": 65,
+    "name": "Benthan Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 66,
+    "name": "Betazed government",
+    "type": "government"
+  },
+  {
+    "organization_id": 67,
+    "name": "Black Lives Matter",
+    "type": null
+  },
+  {
+    "organization_id": 68,
+    "name": "Board of Liquidators",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 69,
+    "name": "Borg Artifact Research Institute",
+    "type": "research"
+  },
+  {
+    "organization_id": 70,
+    "name": "Borg Collective",
+    "type": "government"
+  },
+  {
+    "organization_id": 71,
+    "name": "Boston Red Sox",
+    "type": "sport"
+  },
+  {
+    "organization_id": 72,
+    "name": "Botany Bay",
+    "type": null
+  },
+  {
+    "organization_id": 73,
+    "name": "Bothan government",
+    "type": "government"
+  },
+  {
+    "organization_id": 74,
+    "name": "Breen Confederacy",
+    "type": "government"
+  },
+  {
+    "organization_id": 75,
+    "name": "Breen-Dominion Alliance",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 76,
+    "name": "British Intelligence",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 77,
+    "name": "Brooklyn Dodgers",
+    "type": "sport"
+  },
+  {
+    "organization_id": 78,
+    "name": "Bruno Prison",
+    "type": null
+  },
+  {
+    "organization_id": 79,
+    "name": "Buffalo Solar Knights",
+    "type": "sport"
+  },
+  {
+    "organization_id": 80,
+    "name": "Bureau of Identification",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 81,
+    "name": "California Medical Board",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 82,
+    "name": "California State Assembly",
+    "type": null
+  },
+  {
+    "organization_id": 83,
+    "name": "Canadian Space Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 84,
+    "name": "Canamar",
+    "type": null
+  },
+  {
+    "organization_id": 85,
+    "name": "Cardassian Central Archives",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 86,
+    "name": "Cardassian Central Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 87,
+    "name": "Cardassian Communication Service",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 88,
+    "name": "Cardassian Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 89,
+    "name": "Cardassian Intelligence Bureau",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 90,
+    "name": "Cardassian Mechanized Infantry",
+    "type": "military"
+  },
+  {
+    "organization_id": 91,
+    "name": "Cardassian Militia 41",
+    "type": "military"
+  },
+  {
+    "organization_id": 92,
+    "name": "Cardassian Ministry for the Refutation of Bajoran Fairy Tales",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 93,
+    "name": "Cardassian Regional Court",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 94,
+    "name": "Cardassian Science Ministry",
+    "type": "military"
+  },
+  {
+    "organization_id": 95,
+    "name": "Cardassian Union",
+    "type": "government"
+  },
+  {
+    "organization_id": 96,
+    "name": "Cardassian military",
+    "type": "military"
+  },
+  {
+    "organization_id": 97,
+    "name": "Carraya IV",
+    "type": null
+  },
+  {
+    "organization_id": 98,
+    "name": "Central Bank of Bajor",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 99,
+    "name": "Central Bureau of Penology",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 100,
+    "name": "Central Intelligence Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 101,
+    "name": "Central Magistrate's Office",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 102,
+    "name": "Central Prison",
+    "type": null
+  },
+  {
+    "organization_id": 103,
+    "name": "Central Security (Malcor III)",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 104,
+    "name": "Central Security (Rigel X)",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 105,
+    "name": "Cestus Comets",
+    "type": "sport"
+  },
+  {
+    "organization_id": 106,
+    "name": "Chancellery Detention Center",
+    "type": null
+  },
+  {
+    "organization_id": 107,
+    "name": "Charlie One",
+    "type": "military"
+  },
+  {
+    "organization_id": 108,
+    "name": "Chicago Cubs",
+    "type": "sport"
+  },
+  {
+    "organization_id": 109,
+    "name": "Circle of Archeology",
+    "type": "research"
+  },
+  {
+    "organization_id": 110,
+    "name": "Circle of Exobiology",
+    "type": "research"
+  },
+  {
+    "organization_id": 111,
+    "name": "Circles of Science",
+    "type": "research"
+  },
+  {
+    "organization_id": 112,
+    "name": "City Prison",
+    "type": null
+  },
+  {
+    "organization_id": 113,
+    "name": "Civil Rights Movement",
+    "type": null
+  },
+  {
+    "organization_id": 114,
+    "name": "Cleveland Indians",
+    "type": "sport"
+  },
+  {
+    "organization_id": 115,
+    "name": "Coalition of Madena",
+    "type": "government"
+  },
+  {
+    "organization_id": 116,
+    "name": "Coalition of Planets",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 117,
+    "name": "College of Medical Sciences",
+    "type": "medical"
+  },
+  {
+    "organization_id": 118,
+    "name": "Colony Operations",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 119,
+    "name": "Command Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 120,
+    "name": "Commission on Political Traitors",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 121,
+    "name": "Confederacy of Surak",
+    "type": "government"
+  },
+  {
+    "organization_id": 122,
+    "name": "Confederate Army",
+    "type": "military"
+  },
+  {
+    "organization_id": 123,
+    "name": "Confederate States of America",
+    "type": "government"
+  },
+  {
+    "organization_id": 124,
+    "name": "Confederation Corps",
+    "type": "military"
+  },
+  {
+    "organization_id": 125,
+    "name": "Confederation of Earth",
+    "type": "government"
+  },
+  {
+    "organization_id": 126,
+    "name": "Congress of Economic Advisors",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 127,
+    "name": "Construction Workers Union",
+    "type": null
+  },
+  {
+    "organization_id": 128,
+    "name": "Corgal Research Center",
+    "type": "research"
+  },
+  {
+    "organization_id": 129,
+    "name": "Council of Ministers",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 130,
+    "name": "Council of Nobles",
+    "type": "government"
+  },
+  {
+    "organization_id": 131,
+    "name": "Council of Physicians",
+    "type": "medical"
+  },
+  {
+    "organization_id": 132,
+    "name": "Crenshaw Monarchs",
+    "type": "sport"
+  },
+  {
+    "organization_id": 133,
+    "name": "Crest Forest Fire District",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 134,
+    "name": "Criminal Investigations",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 135,
+    "name": "Cultural Contact Office",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 136,
+    "name": "Dartmoor",
+    "type": null
+  },
+  {
+    "organization_id": 137,
+    "name": "Daystrom Institute",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 138,
+    "name": "Daystrom Institute Archaeological Council",
+    "type": "research"
+  },
+  {
+    "organization_id": 139,
+    "name": "Delta Quadrant Boxing Commission",
+    "type": "sport"
+  },
+  {
+    "organization_id": 140,
+    "name": "Delta Team",
+    "type": "military"
+  },
+  {
+    "organization_id": 141,
+    "name": "Denobulan Infantry",
+    "type": "military"
+  },
+  {
+    "organization_id": 142,
+    "name": "Department of Cartography",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 143,
+    "name": "Department of Homeland Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 144,
+    "name": "Department of Investigation",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 145,
+    "name": "Department of State",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 146,
+    "name": "Department of Temporal Investigations",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 147,
+    "name": "Destroyer unit",
+    "type": "military"
+  },
+  {
+    "organization_id": 148,
+    "name": "Detapa Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 149,
+    "name": "Detention Complex 26",
+    "type": null
+  },
+  {
+    "organization_id": 150,
+    "name": "Detroit Police Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 151,
+    "name": "Devore Imperium",
+    "type": "government"
+  },
+  {
+    "organization_id": 152,
+    "name": "Division 14",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 153,
+    "name": "Division of Advanced Synthetic Research",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 154,
+    "name": "Division of Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 155,
+    "name": "Division of Planetary Operations",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 156,
+    "name": "Dominion",
+    "type": "government"
+  },
+  {
+    "organization_id": 157,
+    "name": "Dozaria",
+    "type": null
+  },
+  {
+    "organization_id": 158,
+    "name": "Dragons",
+    "type": "sport"
+  },
+  {
+    "organization_id": 159,
+    "name": "Duronom",
+    "type": null
+  },
+  {
+    "organization_id": 160,
+    "name": "Dylhuc Detention Center",
+    "type": null
+  },
+  {
+    "organization_id": 161,
+    "name": "Earth Cargo Authority",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 162,
+    "name": "Earth Cargo Service",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 163,
+    "name": "Earth Defense Network",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 164,
+    "name": "Eastern Coalition",
+    "type": null
+  },
+  {
+    "organization_id": 165,
+    "name": "Eighth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 166,
+    "name": "El-Keshtanktil",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 167,
+    "name": "Elba II asylum",
+    "type": "medical"
+  },
+  {
+    "organization_id": 168,
+    "name": "Elemspur Detention Center",
+    "type": null
+  },
+  {
+    "organization_id": 169,
+    "name": "Eleventh Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 170,
+    "name": "Elysian Ruling Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 171,
+    "name": "Emerald Chain Congress",
+    "type": "government"
+  },
+  {
+    "organization_id": 172,
+    "name": "Eminian High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 173,
+    "name": "Eminian Union",
+    "type": "government"
+  },
+  {
+    "organization_id": 174,
+    "name": "Enolian Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 175,
+    "name": "Errand of Mercy Meal Support",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 176,
+    "name": "Etanian Order",
+    "type": "government"
+  },
+  {
+    "organization_id": 177,
+    "name": "European Hegemony",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 178,
+    "name": "European Space Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 179,
+    "name": "Falcon Squadron",
+    "type": "military"
+  },
+  {
+    "organization_id": 180,
+    "name": "Federal Bureau of Investigation",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 181,
+    "name": "Federation Alliance",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 182,
+    "name": "Federation Archaeological Survey",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 183,
+    "name": "Federation Archaeology Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 184,
+    "name": "Federation Astronomical Committee",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 185,
+    "name": "Federation Astrophysical survey",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 186,
+    "name": "Federation Bureau of Industrialization",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 187,
+    "name": "Federation Bureau of Planetary Treaties",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 188,
+    "name": "Federation Cabinet",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 189,
+    "name": "Federation Central",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 190,
+    "name": "Federation Command",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 191,
+    "name": "Federation Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 192,
+    "name": "Federation Council on Exobiology",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 193,
+    "name": "Federation Diplomatic Corps",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 194,
+    "name": "Federation Food and Drug Administration",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 195,
+    "name": "Federation Grand Jury",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 196,
+    "name": "Federation Medical Academy",
+    "type": "medical"
+  },
+  {
+    "organization_id": 197,
+    "name": "Federation Medical Collection Station",
+    "type": "medical"
+  },
+  {
+    "organization_id": 198,
+    "name": "Federation Medical Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 199,
+    "name": "Federation Naval Patrol",
+    "type": "military"
+  },
+  {
+    "organization_id": 200,
+    "name": "Federation Science Bureau",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 201,
+    "name": "Federation Science Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 202,
+    "name": "Federation Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 203,
+    "name": "Federation Space Systems Division",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 204,
+    "name": "Federation Supreme Court",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 205,
+    "name": "Federation of State Medical Boards",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 206,
+    "name": "Fenris Rangers",
+    "type": null
+  },
+  {
+    "organization_id": 207,
+    "name": "Ferengi Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 208,
+    "name": "Ferengi Commerce Authority",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 209,
+    "name": "Ferengi Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 210,
+    "name": "Ferengi Gaming Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 211,
+    "name": "Ferengi Health Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 212,
+    "name": "Ferengi government",
+    "type": "government"
+  },
+  {
+    "organization_id": 213,
+    "name": "Fibonan High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 214,
+    "name": "Fibonan Republic",
+    "type": "government"
+  },
+  {
+    "organization_id": 215,
+    "name": "Fifth Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 216,
+    "name": "Fifth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 217,
+    "name": "Finance Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 218,
+    "name": "First Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 219,
+    "name": "First Federation",
+    "type": "government"
+  },
+  {
+    "organization_id": 220,
+    "name": "First Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 221,
+    "name": "First Republic (Bajoran)",
+    "type": "government"
+  },
+  {
+    "organization_id": 222,
+    "name": "First Republic (Cardassian)",
+    "type": "government"
+  },
+  {
+    "organization_id": 223,
+    "name": "Flight Test Division",
+    "type": "military"
+  },
+  {
+    "organization_id": 224,
+    "name": "Fourth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 225,
+    "name": "Freecloud Family Planning",
+    "type": "medical"
+  },
+  {
+    "organization_id": 226,
+    "name": "Freecloud Institute of Entertainment Robotics",
+    "type": "research"
+  },
+  {
+    "organization_id": 227,
+    "name": "Freecloud Orbital Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 228,
+    "name": "French Guards",
+    "type": "military"
+  },
+  {
+    "organization_id": 229,
+    "name": "French Resistance",
+    "type": null
+  },
+  {
+    "organization_id": 230,
+    "name": "Führer's Special Documentary Corps",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 231,
+    "name": "Galaxy wing",
+    "type": "military"
+  },
+  {
+    "organization_id": 232,
+    "name": "Gallitep labor camp",
+    "type": null
+  },
+  {
+    "organization_id": 233,
+    "name": "Geological Society",
+    "type": null
+  },
+  {
+    "organization_id": 234,
+    "name": "German Army",
+    "type": "military"
+  },
+  {
+    "organization_id": 235,
+    "name": "Gestapo",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 236,
+    "name": "Gestapo Command Headquarters",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 237,
+    "name": "Gideon Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 238,
+    "name": "Gorn Hegemony",
+    "type": "government"
+  },
+  {
+    "organization_id": 239,
+    "name": "Gotham City Bats",
+    "type": "sport"
+  },
+  {
+    "organization_id": 240,
+    "name": "Group Kikimorr",
+    "type": "military"
+  },
+  {
+    "organization_id": 241,
+    "name": "Grunsfeld Institute for Astrophysics",
+    "type": "research"
+  },
+  {
+    "organization_id": 242,
+    "name": "Haakonian Order",
+    "type": "government"
+  },
+  {
+    "organization_id": 243,
+    "name": "Habitat: Federation",
+    "type": null
+  },
+  {
+    "organization_id": 244,
+    "name": "Halkan Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 245,
+    "name": "Hekaran government",
+    "type": "government"
+  },
+  {
+    "organization_id": 246,
+    "name": "Hierarchy",
+    "type": "government"
+  },
+  {
+    "organization_id": 247,
+    "name": "Hierarchy Central Command",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 248,
+    "name": "Holy Regiments",
+    "type": "military"
+  },
+  {
+    "organization_id": 249,
+    "name": "Homestead Grays",
+    "type": "sport"
+  },
+  {
+    "organization_id": 250,
+    "name": "Honor Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 251,
+    "name": "House of Duras",
+    "type": null
+  },
+  {
+    "organization_id": 252,
+    "name": "Hucklesby Institute",
+    "type": "research"
+  },
+  {
+    "organization_id": 253,
+    "name": "Hutet labor camp",
+    "type": null
+  },
+  {
+    "organization_id": 254,
+    "name": "Iconian Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 255,
+    "name": "Immigration and Customs Enforcement",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 256,
+    "name": "Imperial Infantry Unit",
+    "type": "military"
+  },
+  {
+    "organization_id": 257,
+    "name": "International Space Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 258,
+    "name": "Internment Camp 371",
+    "type": null
+  },
+  {
+    "organization_id": 259,
+    "name": "Interspecies Medical Exchange",
+    "type": "medical"
+  },
+  {
+    "organization_id": 260,
+    "name": "Iowa State Police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 261,
+    "name": "Japanese Navy",
+    "type": "military"
+  },
+  {
+    "organization_id": 262,
+    "name": "Jaros II",
+    "type": null
+  },
+  {
+    "organization_id": 263,
+    "name": "Judge Advocate General",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 264,
+    "name": "KDA",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 265,
+    "name": "KGB",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 266,
+    "name": "Kaelon II Science Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 267,
+    "name": "Kaminar High Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 268,
+    "name": "Kar Zartkaar",
+    "type": null
+  },
+  {
+    "organization_id": 269,
+    "name": "Karemma Commerce Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 270,
+    "name": "Kasidy Yates Interstellar Freights",
+    "type": null
+  },
+  {
+    "organization_id": 271,
+    "name": "Kazon Order",
+    "type": "government"
+  },
+  {
+    "organization_id": 272,
+    "name": "Kelpien and Ba'ul Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 273,
+    "name": "Kelvan Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 274,
+    "name": "Kesat Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 275,
+    "name": "Keslovar",
+    "type": "research"
+  },
+  {
+    "organization_id": 276,
+    "name": "Klaestron government",
+    "type": "government"
+  },
+  {
+    "organization_id": 277,
+    "name": "Klingon Defense Force",
+    "type": "military"
+  },
+  {
+    "organization_id": 278,
+    "name": "Klingon Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 279,
+    "name": "Klingon High Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 280,
+    "name": "Klingon Imperial Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 281,
+    "name": "Klingon Medical Division",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 282,
+    "name": "Klingon Oversight Council",
+    "type": "military"
+  },
+  {
+    "organization_id": 283,
+    "name": "Klingon shock troops",
+    "type": "military"
+  },
+  {
+    "organization_id": 284,
+    "name": "Klingon-Cardassian Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 285,
+    "name": "Kobliad Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 286,
+    "name": "Kran-Tobol prison",
+    "type": null
+  },
+  {
+    "organization_id": 287,
+    "name": "Kreetassan Chancellery",
+    "type": "government"
+  },
+  {
+    "organization_id": 288,
+    "name": "Krenim Imperium",
+    "type": "government"
+  },
+  {
+    "organization_id": 289,
+    "name": "Kressarian Government",
+    "type": "government"
+  },
+  {
+    "organization_id": 290,
+    "name": "Krowtonan Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 291,
+    "name": "Kyrian forces",
+    "type": "military"
+  },
+  {
+    "organization_id": 292,
+    "name": "Kzinti government",
+    "type": "government"
+  },
+  {
+    "organization_id": 293,
+    "name": "L.A. Care",
+    "type": null
+  },
+  {
+    "organization_id": 294,
+    "name": "Lakeside",
+    "type": "sport"
+  },
+  {
+    "organization_id": 295,
+    "name": "Lazon II labor camp",
+    "type": null
+  },
+  {
+    "organization_id": 296,
+    "name": "Ledos Port Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 297,
+    "name": "Legation of Unity",
+    "type": "government"
+  },
+  {
+    "organization_id": 298,
+    "name": "Linnarean Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 299,
+    "name": "Logicians",
+    "type": "sport"
+  },
+  {
+    "organization_id": 300,
+    "name": "Logistical Support",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 301,
+    "name": "London Kings",
+    "type": "sport"
+  },
+  {
+    "organization_id": 302,
+    "name": "Los Angeles Police Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 303,
+    "name": "Luftwaffe regional command",
+    "type": "military"
+  },
+  {
+    "organization_id": 304,
+    "name": "Lunar V",
+    "type": null
+  },
+  {
+    "organization_id": 305,
+    "name": "Lurian Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 306,
+    "name": "Lysian Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 307,
+    "name": "Lyssarian Prime Conclave",
+    "type": "government"
+  },
+  {
+    "organization_id": 308,
+    "name": "MARDET",
+    "type": "military"
+  },
+  {
+    "organization_id": 309,
+    "name": "METI",
+    "type": null
+  },
+  {
+    "organization_id": 310,
+    "name": "MI5",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 311,
+    "name": "Major League Baseball",
+    "type": "sport"
+  },
+  {
+    "organization_id": 312,
+    "name": "Manzanar",
+    "type": null
+  },
+  {
+    "organization_id": 313,
+    "name": "Mari Constabulary",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 314,
+    "name": "Mariposas",
+    "type": "medical"
+  },
+  {
+    "organization_id": 315,
+    "name": "Markalian Law Enforcement",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 316,
+    "name": "Marvhil Infantry Division",
+    "type": "military"
+  },
+  {
+    "organization_id": 317,
+    "name": "Mathenite government",
+    "type": "government"
+  },
+  {
+    "organization_id": 318,
+    "name": "Mazarite High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 319,
+    "name": "Meldrar I",
+    "type": null
+  },
+  {
+    "organization_id": 320,
+    "name": "Merchant Marine",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 321,
+    "name": "Mexican Army",
+    "type": "military"
+  },
+  {
+    "organization_id": 322,
+    "name": "Military Assault Command Operations",
+    "type": "military"
+  },
+  {
+    "organization_id": 324,
+    "name": "Ministers' Court",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 325,
+    "name": "Ministry of Elders",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 326,
+    "name": "Ministry of Information",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 327,
+    "name": "Ministry of Justice",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 328,
+    "name": "Mokra Order",
+    "type": "government"
+  },
+  {
+    "organization_id": 329,
+    "name": "Monean Maritime Sovereignty",
+    "type": "government"
+  },
+  {
+    "organization_id": 330,
+    "name": "Motali Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 331,
+    "name": "Mountain (team)",
+    "type": "sport"
+  },
+  {
+    "organization_id": 332,
+    "name": "NATO",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 333,
+    "name": "NX Project",
+    "type": null
+  },
+  {
+    "organization_id": 334,
+    "name": "NX-Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 335,
+    "name": "National Aeronautics and Space Administration",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 336,
+    "name": "National Police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 337,
+    "name": "National Recovery Administration",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 338,
+    "name": "National Rifle Association",
+    "type": null
+  },
+  {
+    "organization_id": 339,
+    "name": "National Security Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 340,
+    "name": "Nechisti Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 341,
+    "name": "New Sydney Police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 342,
+    "name": "New United Nations",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 343,
+    "name": "New York City Police Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 344,
+    "name": "New York Giants",
+    "type": "sport"
+  },
+  {
+    "organization_id": 345,
+    "name": "New York Yankees",
+    "type": "sport"
+  },
+  {
+    "organization_id": 346,
+    "name": "New Zealand Penal Settlement",
+    "type": null
+  },
+  {
+    "organization_id": 347,
+    "name": "Ni'Var Government",
+    "type": "government"
+  },
+  {
+    "organization_id": 348,
+    "name": "Niners",
+    "type": "sport"
+  },
+  {
+    "organization_id": 349,
+    "name": "Ninth Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 350,
+    "name": "Ninth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 351,
+    "name": "Nova Squadron",
+    "type": "military"
+  },
+  {
+    "organization_id": 352,
+    "name": "Nyberrite Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 353,
+    "name": "Nygean Detention Force",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 354,
+    "name": "Nygean prison ship",
+    "type": null
+  },
+  {
+    "organization_id": 355,
+    "name": "Obsidian Order",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 356,
+    "name": "Orbital Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 357,
+    "name": "Orbital traffic control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 358,
+    "name": "Orion Syndicate",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 359,
+    "name": "Orion Union",
+    "type": "government"
+  },
+  {
+    "organization_id": 360,
+    "name": "Osaarian merchant fleet",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 361,
+    "name": "Paradan government",
+    "type": "government"
+  },
+  {
+    "organization_id": 362,
+    "name": "Parliament of Angel I",
+    "type": "government"
+  },
+  {
+    "organization_id": 363,
+    "name": "Pathfinder Project",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 364,
+    "name": "Philbis Infantry Group",
+    "type": "military"
+  },
+  {
+    "organization_id": 365,
+    "name": "Pike City Pioneers",
+    "type": "sport"
+  },
+  {
+    "organization_id": 366,
+    "name": "Planetary Baseball League",
+    "type": "sport"
+  },
+  {
+    "organization_id": 367,
+    "name": "Port of San Francisco",
+    "type": null
+  },
+  {
+    "organization_id": 368,
+    "name": "Portage Creek Police Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 369,
+    "name": "Praetorian Guard",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 370,
+    "name": "Prytt Security Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 371,
+    "name": "Purification squad",
+    "type": "military"
+  },
+  {
+    "organization_id": 372,
+    "name": "Q Continuum",
+    "type": "government"
+  },
+  {
+    "organization_id": 373,
+    "name": "Qomar Planetary Alliance",
+    "type": "government"
+  },
+  {
+    "organization_id": 374,
+    "name": "Quarren Ministry of Health",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 375,
+    "name": "Quaternary star systems",
+    "type": "government"
+  },
+  {
+    "organization_id": 376,
+    "name": "R'ongovian Protectorate",
+    "type": "government"
+  },
+  {
+    "organization_id": 377,
+    "name": "Ravinok",
+    "type": null
+  },
+  {
+    "organization_id": 378,
+    "name": "Red River",
+    "type": "sport"
+  },
+  {
+    "organization_id": 379,
+    "name": "Red Squad",
+    "type": "military"
+  },
+  {
+    "organization_id": 380,
+    "name": "Rehab Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 381,
+    "name": "Resuscitation team",
+    "type": "medical"
+  },
+  {
+    "organization_id": 382,
+    "name": "Rigel Beta",
+    "type": "government"
+  },
+  {
+    "organization_id": 383,
+    "name": "Rigelian Trade Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 384,
+    "name": "Risa Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 385,
+    "name": "Risa Hedony",
+    "type": "government"
+  },
+  {
+    "organization_id": 386,
+    "name": "Rog Prison",
+    "type": null
+  },
+  {
+    "organization_id": 387,
+    "name": "Roman Empire (892-IV)",
+    "type": "government"
+  },
+  {
+    "organization_id": 388,
+    "name": "Romulan Astrophysical Academy",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 389,
+    "name": "Romulan Continuing Committee",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 390,
+    "name": "Romulan Free State",
+    "type": "government"
+  },
+  {
+    "organization_id": 391,
+    "name": "Romulan Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 392,
+    "name": "Romulan Ministry of Science",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 393,
+    "name": "Romulan Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 394,
+    "name": "Romulan Senate",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 395,
+    "name": "Romulan Star Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 396,
+    "name": "Romulan War Plans Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 397,
+    "name": "Romulan military",
+    "type": "military"
+  },
+  {
+    "organization_id": 398,
+    "name": "Romulan underground movement",
+    "type": null
+  },
+  {
+    "organization_id": 399,
+    "name": "Roquarri Imperium",
+    "type": "government"
+  },
+  {
+    "organization_id": 400,
+    "name": "Royal Air Force",
+    "type": "military"
+  },
+  {
+    "organization_id": 401,
+    "name": "Royal Family of Hysperia",
+    "type": "government"
+  },
+  {
+    "organization_id": 402,
+    "name": "Royal Family of Luria",
+    "type": "government"
+  },
+  {
+    "organization_id": 403,
+    "name": "Royal Navy",
+    "type": "military"
+  },
+  {
+    "organization_id": 404,
+    "name": "Ruling Tribunal of the Aquans",
+    "type": "government"
+  },
+  {
+    "organization_id": 405,
+    "name": "Rura Penthe",
+    "type": null
+  },
+  {
+    "organization_id": 406,
+    "name": "Russian Space Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 407,
+    "name": "Rutian police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 408,
+    "name": "SFC Division",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 409,
+    "name": "San Francisco Department of Sanitation",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 410,
+    "name": "San Francisco Giants",
+    "type": "sport"
+  },
+  {
+    "organization_id": 411,
+    "name": "San Francisco Municipal Government",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 412,
+    "name": "San Francisco Municipal Railway",
+    "type": null
+  },
+  {
+    "organization_id": 413,
+    "name": "San Francisco Police Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 414,
+    "name": "Sanctuary District A Admin Services",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 415,
+    "name": "Sanctuary District Police",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 416,
+    "name": "Schutzstaffel",
+    "type": "military"
+  },
+  {
+    "organization_id": 417,
+    "name": "Science Council",
+    "type": "research"
+  },
+  {
+    "organization_id": 418,
+    "name": "Science Institute of Bilana III",
+    "type": "research"
+  },
+  {
+    "organization_id": 419,
+    "name": "Search for Extra Terrestrial Intelligence",
+    "type": "research"
+  },
+  {
+    "organization_id": 420,
+    "name": "Second Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 421,
+    "name": "Second Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 422,
+    "name": "Second Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 423,
+    "name": "Section 31",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 424,
+    "name": "Sector Command",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 425,
+    "name": "Security Directorate",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 426,
+    "name": "Self-Aware Megalomaniacal Computer Storage",
+    "type": "research"
+  },
+  {
+    "organization_id": 427,
+    "name": "Sepian Commodities Exchange",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 428,
+    "name": "Seventh Defense Contingent",
+    "type": "military"
+  },
+  {
+    "organization_id": 429,
+    "name": "Seventh Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 430,
+    "name": "Seventh Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 431,
+    "name": "Seventh Tactical Wing",
+    "type": "military"
+  },
+  {
+    "organization_id": 432,
+    "name": "Sheliak Corporate",
+    "type": "government"
+  },
+  {
+    "organization_id": 433,
+    "name": "Sikla Medical Facility",
+    "type": "medical"
+  },
+  {
+    "organization_id": 434,
+    "name": "Sing Sing",
+    "type": null
+  },
+  {
+    "organization_id": 435,
+    "name": "Singha refugee camp",
+    "type": null
+  },
+  {
+    "organization_id": 436,
+    "name": "Sixth Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 437,
+    "name": "Sixth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 438,
+    "name": "Slaver Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 439,
+    "name": "Son'a Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 440,
+    "name": "Son'a Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 441,
+    "name": "Sovereign Dynasty of Krios Prime",
+    "type": "government"
+  },
+  {
+    "organization_id": 442,
+    "name": "Space Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 443,
+    "name": "Space Bureau",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 444,
+    "name": "Space Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 445,
+    "name": "Space Systems Cargo Service",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 446,
+    "name": "Spanish Armada",
+    "type": "military"
+  },
+  {
+    "organization_id": 447,
+    "name": "Special Weapons and Tactics",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 448,
+    "name": "Star Fleet Battle Group Omega",
+    "type": "military"
+  },
+  {
+    "organization_id": 449,
+    "name": "Starbase Command",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 450,
+    "name": "Stardust City Reproductive Health Services",
+    "type": "medical"
+  },
+  {
+    "organization_id": 451,
+    "name": "Starfleet Command",
+    "type": null
+  },
+  {
+    "organization_id": 453,
+    "name": "Starfleet Dental",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 454,
+    "name": "Starfleet Fleets",
+    "type": "military"
+  },
+  {
+    "organization_id": 455,
+    "name": "Starfleet Intelligence",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 456,
+    "name": "Starfleet Medical",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 457,
+    "name": "Starfleet Medical Academy",
+    "type": "medical"
+  },
+  {
+    "organization_id": 458,
+    "name": "Starfleet Medical Surgeon General",
+    "type": "medical"
+  },
+  {
+    "organization_id": 459,
+    "name": "Starfleet Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 460,
+    "name": "Starfleet Surgeons",
+    "type": "medical"
+  },
+  {
+    "organization_id": 461,
+    "name": "Strategic Air Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 462,
+    "name": "Strategic Command Matrix",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 463,
+    "name": "Stryker",
+    "type": "medical"
+  },
+  {
+    "organization_id": 464,
+    "name": "Suliban government",
+    "type": "government"
+  },
+  {
+    "organization_id": 465,
+    "name": "Supreme Court of the United States",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 466,
+    "name": "Supreme Tribunal",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 467,
+    "name": "Symbiosis Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 468,
+    "name": "Symbiosis Evaluation Board",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 469,
+    "name": "Tactical Air Command",
+    "type": "military"
+  },
+  {
+    "organization_id": 470,
+    "name": "Tactical Command Center",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 471,
+    "name": "Takret Militia",
+    "type": "military"
+  },
+  {
+    "organization_id": 472,
+    "name": "Tal Shiar",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 473,
+    "name": "Talarian Republic",
+    "type": "government"
+  },
+  {
+    "organization_id": 474,
+    "name": "Talaxian Defense Forces",
+    "type": "military"
+  },
+  {
+    "organization_id": 475,
+    "name": "Tanaline Propulsion Laboratory",
+    "type": "research"
+  },
+  {
+    "organization_id": 476,
+    "name": "Tantalus Penal Colony",
+    "type": "medical"
+  },
+  {
+    "organization_id": 477,
+    "name": "Tantalus V",
+    "type": null
+  },
+  {
+    "organization_id": 478,
+    "name": "Tanugan security force",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 479,
+    "name": "Tarahong detention center",
+    "type": null
+  },
+  {
+    "organization_id": 480,
+    "name": "Tarahong government",
+    "type": "government"
+  },
+  {
+    "organization_id": 481,
+    "name": "Tars Lamora",
+    "type": null
+  },
+  {
+    "organization_id": 482,
+    "name": "Task Force Three",
+    "type": "military"
+  },
+  {
+    "organization_id": 483,
+    "name": "Teenaxi Delegation",
+    "type": "government"
+  },
+  {
+    "organization_id": 484,
+    "name": "Tellun",
+    "type": null
+  },
+  {
+    "organization_id": 485,
+    "name": "Telsian Security",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 486,
+    "name": "Temporal Integrity Commission",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 487,
+    "name": "Temporal Mechanics Department",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 488,
+    "name": "Ten Tribes",
+    "type": "government"
+  },
+  {
+    "organization_id": 489,
+    "name": "Tenth Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 490,
+    "name": "Terra Prime",
+    "type": null
+  },
+  {
+    "organization_id": 491,
+    "name": "Terraform Command",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 492,
+    "name": "Terran Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 493,
+    "name": "Terran cabinet",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 494,
+    "name": "The Patriarchy",
+    "type": "government"
+  },
+  {
+    "organization_id": 495,
+    "name": "Third Academy Training Wing",
+    "type": "military"
+  },
+  {
+    "organization_id": 496,
+    "name": "Third Assault Group",
+    "type": "military"
+  },
+  {
+    "organization_id": 497,
+    "name": "Third Battalion",
+    "type": "military"
+  },
+  {
+    "organization_id": 498,
+    "name": "Third Fleet",
+    "type": "military"
+  },
+  {
+    "organization_id": 499,
+    "name": "Third Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 500,
+    "name": "Tholian Assembly",
+    "type": "government"
+  },
+  {
+    "organization_id": 501,
+    "name": "Tkon Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 502,
+    "name": "Tombs",
+    "type": null
+  },
+  {
+    "organization_id": 503,
+    "name": "Trabe Governing Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 504,
+    "name": "Trans Francisco",
+    "type": null
+  },
+  {
+    "organization_id": 505,
+    "name": "Trelonian government",
+    "type": "government"
+  },
+  {
+    "organization_id": 506,
+    "name": "Tribunal of Alpha III",
+    "type": "government"
+  },
+  {
+    "organization_id": 507,
+    "name": "Trill Science Ministry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 508,
+    "name": "Trillian government",
+    "type": "government"
+  },
+  {
+    "organization_id": 509,
+    "name": "Troyius Tribunal",
+    "type": "government"
+  },
+  {
+    "organization_id": 510,
+    "name": "Tulgana IV Space Traffic Control",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 511,
+    "name": "Twelfth Order",
+    "type": "military"
+  },
+  {
+    "organization_id": 512,
+    "name": "Tycho Laboratories",
+    "type": "research"
+  },
+  {
+    "organization_id": 513,
+    "name": "UESPA headquarters",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 514,
+    "name": "UFP Standards Measurement Bureau",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 515,
+    "name": "UFP Treaty Office",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 516,
+    "name": "US 102nd New York Infantry",
+    "type": "military"
+  },
+  {
+    "organization_id": 517,
+    "name": "US 29th Infantry Division",
+    "type": "military"
+  },
+  {
+    "organization_id": 518,
+    "name": "US 498th Airbase Group",
+    "type": "military"
+  },
+  {
+    "organization_id": 519,
+    "name": "US 5th Armored Infantry",
+    "type": "military"
+  },
+  {
+    "organization_id": 520,
+    "name": "US 6th Army",
+    "type": "military"
+  },
+  {
+    "organization_id": 521,
+    "name": "US 7th Cavalry Regiment",
+    "type": "military"
+  },
+  {
+    "organization_id": 522,
+    "name": "United Earth",
+    "type": "government"
+  },
+  {
+    "organization_id": 523,
+    "name": "United Earth Defense Force",
+    "type": "military"
+  },
+  {
+    "organization_id": 524,
+    "name": "United Earth Diplomatic Corps",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 525,
+    "name": "United Earth Military",
+    "type": "military"
+  },
+  {
+    "organization_id": 526,
+    "name": "United Earth Space Probe Agency",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 527,
+    "name": "United Earth and Titan",
+    "type": "government"
+  },
+  {
+    "organization_id": 528,
+    "name": "United Federation of Planets",
+    "type": "government"
+  },
+  {
+    "organization_id": 529,
+    "name": "United Nations",
+    "type": "intergovernmental"
+  },
+  {
+    "organization_id": 530,
+    "name": "United Services Organization",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 531,
+    "name": "United States Air Force",
+    "type": "military"
+  },
+  {
+    "organization_id": 532,
+    "name": "United States Air Force Air Police",
+    "type": "military"
+  },
+  {
+    "organization_id": 533,
+    "name": "United States Army",
+    "type": "military"
+  },
+  {
+    "organization_id": 534,
+    "name": "United States Army Air Forces",
+    "type": "military"
+  },
+  {
+    "organization_id": 535,
+    "name": "United States Congress",
+    "type": null
+  },
+  {
+    "organization_id": 536,
+    "name": "United States Forest Service",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 537,
+    "name": "United States Government",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 538,
+    "name": "United States Marine Corps",
+    "type": "military"
+  },
+  {
+    "organization_id": 539,
+    "name": "United States National Guard",
+    "type": "military"
+  },
+  {
+    "organization_id": 540,
+    "name": "United States Navy",
+    "type": "military"
+  },
+  {
+    "organization_id": 541,
+    "name": "United States Postal Service",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 542,
+    "name": "United States military",
+    "type": "military"
+  },
+  {
+    "organization_id": 543,
+    "name": "University of Nairobi",
+    "type": "medical"
+  },
+  {
+    "organization_id": 544,
+    "name": "V'Shar",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 545,
+    "name": "V'draysh",
+    "type": null
+  },
+  {
+    "organization_id": 546,
+    "name": "Vaskan forces",
+    "type": "military"
+  },
+  {
+    "organization_id": 547,
+    "name": "Vedek Assembly",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 548,
+    "name": "Velos VII internment camp",
+    "type": null
+  },
+  {
+    "organization_id": 549,
+    "name": "Vendikar High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 550,
+    "name": "Vidiian Sodality",
+    "type": "government"
+  },
+  {
+    "organization_id": 551,
+    "name": "Vlugta government",
+    "type": "government"
+  },
+  {
+    "organization_id": 552,
+    "name": "Vogt Public Health Clinic",
+    "type": "medical"
+  },
+  {
+    "organization_id": 553,
+    "name": "Vori Defense Contingent",
+    "type": "military"
+  },
+  {
+    "organization_id": 554,
+    "name": "Vosk's squadron",
+    "type": "military"
+  },
+  {
+    "organization_id": 555,
+    "name": "Vulcan Advisory Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 556,
+    "name": "Vulcan Expeditionary Group",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 557,
+    "name": "Vulcan Genome Registry",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 558,
+    "name": "Vulcan High Command",
+    "type": "government"
+  },
+  {
+    "organization_id": 559,
+    "name": "Vulcan High Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 560,
+    "name": "Vulcan Intelligence",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 561,
+    "name": "Vulcan Isolationist Movement",
+    "type": null
+  },
+  {
+    "organization_id": 562,
+    "name": "Vulcan Ministry of Justice",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 563,
+    "name": "Vulcan National Merchant Fleet",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 564,
+    "name": "Vulcan Science Academy",
+    "type": "research"
+  },
+  {
+    "organization_id": 565,
+    "name": "Vulcan Science Council",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 566,
+    "name": "Vulcan Science Directorate",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 567,
+    "name": "Vulcan Space Central",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 568,
+    "name": "Vulcan Space Program",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 569,
+    "name": "Wadfelk Ground Tactical Training Division",
+    "type": "military"
+  },
+  {
+    "organization_id": 570,
+    "name": "Warp Five program",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 571,
+    "name": "Wehrmacht",
+    "type": "military"
+  },
+  {
+    "organization_id": 572,
+    "name": "Weiss Institute for Theoretical Physics",
+    "type": "research"
+  },
+  {
+    "organization_id": 573,
+    "name": "Xindi Council",
+    "type": "government"
+  },
+  {
+    "organization_id": 574,
+    "name": "Xindi Empire",
+    "type": "government"
+  },
+  {
+    "organization_id": 575,
+    "name": "Yan-Isleth",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 576,
+    "name": "Yoyodyne Propulsion Systems",
+    "type": "government agency"
+  },
+  {
+    "organization_id": 577,
+    "name": "Zefram Cochrane Science Institute",
+    "type": "research"
+  },
+  {
+    "organization_id": 578,
+    "name": "Zhat Vash",
+    "type": null
+  }
+]

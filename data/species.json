@@ -1,0 +1,4544 @@
+[
+  {
+    "species_id": 1,
+    "name": "892-IV native",
+    "homeworld": "892-IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 2,
+    "name": "Aaamazzarite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 3,
+    "name": "Aamaarazan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 4,
+    "name": "Abaddon's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 5,
+    "name": "Abdon's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 6,
+    "name": "Abronian",
+    "homeworld": "Abronian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 7,
+    "name": "Acamarian",
+    "homeworld": "Acamar III",
+    "warp_capable": true
+  },
+  {
+    "species_id": 8,
+    "name": "Addix's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 9,
+    "name": "Aenar",
+    "homeworld": "Andoria",
+    "warp_capable": false
+  },
+  {
+    "species_id": 10,
+    "name": "Aia native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 11,
+    "name": "Akaali",
+    "homeworld": "Akaali homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 12,
+    "name": "Akima's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 13,
+    "name": "Akoszonam",
+    "homeworld": "Akoszonam homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 14,
+    "name": "Akritirian",
+    "homeworld": "Akritiri",
+    "warp_capable": true
+  },
+  {
+    "species_id": 15,
+    "name": "Aksani",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 16,
+    "name": "Alcyone",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 17,
+    "name": "Aldean",
+    "homeworld": "Aldea",
+    "warp_capable": false
+  },
+  {
+    "species_id": 18,
+    "name": "Alfarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 19,
+    "name": "Algolian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 20,
+    "name": "Allasomorph",
+    "homeworld": "Daled IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 21,
+    "name": "Allos' species",
+    "homeworld": "Allos' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 22,
+    "name": "Alshain",
+    "homeworld": "Alshain IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 23,
+    "name": "Altoran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 24,
+    "name": "Anabaj",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 25,
+    "name": "Ancient Ones",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 26,
+    "name": "Ancient humanoid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 27,
+    "name": "Ancient insectoid",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 28,
+    "name": "Andoran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 29,
+    "name": "Andorian",
+    "homeworld": "Andoria",
+    "warp_capable": true
+  },
+  {
+    "species_id": 30,
+    "name": "Angel I native",
+    "homeworld": "Angel I",
+    "warp_capable": false
+  },
+  {
+    "species_id": 31,
+    "name": "Angosian",
+    "homeworld": "Angosia III",
+    "warp_capable": true
+  },
+  {
+    "species_id": 32,
+    "name": "Ankari",
+    "homeworld": "Ankari homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 33,
+    "name": "Annari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 34,
+    "name": "Antaran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 35,
+    "name": "Antarian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 36,
+    "name": "Antedian",
+    "homeworld": "Antede III",
+    "warp_capable": true
+  },
+  {
+    "species_id": 37,
+    "name": "Antican",
+    "homeworld": "Antica",
+    "warp_capable": false
+  },
+  {
+    "species_id": 38,
+    "name": "Antidean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 39,
+    "name": "Antos native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 40,
+    "name": "Apergosian",
+    "homeworld": "Apergos",
+    "warp_capable": false
+  },
+  {
+    "species_id": 41,
+    "name": "Aquan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 42,
+    "name": "Aquathawn homeworld native",
+    "homeworld": "Aquathawn homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 43,
+    "name": "Arbazan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 44,
+    "name": "Arcadian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 45,
+    "name": "Arcturian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 46,
+    "name": "Ardanan",
+    "homeworld": "Ardana",
+    "warp_capable": true
+  },
+  {
+    "species_id": 47,
+    "name": "Areore",
+    "homeworld": "Areolus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 48,
+    "name": "Argelian",
+    "homeworld": "Argelius II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 49,
+    "name": "Argosian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 50,
+    "name": "Argrathi",
+    "homeworld": "Argratha",
+    "warp_capable": false
+  },
+  {
+    "species_id": 51,
+    "name": "Arin'Sen",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 52,
+    "name": "Ariolo",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 53,
+    "name": "Arkarian",
+    "homeworld": "Arkaria",
+    "warp_capable": false
+  },
+  {
+    "species_id": 54,
+    "name": "Arkenite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 55,
+    "name": "Arkonian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 56,
+    "name": "Arret native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 57,
+    "name": "Arretan",
+    "homeworld": "Arret",
+    "warp_capable": false
+  },
+  {
+    "species_id": 58,
+    "name": "Arrithean",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 59,
+    "name": "Atrean",
+    "homeworld": "Atrea IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 60,
+    "name": "Augris' species",
+    "homeworld": "Augris' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 61,
+    "name": "Aurelian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 62,
+    "name": "Australopithecine",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 63,
+    "name": "Axanar",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 64,
+    "name": "Axum's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 65,
+    "name": "Ayt",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 66,
+    "name": "B'Saari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 67,
+    "name": "B'omar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 68,
+    "name": "Ba'Neth",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 69,
+    "name": "Ba'ku",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 70,
+    "name": "Ba'ul",
+    "homeworld": "Kaminar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 71,
+    "name": "Baezian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 72,
+    "name": "Bajoran",
+    "homeworld": "Bajor",
+    "warp_capable": true
+  },
+  {
+    "species_id": 73,
+    "name": "Balok's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 74,
+    "name": "Bandi",
+    "homeworld": "Deneb IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 75,
+    "name": "Banea",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 76,
+    "name": "Bardeezan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 77,
+    "name": "Barkonian",
+    "homeworld": "Barkon IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 78,
+    "name": "Barolian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 79,
+    "name": "Barzan",
+    "homeworld": "Barzan II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 80,
+    "name": "Bendali",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 81,
+    "name": "Benkaran",
+    "homeworld": "Delta Quadrant",
+    "warp_capable": false
+  },
+  {
+    "species_id": 82,
+    "name": "Benthan",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 83,
+    "name": "Benzenite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 84,
+    "name": "Benzite",
+    "homeworld": "Benzar",
+    "warp_capable": true
+  },
+  {
+    "species_id": 85,
+    "name": "Berellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 86,
+    "name": "Beta Annari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 87,
+    "name": "Beta Antares IV native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 88,
+    "name": "Beta Renner cloud",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 89,
+    "name": "Beta XII-A entity",
+    "homeworld": "Beta XII-A",
+    "warp_capable": false
+  },
+  {
+    "species_id": 90,
+    "name": "Betan",
+    "homeworld": "Beta III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 91,
+    "name": "Betarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 92,
+    "name": "Betazoid",
+    "homeworld": "Betazed",
+    "warp_capable": true
+  },
+  {
+    "species_id": 93,
+    "name": "Betelgeusian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 94,
+    "name": "Bolian",
+    "homeworld": "Bolarus IX",
+    "warp_capable": true
+  },
+  {
+    "species_id": 95,
+    "name": "Boltzmann brain",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 96,
+    "name": "Boraalan",
+    "homeworld": "Boraal II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 97,
+    "name": "Boray",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 98,
+    "name": "Borg",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 99,
+    "name": "Borothan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 100,
+    "name": "Boslic",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 101,
+    "name": "Botha",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 102,
+    "name": "Bozelian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 103,
+    "name": "Bre'el IV native",
+    "homeworld": "Bre'el IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 104,
+    "name": "Breen",
+    "homeworld": "Breen system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 105,
+    "name": "Brekkian",
+    "homeworld": "Brekka",
+    "warp_capable": false
+  },
+  {
+    "species_id": 106,
+    "name": "Brenari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 107,
+    "name": "Brikar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 108,
+    "name": "Briori",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 109,
+    "name": "Brunali",
+    "homeworld": "Brunali homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 110,
+    "name": "Bynar",
+    "homeworld": "Bynaus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 111,
+    "name": "Byzallian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 112,
+    "name": "Bzzit Khaht",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 113,
+    "name": "Caatati",
+    "homeworld": "Caatati homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 114,
+    "name": "Cairn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 115,
+    "name": "Caitian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 116,
+    "name": "Calamarain",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 117,
+    "name": "Calation",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 118,
+    "name": "Caldonian",
+    "homeworld": "Caldonia",
+    "warp_capable": true
+  },
+  {
+    "species_id": 119,
+    "name": "Camorite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 120,
+    "name": "Cancri",
+    "homeworld": "Cancri IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 121,
+    "name": "Capellan",
+    "homeworld": "Capella IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 122,
+    "name": "Cardassian",
+    "homeworld": "Cardassia Prime",
+    "warp_capable": true
+  },
+  {
+    "species_id": 123,
+    "name": "Catullan",
+    "homeworld": "Catulla",
+    "warp_capable": true
+  },
+  {
+    "species_id": 124,
+    "name": "Chalnoth",
+    "homeworld": "Chalna",
+    "warp_capable": true
+  },
+  {
+    "species_id": 125,
+    "name": "Chameloid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 126,
+    "name": "Chandran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 127,
+    "name": "Changeling",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 128,
+    "name": "Chaos entity",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 129,
+    "name": "Chenari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 130,
+    "name": "Cheron native",
+    "homeworld": "Cheron",
+    "warp_capable": true
+  },
+  {
+    "species_id": 131,
+    "name": "Chessu",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 132,
+    "name": "Chokuzan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 133,
+    "name": "Chrysalian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 134,
+    "name": "Ckaptir",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 135,
+    "name": "Clicket",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 136,
+    "name": "Co-Co's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 137,
+    "name": "Coalition of Madena species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 138,
+    "name": "Coridanite",
+    "homeworld": "Coridan",
+    "warp_capable": false
+  },
+  {
+    "species_id": 139,
+    "name": "Corvallen",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 140,
+    "name": "Cosimo's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 141,
+    "name": "Coverian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 142,
+    "name": "Cravic",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 143,
+    "name": "Crepusculan",
+    "homeworld": "Crepusculan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 144,
+    "name": "Crystalline Entity",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 145,
+    "name": "Cymari",
+    "homeworld": "Cymari homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 146,
+    "name": "Cytherian",
+    "homeworld": "Cytherian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 147,
+    "name": "Cytoplasmic lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 148,
+    "name": "D'Arsay",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 149,
+    "name": "Dachlyd",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 150,
+    "name": "Daelen's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 151,
+    "name": "Dala's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 152,
+    "name": "Daliwakan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 153,
+    "name": "Daran V native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 154,
+    "name": "Dark matter lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 155,
+    "name": "Deakohn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 156,
+    "name": "Debrune",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 157,
+    "name": "Dee'Ahn's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 158,
+    "name": "Dekendi",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 159,
+    "name": "Delbian",
+    "homeworld": "Delb II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 160,
+    "name": "Deleb",
+    "homeworld": "Persephone III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 161,
+    "name": "Delta Theta III aborigine",
+    "homeworld": "Delta Theta III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 162,
+    "name": "Deltan",
+    "homeworld": "Delta IV",
+    "warp_capable": true
+  },
+  {
+    "species_id": 163,
+    "name": "Demerian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 164,
+    "name": "Denebian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 165,
+    "name": "Denobulan",
+    "homeworld": "Denobula",
+    "warp_capable": true
+  },
+  {
+    "species_id": 166,
+    "name": "Devidian",
+    "homeworld": "Devidia II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 167,
+    "name": "Devore",
+    "homeworld": "Devore homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 168,
+    "name": "Dinaali",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 169,
+    "name": "Distortion ring",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 170,
+    "name": "Dokkaran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 171,
+    "name": "Doopler",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 172,
+    "name": "Doosodarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 173,
+    "name": "Dopterian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 174,
+    "name": "Dosi",
+    "homeworld": "Dosi homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 175,
+    "name": "Douwd",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 176,
+    "name": "Drakian Forest dweller",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 177,
+    "name": "Dralian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 178,
+    "name": "Dramen",
+    "homeworld": "Dramia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 179,
+    "name": "Drayan",
+    "homeworld": "Drayan II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 180,
+    "name": "Draylaxian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 181,
+    "name": "Dream Alien",
+    "homeworld": "Dream Alien's homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 182,
+    "name": "Drella",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 183,
+    "name": "Drellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 184,
+    "name": "Dreman",
+    "homeworld": "Benev Selec",
+    "warp_capable": false
+  },
+  {
+    "species_id": 185,
+    "name": "Drookmani",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 186,
+    "name": "Druoda",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 187,
+    "name": "Dulainian",
+    "homeworld": "Dulaine",
+    "warp_capable": false
+  },
+  {
+    "species_id": 188,
+    "name": "Edo",
+    "homeworld": "Rubicun III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 189,
+    "name": "Edosian",
+    "homeworld": "Edos",
+    "warp_capable": false
+  },
+  {
+    "species_id": 190,
+    "name": "Efrosian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 191,
+    "name": "Ekosian",
+    "homeworld": "Ekos",
+    "warp_capable": false
+  },
+  {
+    "species_id": 192,
+    "name": "El-Aurian",
+    "homeworld": "El-Aurian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 193,
+    "name": "Elasian",
+    "homeworld": "Elas",
+    "warp_capable": false
+  },
+  {
+    "species_id": 194,
+    "name": "Elaysian",
+    "homeworld": "Elaysian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 195,
+    "name": "Electromagnetic lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 196,
+    "name": "Ellora",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 197,
+    "name": "Em/3/Green's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 198,
+    "name": "Emergent lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 199,
+    "name": "Emi's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 200,
+    "name": "Eminian",
+    "homeworld": "Eminiar VII",
+    "warp_capable": false
+  },
+  {
+    "species_id": 201,
+    "name": "Enaran",
+    "homeworld": "Enara Prime",
+    "warp_capable": true
+  },
+  {
+    "species_id": 202,
+    "name": "Enderprizian",
+    "homeworld": "Planet 0042692",
+    "warp_capable": false
+  },
+  {
+    "species_id": 203,
+    "name": "Energy vortex",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 204,
+    "name": "Enolian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 205,
+    "name": "Entaban",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 206,
+    "name": "Entharan",
+    "homeworld": "Delta Quadrant",
+    "warp_capable": true
+  },
+  {
+    "species_id": 207,
+    "name": "Eska",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 208,
+    "name": "Etanian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 209,
+    "name": "Evora",
+    "homeworld": "Evora homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 210,
+    "name": "Excalbian",
+    "homeworld": "Excalbia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 211,
+    "name": "FGC 47 lifeform",
+    "homeworld": "FGC-47",
+    "warp_capable": false
+  },
+  {
+    "species_id": 212,
+    "name": "Fabrini",
+    "homeworld": "Fabrini homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 213,
+    "name": "Facian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 214,
+    "name": "Falsettian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 215,
+    "name": "Fantome's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 216,
+    "name": "Farian",
+    "homeworld": "Farius Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 217,
+    "name": "Farn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 218,
+    "name": "Fen Domar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 219,
+    "name": "Ferengi",
+    "homeworld": "Ferenginar",
+    "warp_capable": true
+  },
+  {
+    "species_id": 220,
+    "name": "Fesoj",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 221,
+    "name": "Fibonan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 222,
+    "name": "Finnean",
+    "homeworld": "Finnea Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 223,
+    "name": "Flaxian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 224,
+    "name": "Fuchida's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 225,
+    "name": "Galadoran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 226,
+    "name": "Galardonian",
+    "homeworld": "Galardon",
+    "warp_capable": true
+  },
+  {
+    "species_id": 227,
+    "name": "Galipotan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 228,
+    "name": "Gallamite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 229,
+    "name": "Gamelan V native",
+    "homeworld": "Gamelan V",
+    "warp_capable": false
+  },
+  {
+    "species_id": 230,
+    "name": "Gamma Vertis IV native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 231,
+    "name": "Garan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 232,
+    "name": "Garenor",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 233,
+    "name": "Gelrakian",
+    "homeworld": "Gelrak V",
+    "warp_capable": false
+  },
+  {
+    "species_id": 234,
+    "name": "Gem's species",
+    "homeworld": "Gem's planet",
+    "warp_capable": false
+  },
+  {
+    "species_id": 235,
+    "name": "Gemarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 236,
+    "name": "Genton",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 237,
+    "name": "Ghorusdan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 238,
+    "name": "Gideon",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 239,
+    "name": "Golanan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 240,
+    "name": "Googa",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 241,
+    "name": "Gorlan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 242,
+    "name": "Gorn",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 243,
+    "name": "Gosis' species",
+    "homeworld": "Gosis' species homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 244,
+    "name": "Grazerite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 245,
+    "name": "Gree",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 246,
+    "name": "Greek god",
+    "homeworld": "Pollux IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 247,
+    "name": "Grizzela",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 248,
+    "name": "Haakonian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 249,
+    "name": "Hagath's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 250,
+    "name": "Halanan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 251,
+    "name": "Haliian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 252,
+    "name": "Halkan",
+    "homeworld": "Halkan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 253,
+    "name": "Hanonian",
+    "homeworld": "Hanon IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 254,
+    "name": "Hansen's Planet anthropoid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 255,
+    "name": "Haradin",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 256,
+    "name": "Harvongian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 257,
+    "name": "Haven native",
+    "homeworld": "Haven",
+    "warp_capable": false
+  },
+  {
+    "species_id": 258,
+    "name": "Hazari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 259,
+    "name": "Hekaran",
+    "homeworld": "Hekaras II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 260,
+    "name": "Hirogen",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 261,
+    "name": "Hornish",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 262,
+    "name": "Horta",
+    "homeworld": "Janus VI",
+    "warp_capable": false
+  },
+  {
+    "species_id": 263,
+    "name": "Human",
+    "homeworld": "Earth",
+    "warp_capable": true
+  },
+  {
+    "species_id": 264,
+    "name": "Hunter",
+    "homeworld": "Hunters' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 265,
+    "name": "Hupyrian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 266,
+    "name": "Hur'q",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 267,
+    "name": "Husnock",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 268,
+    "name": "Iconians",
+    "homeworld": "Iconia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 269,
+    "name": "Idanian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 270,
+    "name": "Ikaaran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 271,
+    "name": "Ilari",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 272,
+    "name": "Ilidarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 273,
+    "name": "Illyrian",
+    "homeworld": "Vaultera Nebula",
+    "warp_capable": false
+  },
+  {
+    "species_id": 274,
+    "name": "Ilyra VI inhabitant",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 275,
+    "name": "Imhotep",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 276,
+    "name": "Invernian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 277,
+    "name": "Iotian",
+    "homeworld": "Sigma Iotia II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 278,
+    "name": "Ithenite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 279,
+    "name": "Iyaaran",
+    "homeworld": "Iyar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 280,
+    "name": "J'naii",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 281,
+    "name": "JahSepp",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 282,
+    "name": "Jarada",
+    "homeworld": "Jaradan sector",
+    "warp_capable": false
+  },
+  {
+    "species_id": 283,
+    "name": "Jarlath's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 284,
+    "name": "Jelinian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 285,
+    "name": "Jem'Hadar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 286,
+    "name": "Jye",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 287,
+    "name": "K'normian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 288,
+    "name": "Kadi",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 289,
+    "name": "Kaelon",
+    "homeworld": "Kaelon II",
+    "warp_capable": true
+  },
+  {
+    "species_id": 290,
+    "name": "Kaferian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 291,
+    "name": "Kago's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 292,
+    "name": "Kalandan",
+    "homeworld": "Kalandan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 293,
+    "name": "Kalar",
+    "homeworld": "Rigel VII",
+    "warp_capable": false
+  },
+  {
+    "species_id": 294,
+    "name": "Kalean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 295,
+    "name": "Kanarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 296,
+    "name": "Kantare",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 297,
+    "name": "Karemma",
+    "homeworld": "Karemma system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 298,
+    "name": "Karzill IV inhabitants",
+    "homeworld": "Karzill IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 299,
+    "name": "Kasheeta",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 300,
+    "name": "Kasseelian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 301,
+    "name": "Kataan native",
+    "homeworld": "Kataan",
+    "warp_capable": false
+  },
+  {
+    "species_id": 302,
+    "name": "Kazarite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 303,
+    "name": "Kazleti",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 304,
+    "name": "Kazon",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 305,
+    "name": "Keeper's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 306,
+    "name": "Kelemane's species",
+    "homeworld": "Kelemane's planet",
+    "warp_capable": false
+  },
+  {
+    "species_id": 307,
+    "name": "Kelis' species",
+    "homeworld": "Kelis' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 308,
+    "name": "Kellerun",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 309,
+    "name": "Kellidian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 310,
+    "name": "Kelpien",
+    "homeworld": "Kaminar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 311,
+    "name": "Kelvan",
+    "homeworld": "Kelva",
+    "warp_capable": true
+  },
+  {
+    "species_id": 312,
+    "name": "Kemiyan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 313,
+    "name": "Kerelian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 314,
+    "name": "Kesat",
+    "homeworld": "Kesat homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 315,
+    "name": "Kesprytt",
+    "homeworld": "Kesprytt III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 316,
+    "name": "Khwopian",
+    "homeworld": "Khwopa",
+    "warp_capable": false
+  },
+  {
+    "species_id": 317,
+    "name": "Kiley",
+    "homeworld": "Kiley 279",
+    "warp_capable": false
+  },
+  {
+    "species_id": 318,
+    "name": "Kili",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 319,
+    "name": "Kinbori",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 320,
+    "name": "Kinjal",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 321,
+    "name": "Klaestron",
+    "homeworld": "Klaestron IV",
+    "warp_capable": true
+  },
+  {
+    "species_id": 322,
+    "name": "Klingon",
+    "homeworld": "Qo'noS",
+    "warp_capable": true
+  },
+  {
+    "species_id": 323,
+    "name": "Kmada",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 324,
+    "name": "Kobali",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 325,
+    "name": "Kobheerian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 326,
+    "name": "Kobliad",
+    "homeworld": "Kobliad system",
+    "warp_capable": false
+  },
+  {
+    "species_id": 327,
+    "name": "Koinonian",
+    "homeworld": "Koinonian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 328,
+    "name": "Koinonians",
+    "homeworld": "Koinonian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 329,
+    "name": "Kolaran",
+    "homeworld": "Kolarus III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 330,
+    "name": "Kolhari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 331,
+    "name": "Komar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 332,
+    "name": "Kostolain native",
+    "homeworld": "Kostolain",
+    "warp_capable": false
+  },
+  {
+    "species_id": 333,
+    "name": "Kovaalan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 334,
+    "name": "Kradin",
+    "homeworld": "Delta Quadrant",
+    "warp_capable": false
+  },
+  {
+    "species_id": 335,
+    "name": "Kraylor",
+    "homeworld": "Kraylor homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 336,
+    "name": "Kreetassan",
+    "homeworld": "Kreetassa",
+    "warp_capable": true
+  },
+  {
+    "species_id": 337,
+    "name": "Krenim",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 338,
+    "name": "Kressari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 339,
+    "name": "Kriosian",
+    "homeworld": "Krios Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 340,
+    "name": "Krit's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 341,
+    "name": "Kromsapiod",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 342,
+    "name": "Ktarian",
+    "homeworld": "Ktaris",
+    "warp_capable": false
+  },
+  {
+    "species_id": 343,
+    "name": "Kukulkan's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 344,
+    "name": "Kurlan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 345,
+    "name": "Kwejian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 346,
+    "name": "Kyrian",
+    "homeworld": "Kyrian and Vaskan homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 347,
+    "name": "Kzinti",
+    "homeworld": "Kzin",
+    "warp_capable": false
+  },
+  {
+    "species_id": 348,
+    "name": "Lactran",
+    "homeworld": "Lactra VII",
+    "warp_capable": false
+  },
+  {
+    "species_id": 349,
+    "name": "Lapeerian",
+    "homeworld": "Lapeeria",
+    "warp_capable": false
+  },
+  {
+    "species_id": 350,
+    "name": "Ledosian",
+    "homeworld": "Ledos",
+    "warp_capable": true
+  },
+  {
+    "species_id": 351,
+    "name": "Legaran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 352,
+    "name": "Lenarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 353,
+    "name": "Lethean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 354,
+    "name": "Leyron",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 355,
+    "name": "Ligonian",
+    "homeworld": "Ligon II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 356,
+    "name": "Lihn Zhee",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 357,
+    "name": "Lissepian",
+    "homeworld": "Lissepia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 358,
+    "name": "Lizard man",
+    "homeworld": "Rat-lizard homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 359,
+    "name": "Lokirrim",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 360,
+    "name": "Loque'eque",
+    "homeworld": "Loque'eque homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 361,
+    "name": "Lorillian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 362,
+    "name": "Lortian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 363,
+    "name": "Lothra",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 364,
+    "name": "Lumerian",
+    "homeworld": "Lumerian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 365,
+    "name": "Lurian",
+    "homeworld": "Luria",
+    "warp_capable": false
+  },
+  {
+    "species_id": 366,
+    "name": "Lyridian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 367,
+    "name": "Lysian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 368,
+    "name": "Lyssarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 369,
+    "name": "Lytasian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 370,
+    "name": "M'klexa",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 371,
+    "name": "Majalan",
+    "homeworld": "Majalis",
+    "warp_capable": false
+  },
+  {
+    "species_id": 372,
+    "name": "Makers",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 373,
+    "name": "Makull's species",
+    "homeworld": "Makull's homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 374,
+    "name": "Malcorian",
+    "homeworld": "Malcor III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 375,
+    "name": "Malgorian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 376,
+    "name": "Malkoth",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 377,
+    "name": "Malon",
+    "homeworld": "Malon Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 378,
+    "name": "Malosian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 379,
+    "name": "Malurian",
+    "homeworld": "Malurian system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 380,
+    "name": "Manchovite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 381,
+    "name": "Mari",
+    "homeworld": "Mari homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 382,
+    "name": "Marijne VII subspace being",
+    "homeworld": "Marijne VII",
+    "warp_capable": false
+  },
+  {
+    "species_id": 383,
+    "name": "Markalian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 384,
+    "name": "Markonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 385,
+    "name": "Marlonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 386,
+    "name": "Mathenite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 387,
+    "name": "Mawasi",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 388,
+    "name": "Mazarite",
+    "homeworld": "Mazar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 389,
+    "name": "Medusan",
+    "homeworld": "Medusan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 390,
+    "name": "Megan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 391,
+    "name": "Megarite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 392,
+    "name": "Megazoid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 393,
+    "name": "Melkot",
+    "homeworld": "Melkotian planet",
+    "warp_capable": false
+  },
+  {
+    "species_id": 394,
+    "name": "Mellanoid slime worm",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 395,
+    "name": "Mellitus",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 396,
+    "name": "Melthusian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 397,
+    "name": "Menk",
+    "homeworld": "Valakis",
+    "warp_capable": false
+  },
+  {
+    "species_id": 398,
+    "name": "Menthar",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 399,
+    "name": "Mermaid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 400,
+    "name": "Merp's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 401,
+    "name": "Metron",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 402,
+    "name": "Microbrain",
+    "homeworld": "Velara III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 403,
+    "name": "Migleemo's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 404,
+    "name": "Mikhal Traveler",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 405,
+    "name": "Mikulak",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 406,
+    "name": "Minosian",
+    "homeworld": "Minos",
+    "warp_capable": false
+  },
+  {
+    "species_id": 407,
+    "name": "Mintakan",
+    "homeworld": "Mintaka III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 408,
+    "name": "Miradorn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 409,
+    "name": "Miri native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 410,
+    "name": "Mislenite",
+    "homeworld": "Mislen",
+    "warp_capable": true
+  },
+  {
+    "species_id": 411,
+    "name": "Mixtus inhabitant",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 412,
+    "name": "Mizarian",
+    "homeworld": "Mizar II",
+    "warp_capable": true
+  },
+  {
+    "species_id": 413,
+    "name": "Molmol's species",
+    "homeworld": "Molmol's homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 414,
+    "name": "Monean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 415,
+    "name": "Mordanite",
+    "homeworld": "Mordan IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 416,
+    "name": "Moropa",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 417,
+    "name": "Morphinian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 418,
+    "name": "Moxy's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 419,
+    "name": "Multispectrum particle lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 420,
+    "name": "Mylean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 421,
+    "name": "N'Kree",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 422,
+    "name": "Na'kuhl",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 423,
+    "name": "Nacene",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 424,
+    "name": "Nakan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 425,
+    "name": "Nameless",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 426,
+    "name": "Napean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 427,
+    "name": "Nar Shaddan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 428,
+    "name": "Nasari",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 429,
+    "name": "Nassordin",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 430,
+    "name": "Natalia's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 431,
+    "name": "Nausicaan",
+    "homeworld": "Nausicaa",
+    "warp_capable": false
+  },
+  {
+    "species_id": 432,
+    "name": "Neanderthal",
+    "homeworld": "Earth",
+    "warp_capable": false
+  },
+  {
+    "species_id": 433,
+    "name": "Nechani",
+    "homeworld": "Nechani homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 434,
+    "name": "Neural native",
+    "homeworld": "Neural",
+    "warp_capable": false
+  },
+  {
+    "species_id": 435,
+    "name": "Nezu",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 436,
+    "name": "Nibiran",
+    "homeworld": "Nibiru",
+    "warp_capable": false
+  },
+  {
+    "species_id": 437,
+    "name": "Night Alien",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 438,
+    "name": "Nihydron",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 439,
+    "name": "Nocona's species",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 440,
+    "name": "Non-corporeal lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 441,
+    "name": "Nonnikcam",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 442,
+    "name": "Noophian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 443,
+    "name": "Norcadian",
+    "homeworld": "Norcadia Prime",
+    "warp_capable": true
+  },
+  {
+    "species_id": 444,
+    "name": "Norvalen",
+    "homeworld": "Norvalen homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 445,
+    "name": "Nucleogenic cloud being",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 446,
+    "name": "Nucleogenic lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 447,
+    "name": "Numiri",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 448,
+    "name": "Nuu'Bari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 449,
+    "name": "Nuvian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 450,
+    "name": "Nygean",
+    "homeworld": "Nygean homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 451,
+    "name": "Nyrian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 452,
+    "name": "Ocampa",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 453,
+    "name": "Ockmenian",
+    "homeworld": "Ockmenic 9",
+    "warp_capable": false
+  },
+  {
+    "species_id": 454,
+    "name": "Old Ones",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 456,
+    "name": "Omega Cygni native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 457,
+    "name": "Omega IV native",
+    "homeworld": "Omega IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 458,
+    "name": "Omnicordial lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 459,
+    "name": "Oolan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 460,
+    "name": "Oran'taku",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 461,
+    "name": "Organian",
+    "homeworld": "Organia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 462,
+    "name": "Orion",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 463,
+    "name": "Ornaran",
+    "homeworld": "Ornara",
+    "warp_capable": false
+  },
+  {
+    "species_id": 464,
+    "name": "Ornithoid life form",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 465,
+    "name": "Osaarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 466,
+    "name": "Osnullus",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 467,
+    "name": "Otrin's species",
+    "homeworld": "Otrin's homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 468,
+    "name": "Overlooker",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 469,
+    "name": "Ovion",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 470,
+    "name": "Oxygene",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 471,
+    "name": "Pah-wraith",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 472,
+    "name": "Pahvan",
+    "homeworld": "Pahvo",
+    "warp_capable": false
+  },
+  {
+    "species_id": 473,
+    "name": "Pakled",
+    "homeworld": "Pakled Planet",
+    "warp_capable": false
+  },
+  {
+    "species_id": 474,
+    "name": "Palamarian",
+    "homeworld": "Palamar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 475,
+    "name": "Palor Toff's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 476,
+    "name": "Pandronian",
+    "homeworld": "Pandro",
+    "warp_capable": true
+  },
+  {
+    "species_id": 477,
+    "name": "Paraagan",
+    "homeworld": "Paraagan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 478,
+    "name": "Parada/Paradan",
+    "homeworld": "Parada system",
+    "warp_capable": false
+  },
+  {
+    "species_id": 479,
+    "name": "Parasitic being",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 480,
+    "name": "Parein",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 481,
+    "name": "Paxan",
+    "homeworld": "Paxan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 482,
+    "name": "Pelian",
+    "homeworld": "Peliar Zel II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 483,
+    "name": "Peljenite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 484,
+    "name": "Pelosian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 485,
+    "name": "Pendari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 486,
+    "name": "Penk's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 487,
+    "name": "Pensarkan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 488,
+    "name": "Petarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 489,
+    "name": "Photonic lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 490,
+    "name": "Phylosian",
+    "homeworld": "Phylos",
+    "warp_capable": true
+  },
+  {
+    "species_id": 491,
+    "name": "Platonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 492,
+    "name": "Plim",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 493,
+    "name": "Polonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 494,
+    "name": "Pomet's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 495,
+    "name": "Pon Darra's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 496,
+    "name": "Ponea",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 497,
+    "name": "Prah Mantoos' species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 498,
+    "name": "Pralor",
+    "homeworld": "Pralor homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 499,
+    "name": "Preservers",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 500,
+    "name": "Prime",
+    "homeworld": "K'Tuevon Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 501,
+    "name": "Promellian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 502,
+    "name": "Prophet",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 503,
+    "name": "Provider",
+    "homeworld": "Triskelion",
+    "warp_capable": false
+  },
+  {
+    "species_id": 504,
+    "name": "Proxcinian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 505,
+    "name": "Pygorian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 506,
+    "name": "Pythron",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 507,
+    "name": "Q",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 508,
+    "name": "Qomar",
+    "homeworld": "Qomar homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 509,
+    "name": "Quantum singularity lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 510,
+    "name": "Quarren",
+    "homeworld": "Quarra",
+    "warp_capable": true
+  },
+  {
+    "species_id": 511,
+    "name": "R'Kaal",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 512,
+    "name": "R'ongovian",
+    "homeworld": "R'ongovia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 513,
+    "name": "Rakhari",
+    "homeworld": "Rakhar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 514,
+    "name": "Rakosan",
+    "homeworld": "Rakosa V",
+    "warp_capable": true
+  },
+  {
+    "species_id": 515,
+    "name": "Ram Izad",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 516,
+    "name": "Ramatisian",
+    "homeworld": "Ramatis III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 517,
+    "name": "Ramuran",
+    "homeworld": "Ramura",
+    "warp_capable": true
+  },
+  {
+    "species_id": 518,
+    "name": "Rasiinian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 519,
+    "name": "Rat",
+    "homeworld": "Rat-lizard homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 520,
+    "name": "Reegrunion",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 521,
+    "name": "Reman",
+    "homeworld": "Remus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 522,
+    "name": "Remmil VI native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 523,
+    "name": "Reptohumanoid",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 524,
+    "name": "Reptoid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 525,
+    "name": "Retellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 526,
+    "name": "Rhaandarite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 527,
+    "name": "Rhino",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 528,
+    "name": "Rigel IV native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 529,
+    "name": "Rigelian",
+    "homeworld": "Rigel system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 530,
+    "name": "Rigellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 531,
+    "name": "Rilnar",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 532,
+    "name": "Risian",
+    "homeworld": "Risa",
+    "warp_capable": false
+  },
+  {
+    "species_id": 533,
+    "name": "Riska's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 534,
+    "name": "Rodulan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 535,
+    "name": "Romulan",
+    "homeworld": "Romulus",
+    "warp_capable": true
+  },
+  {
+    "species_id": 536,
+    "name": "Rotciv",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 537,
+    "name": "Ruji",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 538,
+    "name": "Rukani",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 539,
+    "name": "Rutian",
+    "homeworld": "Rutia IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 540,
+    "name": "Rytonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 541,
+    "name": "Sakari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 542,
+    "name": "Salt vampire",
+    "homeworld": "M-113",
+    "warp_capable": false
+  },
+  {
+    "species_id": 543,
+    "name": "Saltah'na",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 544,
+    "name": "Sarda's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 545,
+    "name": "Sarpeidon native",
+    "homeworld": "Sarpeidon",
+    "warp_capable": false
+  },
+  {
+    "species_id": 546,
+    "name": "Sarrotheyn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 547,
+    "name": "Sarthongian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 548,
+    "name": "Satarran",
+    "homeworld": "Sothis III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 549,
+    "name": "Satyr",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 550,
+    "name": "Saurian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 551,
+    "name": "Scalosian",
+    "homeworld": "Scalos",
+    "warp_capable": false
+  },
+  {
+    "species_id": 552,
+    "name": "Scathos",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 553,
+    "name": "Schlerm",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 554,
+    "name": "Scrubble",
+    "homeworld": "Jengus IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 555,
+    "name": "Selay",
+    "homeworld": "Beta Renner system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 556,
+    "name": "Seltin Rakal's species",
+    "homeworld": "Meridian",
+    "warp_capable": false
+  },
+  {
+    "species_id": 557,
+    "name": "Sendu IV native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 558,
+    "name": "Sentient volcano",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 559,
+    "name": "Serilian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 560,
+    "name": "Serosian",
+    "homeworld": "Seros",
+    "warp_capable": true
+  },
+  {
+    "species_id": 561,
+    "name": "Shamin",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 562,
+    "name": "Shapeshifting locket",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 563,
+    "name": "Sheliak",
+    "homeworld": "Sheliak homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 564,
+    "name": "Shepherd",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 565,
+    "name": "Shivolians",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 566,
+    "name": "Sigma Draconis III native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 567,
+    "name": "Sigma Draconis IV native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 568,
+    "name": "Sigma Draconis VI native",
+    "homeworld": "Sigma Draconis VI",
+    "warp_capable": false
+  },
+  {
+    "species_id": 569,
+    "name": "Sikarian",
+    "homeworld": "Sikaris",
+    "warp_capable": true
+  },
+  {
+    "species_id": 570,
+    "name": "Silver Blood",
+    "homeworld": "Silver Blood homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 571,
+    "name": "Sirius IX inhabitant",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 572,
+    "name": "Skagaran",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 573,
+    "name": "Skorr",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 574,
+    "name": "Skrreea",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 575,
+    "name": "Sky Spirit",
+    "homeworld": "Sky Spirits' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 576,
+    "name": "Slaver",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 577,
+    "name": "Solanogen-based lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 578,
+    "name": "Solari",
+    "homeworld": "Solais V",
+    "warp_capable": false
+  },
+  {
+    "species_id": 579,
+    "name": "Soyousian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 580,
+    "name": "Space vessel lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 581,
+    "name": "Space-dwelling lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 582,
+    "name": "Species 10-C",
+    "homeworld": "Species 10-C homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 583,
+    "name": "Species 10026",
+    "homeworld": "Species 10026 homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 584,
+    "name": "Species 116",
+    "homeworld": "Species 116 homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 585,
+    "name": "Species 125",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 586,
+    "name": "Species 149",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 587,
+    "name": "Species 259",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 588,
+    "name": "Species 262",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 589,
+    "name": "Species 263",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 590,
+    "name": "Species 312",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 591,
+    "name": "Species 5174",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 592,
+    "name": "Species 571",
+    "homeworld": "Delta Quadrant",
+    "warp_capable": false
+  },
+  {
+    "species_id": 593,
+    "name": "Species 5973",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 594,
+    "name": "Species 6339",
+    "homeworld": "Grid 124, Octant 22-theta",
+    "warp_capable": false
+  },
+  {
+    "species_id": 595,
+    "name": "Species 8472",
+    "homeworld": "Fluidic space",
+    "warp_capable": false
+  },
+  {
+    "species_id": 596,
+    "name": "Sphere",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 597,
+    "name": "Sphere-Builder",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 598,
+    "name": "Srivani",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 599,
+    "name": "Stakoron",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 600,
+    "name": "Star dancer",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 601,
+    "name": "Stilph",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 602,
+    "name": "Subytt",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 603,
+    "name": "Suliban",
+    "homeworld": "Suliban homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 604,
+    "name": "Sutok's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 605,
+    "name": "Swarm species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 606,
+    "name": "T'Lani",
+    "homeworld": "T'Lani Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 607,
+    "name": "T'lli Betan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 608,
+    "name": "T-Rogoran",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 609,
+    "name": "Taal",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 610,
+    "name": "Tagran",
+    "homeworld": "Tagra IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 611,
+    "name": "Taguan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 612,
+    "name": "Tak Tak",
+    "homeworld": "Tak Tak homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 613,
+    "name": "Takaran",
+    "homeworld": "Takara",
+    "warp_capable": false
+  },
+  {
+    "species_id": 614,
+    "name": "Takarian",
+    "homeworld": "Takarian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 615,
+    "name": "Takret",
+    "homeworld": "Takret homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 616,
+    "name": "Talarian",
+    "homeworld": "Talarian homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 617,
+    "name": "Talavian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 618,
+    "name": "Talaxian",
+    "homeworld": "Talax",
+    "warp_capable": true
+  },
+  {
+    "species_id": 619,
+    "name": "Talosian",
+    "homeworld": "Talos IV",
+    "warp_capable": true
+  },
+  {
+    "species_id": 620,
+    "name": "Talura's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 621,
+    "name": "Tandaran",
+    "homeworld": "Tandar Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 622,
+    "name": "Tanugan",
+    "homeworld": "Tanuga IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 623,
+    "name": "Tarahongian",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 624,
+    "name": "Tarchanne",
+    "homeworld": "Tarchannen III",
+    "warp_capable": false
+  },
+  {
+    "species_id": 625,
+    "name": "Tarellian",
+    "homeworld": "Tarella",
+    "warp_capable": true
+  },
+  {
+    "species_id": 626,
+    "name": "Taresian",
+    "homeworld": "Taresia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 627,
+    "name": "Tarkalean",
+    "homeworld": "Tarkalea",
+    "warp_capable": false
+  },
+  {
+    "species_id": 628,
+    "name": "Tarkan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 629,
+    "name": "Tarkanian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 630,
+    "name": "Tarkannan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 631,
+    "name": "Tarlac",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 632,
+    "name": "Tarquin's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 633,
+    "name": "Tash's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 634,
+    "name": "Tau's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 635,
+    "name": "Taurus II anthropoid",
+    "homeworld": "Taurus II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 636,
+    "name": "Tavnian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 637,
+    "name": "Taxor",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 638,
+    "name": "Teenaxi",
+    "homeworld": "Teenax",
+    "warp_capable": false
+  },
+  {
+    "species_id": 639,
+    "name": "Telepathic pitcher plant",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 640,
+    "name": "Tellarite",
+    "homeworld": "Tellar Prime",
+    "warp_capable": true
+  },
+  {
+    "species_id": 641,
+    "name": "Telsian",
+    "homeworld": "Telsius Prime",
+    "warp_capable": false
+  },
+  {
+    "species_id": 642,
+    "name": "Teplan",
+    "homeworld": "Teplan homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 643,
+    "name": "Terellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 644,
+    "name": "Terkellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 645,
+    "name": "Terran",
+    "homeworld": "Sol system",
+    "warp_capable": false
+  },
+  {
+    "species_id": 646,
+    "name": "Terrelian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 647,
+    "name": "Terrellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 649,
+    "name": "Tesnian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 650,
+    "name": "Tessic's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 651,
+    "name": "Thasian",
+    "homeworld": "Thasus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 652,
+    "name": "The Children of Tama",
+    "homeworld": "Sigma Tama IV",
+    "warp_capable": true
+  },
+  {
+    "species_id": 653,
+    "name": "The Traveler's species",
+    "homeworld": "Tau Alpha C",
+    "warp_capable": false
+  },
+  {
+    "species_id": 654,
+    "name": "Theela's species",
+    "homeworld": "Theela's homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 655,
+    "name": "Tholian",
+    "homeworld": "Tholia",
+    "warp_capable": false
+  },
+  {
+    "species_id": 656,
+    "name": "Tiburonian",
+    "homeworld": "Tiburon",
+    "warp_capable": true
+  },
+  {
+    "species_id": 657,
+    "name": "Tilonian",
+    "homeworld": "Tilonus IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 658,
+    "name": "Torat's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 659,
+    "name": "Tosk",
+    "homeworld": "Hunters' homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 660,
+    "name": "Trabe",
+    "homeworld": "Trabe homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 661,
+    "name": "Trelane's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 662,
+    "name": "Trelonian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 663,
+    "name": "Tret's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 664,
+    "name": "Triacus marauder",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 665,
+    "name": "Trianic-based energy being",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 666,
+    "name": "Triannon",
+    "homeworld": "Muratas Star Cluster",
+    "warp_capable": false
+  },
+  {
+    "species_id": 667,
+    "name": "Trill",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 668,
+    "name": "Trill symbiont",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 669,
+    "name": "Troyian",
+    "homeworld": "Troyius",
+    "warp_capable": false
+  },
+  {
+    "species_id": 670,
+    "name": "Turei",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 671,
+    "name": "Two-dimensional being",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 672,
+    "name": "Tygarian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 673,
+    "name": "Tyran",
+    "homeworld": "Tyrus VII",
+    "warp_capable": false
+  },
+  {
+    "species_id": 674,
+    "name": "Tyrellian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 675,
+    "name": "Tyrinean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 676,
+    "name": "Tzenkethi",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 677,
+    "name": "U'tani",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 678,
+    "name": "Ubean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 679,
+    "name": "Ullian",
+    "homeworld": "Ullian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 680,
+    "name": "Ursinoid",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 681,
+    "name": "Ux-Mal entity",
+    "homeworld": "Mab-Bu VI",
+    "warp_capable": false
+  },
+  {
+    "species_id": 682,
+    "name": "V'radian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 683,
+    "name": "Vaadwaur",
+    "homeworld": "Vaadwaur homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 684,
+    "name": "Vaalian",
+    "homeworld": "Gamma Trianguli VI",
+    "warp_capable": false
+  },
+  {
+    "species_id": 685,
+    "name": "Vadris III native",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 686,
+    "name": "Vagran",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 687,
+    "name": "Valakian",
+    "homeworld": "Valakis",
+    "warp_capable": false
+  },
+  {
+    "species_id": 688,
+    "name": "Valerian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 689,
+    "name": "Valtese",
+    "homeworld": "Valt Minor",
+    "warp_capable": false
+  },
+  {
+    "species_id": 690,
+    "name": "Varalan",
+    "homeworld": "Varala",
+    "warp_capable": false
+  },
+  {
+    "species_id": 691,
+    "name": "Varn's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 692,
+    "name": "Varro",
+    "homeworld": null,
+    "warp_capable": true
+  },
+  {
+    "species_id": 693,
+    "name": "Vaskan",
+    "homeworld": "Kyrian and Vaskan homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 694,
+    "name": "Vau N'Akat",
+    "homeworld": "Solum",
+    "warp_capable": false
+  },
+  {
+    "species_id": 695,
+    "name": "Vedala",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 696,
+    "name": "Vek",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 697,
+    "name": "Vendorian",
+    "homeworld": "Vendor",
+    "warp_capable": false
+  },
+  {
+    "species_id": 698,
+    "name": "Vensiddian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 699,
+    "name": "Ventaxian",
+    "homeworld": "Ventax II",
+    "warp_capable": false
+  },
+  {
+    "species_id": 700,
+    "name": "Verathan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 701,
+    "name": "Veridian IV native",
+    "homeworld": "Veridian IV",
+    "warp_capable": false
+  },
+  {
+    "species_id": 702,
+    "name": "Vhnori",
+    "homeworld": "Vhnori homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 703,
+    "name": "Vian",
+    "homeworld": "Minara",
+    "warp_capable": false
+  },
+  {
+    "species_id": 704,
+    "name": "Vidiian",
+    "homeworld": "Vidiian homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 705,
+    "name": "Vilix'pran's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 706,
+    "name": "Viorsa's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 707,
+    "name": "Vissian",
+    "homeworld": "Vissia",
+    "warp_capable": true
+  },
+  {
+    "species_id": 708,
+    "name": "Vlugtan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 709,
+    "name": "Vojean",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 710,
+    "name": "Vok'sha",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 711,
+    "name": "Volis' species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 712,
+    "name": "Vorgon",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 713,
+    "name": "Vori",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 714,
+    "name": "Vornilian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 715,
+    "name": "Vorta",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 716,
+    "name": "Vostigye",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 717,
+    "name": "Voth",
+    "homeworld": "Earth",
+    "warp_capable": false
+  },
+  {
+    "species_id": 718,
+    "name": "Vulcan",
+    "homeworld": "Vulcan system",
+    "warp_capable": true
+  },
+  {
+    "species_id": 719,
+    "name": "Wadi",
+    "homeworld": "Wadi homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 720,
+    "name": "Wilbur's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 721,
+    "name": "Wisp",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 722,
+    "name": "Wogneer creature",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 723,
+    "name": "Wraith",
+    "homeworld": "Dakala",
+    "warp_capable": false
+  },
+  {
+    "species_id": 724,
+    "name": "Wyngari",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 725,
+    "name": "Wysanti",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 726,
+    "name": "Xahean",
+    "homeworld": "Xahea",
+    "warp_capable": false
+  },
+  {
+    "species_id": 727,
+    "name": "Xantoras",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 728,
+    "name": "Xarantine",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 729,
+    "name": "Xelatian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 730,
+    "name": "Xenon-based lifeform",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 731,
+    "name": "Xepolite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 732,
+    "name": "Xindi-Aquatic",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 733,
+    "name": "Xindi-Arboreal",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 734,
+    "name": "Xindi-Avian",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 735,
+    "name": "Xindi-Insectoid",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 736,
+    "name": "Xindi-Primate",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 737,
+    "name": "Xindi-Reptilian",
+    "homeworld": "Xindus",
+    "warp_capable": false
+  },
+  {
+    "species_id": 738,
+    "name": "Xyrillian",
+    "homeworld": "Xyrillian homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 739,
+    "name": "Yaderan",
+    "homeworld": "Yadera Prime",
+    "warp_capable": true
+  },
+  {
+    "species_id": 740,
+    "name": "Yallitian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 741,
+    "name": "Yalosian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 742,
+    "name": "Yash-El",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 743,
+    "name": "Yattho",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 744,
+    "name": "Yeti",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 745,
+    "name": "Yost's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 746,
+    "name": "Yridian",
+    "homeworld": "Yridian homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 747,
+    "name": "Zahl",
+    "homeworld": "Zahl homeworld",
+    "warp_capable": false
+  },
+  {
+    "species_id": 748,
+    "name": "Zakdorn",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 749,
+    "name": "Zaldan",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 750,
+    "name": "Zalkonian",
+    "homeworld": "Zalkon",
+    "warp_capable": true
+  },
+  {
+    "species_id": 751,
+    "name": "Zaranite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 752,
+    "name": "Zelonite",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 753,
+    "name": "Zeon",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 754,
+    "name": "Zetarian",
+    "homeworld": "Zetar",
+    "warp_capable": false
+  },
+  {
+    "species_id": 755,
+    "name": "Zevian",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 756,
+    "name": "Zibalian",
+    "homeworld": "Theta Zibal III",
+    "warp_capable": true
+  },
+  {
+    "species_id": 757,
+    "name": "Zobral's species",
+    "homeworld": "Torothan homeworld",
+    "warp_capable": true
+  },
+  {
+    "species_id": 758,
+    "name": "Zolan's species",
+    "homeworld": null,
+    "warp_capable": false
+  },
+  {
+    "species_id": 759,
+    "name": "Zora Fel",
+    "homeworld": null,
+    "warp_capable": false
+  }
+]

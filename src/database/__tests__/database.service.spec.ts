@@ -2,121 +2,145 @@ import { join } from 'path'
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-const mocks = vi.hoisted(() => {
-  const mockAll = vi.fn().mockReturnValue([])
-  const mockGet = vi.fn().mockReturnValue(undefined)
-  const mockPrepare = vi.fn(function () {
-    return { all: mockAll, get: mockGet }
-  })
-  const mockClose = vi.fn()
-  const MockDatabase = vi.fn(function () {
-    return { prepare: mockPrepare, close: mockClose }
-  })
-  return { MockDatabase, mockPrepare, mockAll, mockGet, mockClose }
-})
+vi.mock('fs', () => ({
+  readFileSync: vi.fn(),
+}))
 
-vi.mock('better-sqlite3', () => ({ default: mocks.MockDatabase }))
+import { readFileSync } from 'fs'
 
 import { DatabaseService } from '../database.service'
+
+const mockReadFileSync = vi.mocked(readFileSync)
+
+function mockJsonFile(data: unknown) {
+  return JSON.stringify(data)
+}
 
 describe('DatabaseService', () => {
   let service: DatabaseService
 
   beforeEach(() => {
     vi.clearAllMocks()
-    mocks.mockAll.mockReturnValue([])
-    mocks.mockGet.mockReturnValue(undefined)
-    mocks.mockPrepare.mockImplementation(function () {
-      return { all: mocks.mockAll, get: mocks.mockGet }
-    })
-    mocks.MockDatabase.mockImplementation(function () {
-      return { prepare: mocks.mockPrepare, close: mocks.mockClose }
-    })
     service = new DatabaseService()
   })
 
   describe('onModuleInit', () => {
-    it('opens the database with the correct path and readonly option', () => {
-      service.onModuleInit()
-      expect(mocks.MockDatabase).toHaveBeenCalledWith(join(process.cwd(), 'startrek.db'), {
-        readonly: true,
+    it('loads JSON files and builds collections', () => {
+      const seriesData = [{ series_id: 1, name: 'TNG' }]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('series.json')) return mockJsonFile(seriesData)
+        return mockJsonFile([])
       })
-    })
-  })
-
-  describe('onModuleDestroy', () => {
-    it('closes the database after init', () => {
       service.onModuleInit()
-      service.onModuleDestroy()
-      expect(mocks.mockClose).toHaveBeenCalledOnce()
-    })
-
-    it('does not throw when called without prior init', () => {
-      expect(() => service.onModuleDestroy()).not.toThrow()
-    })
-  })
-
-  describe('query', () => {
-    beforeEach(() => service.onModuleInit())
-
-    it('prepares and executes the sql, returning all results', () => {
-      const rows = [{ id: 1 }, { id: 2 }]
-      mocks.mockAll.mockReturnValue(rows)
-      const result = service.query('SELECT * FROM Series')
-      expect(mocks.mockPrepare).toHaveBeenCalledWith('SELECT * FROM Series')
-      expect(result).toEqual(rows)
-    })
-
-    it('spreads params into all()', () => {
-      service.query('SELECT * FROM Series WHERE id = ?', [42])
-      expect(mocks.mockAll).toHaveBeenCalledWith(42)
-    })
-
-    it('spreads multiple params', () => {
-      service.query('SELECT 1 WHERE a = ? AND b = ?', [1, 'x'])
-      expect(mocks.mockAll).toHaveBeenCalledWith(1, 'x')
-    })
-
-    it('calls all() with no args when params is empty', () => {
-      service.query('SELECT 1')
-      expect(mocks.mockAll).toHaveBeenCalledWith()
+      expect(mockReadFileSync).toHaveBeenCalledWith(
+        join(process.cwd(), 'data', 'series.json'),
+        'utf-8'
+      )
+      expect(service.getAll('Series')).toEqual(seriesData)
     })
   })
 
-  describe('queryOne', () => {
-    beforeEach(() => service.onModuleInit())
+  describe('getAll', () => {
+    it('returns the full sorted array for a table', () => {
+      const rows = [{ series_id: 1 }, { series_id: 2 }]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('series.json')) return mockJsonFile(rows)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      expect(service.getAll('Series')).toEqual(rows)
+    })
+  })
 
-    it('prepares and executes, returning a single row', () => {
-      mocks.mockGet.mockReturnValue({ id: 5 })
-      const result = service.queryOne('SELECT * FROM Series WHERE id = ?', [5])
-      expect(mocks.mockPrepare).toHaveBeenCalledWith('SELECT * FROM Series WHERE id = ?')
-      expect(mocks.mockGet).toHaveBeenCalledWith(5)
-      expect(result).toEqual({ id: 5 })
+  describe('getById', () => {
+    it('returns a row by primary key', () => {
+      const rows = [
+        { series_id: 1, name: 'DS9' },
+        { series_id: 2, name: 'TNG' },
+      ]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('series.json')) return mockJsonFile(rows)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      expect(service.getById('Series', 2)).toEqual({ series_id: 2, name: 'TNG' })
     })
 
-    it('returns undefined when row not found', () => {
-      mocks.mockGet.mockReturnValue(undefined)
-      expect(service.queryOne('SELECT * FROM Series WHERE id = ?', [999])).toBeUndefined()
+    it('returns undefined when id not found', () => {
+      mockReadFileSync.mockReturnValue(mockJsonFile([]))
+      service.onModuleInit()
+      expect(service.getById('Series', 999)).toBeUndefined()
+    })
+  })
+
+  describe('getByIds', () => {
+    it('returns rows matching the given ids in input order', () => {
+      const rows = [
+        { episode_id: 1, title: 'A' },
+        { episode_id: 2, title: 'B' },
+        { episode_id: 3, title: 'C' },
+      ]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('episodes.json')) return mockJsonFile(rows)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      const result = service.getByIds('Episodes', [3, 1])
+      expect(result).toEqual([
+        { episode_id: 3, title: 'C' },
+        { episode_id: 1, title: 'A' },
+      ])
+    })
+
+    it('omits ids that do not exist', () => {
+      mockReadFileSync.mockReturnValue(mockJsonFile([]))
+      service.onModuleInit()
+      expect(service.getByIds('Episodes', [999])).toEqual([])
+    })
+  })
+
+  describe('getRelatedIds', () => {
+    it('returns related ids from a junction table', () => {
+      const junctionData = [
+        { char_episode_id: 1, character_id: 10, episode_id: 100 },
+        { char_episode_id: 2, character_id: 10, episode_id: 200 },
+        { char_episode_id: 3, character_id: 20, episode_id: 100 },
+      ]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('character_episodes.json')) return mockJsonFile(junctionData)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      const result = service.getRelatedIds('Character_Episodes', 'character_id', 10)
+      expect(new Set(result)).toEqual(new Set([100, 200]))
+    })
+
+    it('returns empty array for unknown id', () => {
+      mockReadFileSync.mockReturnValue(mockJsonFile([]))
+      service.onModuleInit()
+      expect(service.getRelatedIds('Character_Episodes', 'character_id', 999)).toEqual([])
+    })
+
+    it('indexes both foreign keys', () => {
+      const junctionData = [{ char_episode_id: 1, character_id: 10, episode_id: 100 }]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('character_episodes.json')) return mockJsonFile(junctionData)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      expect(service.getRelatedIds('Character_Episodes', 'episode_id', 100)).toEqual([10])
     })
   })
 
   describe('count', () => {
-    beforeEach(() => service.onModuleInit())
-
-    it('returns the count from the result row', () => {
-      mocks.mockGet.mockReturnValue({ count: 7 })
-      expect(service.count('SELECT COUNT(*) AS count FROM Series')).toBe(7)
-    })
-
-    it('returns 0 when row is undefined', () => {
-      mocks.mockGet.mockReturnValue(undefined)
-      expect(service.count('SELECT COUNT(*) AS count FROM Series')).toBe(0)
-    })
-
-    it('passes params to get()', () => {
-      mocks.mockGet.mockReturnValue({ count: 3 })
-      service.count('SELECT COUNT(*) AS count FROM Series WHERE id = ?', [1])
-      expect(mocks.mockGet).toHaveBeenCalledWith(1)
+    it('returns the number of rows in a table', () => {
+      const rows = [{ ship_id: 1 }, { ship_id: 2 }, { ship_id: 3 }]
+      mockReadFileSync.mockImplementation((path) => {
+        if (String(path).includes('ships.json')) return mockJsonFile(rows)
+        return mockJsonFile([])
+      })
+      service.onModuleInit()
+      expect(service.count('Ships')).toBe(3)
     })
   })
 })

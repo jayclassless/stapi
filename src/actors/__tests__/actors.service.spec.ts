@@ -3,14 +3,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { DatabaseService } from '../../database/database.service'
 import { ActorsService } from '../actors.service'
 
-function makeMockDb(totalCount = 0, rows: Record<string, unknown>[] = []) {
+function makeMockDb(rows: Record<string, unknown>[] = []) {
   return {
-    query: vi
-      .fn()
-      .mockReturnValueOnce([{ count: totalCount }])
-      .mockReturnValueOnce(rows),
-    queryOne: vi.fn().mockReturnValue(undefined),
-    count: vi.fn().mockReturnValue(0),
+    getAll: vi.fn().mockReturnValue(rows),
+    getById: vi.fn().mockReturnValue(undefined),
+    getByIds: vi.fn().mockReturnValue([]),
+    getRelatedIds: vi.fn().mockReturnValue([]),
+    count: vi.fn().mockReturnValue(rows.length),
   }
 }
 
@@ -25,13 +24,12 @@ describe('ActorsService', () => {
 
   describe('findAll', () => {
     it('returns a connection from Actors table', () => {
-      mockDb = makeMockDb(2, [{ actor_id: 1 }, { actor_id: 2 }])
+      mockDb = makeMockDb([{ actor_id: 1 }, { actor_id: 2 }])
       service = new ActorsService(mockDb as Partial<DatabaseService> as DatabaseService)
       const result = service.findAll({})
       expect(result.totalCount).toBe(2)
       expect(result.edges).toHaveLength(2)
-      const countSql: string = mockDb.query.mock.calls[0][0]
-      expect(countSql).toContain('FROM Actors')
+      expect(mockDb.getAll).toHaveBeenCalledWith('Actors')
     })
 
     it('uses default pagination when called with no args', () => {
@@ -41,11 +39,11 @@ describe('ActorsService', () => {
   })
 
   describe('findById', () => {
-    it('queries by actor_id', () => {
+    it('looks up by actor_id', () => {
       const row = { actor_id: 3, first_name: 'Patrick', last_name: 'Stewart' }
-      mockDb.queryOne.mockReturnValue(row)
+      mockDb.getById.mockReturnValue(row)
       const result = service.findById(3)
-      expect(mockDb.queryOne).toHaveBeenCalledWith('SELECT * FROM Actors WHERE actor_id = ?', [3])
+      expect(mockDb.getById).toHaveBeenCalledWith('Actors', 3)
       expect(result).toEqual(row)
     })
 
@@ -55,14 +53,13 @@ describe('ActorsService', () => {
   })
 
   describe('findByCharacterId', () => {
-    it('queries actors via Character_Actors join', () => {
-      mockDb = makeMockDb(1, [{ actor_id: 10 }])
+    it('queries actors via Character_Actors junction', () => {
+      mockDb = makeMockDb([{ actor_id: 10 }, { actor_id: 20 }])
+      mockDb.getRelatedIds.mockReturnValue([10])
       service = new ActorsService(mockDb as Partial<DatabaseService> as DatabaseService)
-      service.findByCharacterId(4, {})
-      const dataSql: string = mockDb.query.mock.calls[1][0]
-      expect(dataSql).toContain('Character_Actors')
-      expect(dataSql).toContain('character_id = ?')
-      expect(mockDb.query.mock.calls[0][1]).toEqual([4])
+      const result = service.findByCharacterId(4, {})
+      expect(mockDb.getRelatedIds).toHaveBeenCalledWith('Character_Actors', 'character_id', 4)
+      expect(result.edges).toHaveLength(1)
     })
 
     it('uses default pagination when not provided', () => {
