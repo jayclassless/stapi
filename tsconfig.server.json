@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "outDir": "dist-server",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "declaration": false
+  },
+  "include": ["server/**/*"]
+}

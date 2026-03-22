@@ -6,23 +6,24 @@ export default defineConfig({
     swc.vite({
       jsc: {
         parser: { syntax: 'typescript', decorators: true },
-        transform: { legacyDecorator: true, decoratorMetadata: true },
+        transform: { legacyDecorator: true, decoratorMetadata: false },
       },
     }),
   ],
   test: {
-    include: ['src/**/*.spec.ts'],
+    include: ['server/**/*.spec.ts'],
     setupFiles: ['reflect-metadata'],
     coverage: {
       provider: 'v8',
-      include: ['src/**/*.ts'],
+      include: ['server/**/*.ts'],
       exclude: [
-        'src/main.ts',
-        'src/**/*.module.ts',
-        'src/**/*.model.ts',
-        'src/**/*.spec.ts',
-        'src/common/page-info.type.ts',
-        'src/common/pagination.input.ts',
+        'server/server.ts',
+        'server/container.ts',
+        'server/schema.ts',
+        'server/**/*.model.ts',
+        'server/**/*.spec.ts',
+        'server/common/page-info.type.ts',
+        'server/common/pagination.input.ts',
       ],
       thresholds: {
         lines: 95,

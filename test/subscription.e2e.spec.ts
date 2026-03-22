@@ -1,43 +1,50 @@
-import { INestApplication } from '@nestjs/common'
-import { GraphQLSchemaHost } from '@nestjs/graphql'
-import { Test } from '@nestjs/testing'
+import 'reflect-metadata'
+import { createServer, type Server } from 'http'
+
+import express from 'express'
 import { execute, subscribe } from 'graphql'
 import { createHandler } from 'graphql-sse/lib/use/express'
 import { createClient as createWsClient } from 'graphql-ws'
+import { useServer } from 'graphql-ws/use/ws'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import WebSocket from 'ws'
+import { WebSocketServer } from 'ws'
 
-import { AppModule } from '../src/app.module'
+import { episodesService } from '../server/container'
+import { getSchema } from '../server/schema'
 
 const QUERY = 'subscription { randomEpisode(count: 1) { id title } }'
 
-let app: INestApplication
+let httpServer: Server
 let port: number
 
 beforeAll(async () => {
-  const mod = await Test.createTestingModule({ imports: [AppModule] }).compile()
-  app = mod.createNestApplication({ logger: false })
+  const schema = await getSchema()
+  const app = express()
 
-  // Register the SSE handler before init so it comes before Apollo's
-  // app.use('/graphql', ...) in the Express middleware chain.
-  let sseHandler: ((req: any, res: any) => Promise<void>) | null = null
-  app
-    .getHttpAdapter()
-    .getInstance()
-    .use('/graphql/sse', async (req: any, res: any) => {
-      if (!sseHandler) {
-        const { schema } = app.get(GraphQLSchemaHost)
-        sseHandler = createHandler({ schema, execute, subscribe })
-      }
-      await sseHandler(req, res)
-    })
+  // SSE handler — pass episodesService via context for subscription's subscribe function
+  const sseHandler = createHandler({
+    schema,
+    execute,
+    subscribe,
+    context: () => ({ episodesService }),
+  })
+  app.use('/graphql/sse', sseHandler as unknown as express.RequestHandler)
 
-  await app.listen(0)
-  port = (app.getHttpServer().address() as { port: number }).port
+  httpServer = createServer(app)
+
+  // WebSocket server
+  const wss = new WebSocketServer({ server: httpServer, path: '/graphql' })
+  useServer({ schema, context: () => ({ episodesService }) }, wss)
+
+  await new Promise<void>((resolve) => httpServer.listen(0, resolve))
+  port = (httpServer.address() as { port: number }).port
 }, 30000)
 
 afterAll(async () => {
-  await app.close()
+  await new Promise<void>((resolve, reject) =>
+    httpServer.close((err) => (err ? reject(err) : resolve()))
+  )
 })
 
 describe('WebSocket subscription', () => {
@@ -57,9 +64,6 @@ describe('WebSocket subscription', () => {
 })
 
 describe('SSE subscription', () => {
-  // The graphql-sse library uses the ESM build in vitest, which creates a
-  // separate realm for GraphQLSchema. Using raw fetch + SSE event parsing
-  // tests the SSE transport at the protocol level without cross-realm issues.
   it('receives a random Episode via SSE', async () => {
     const resp = await fetch(`http://localhost:${port}/graphql/sse`, {
       method: 'POST',
@@ -71,7 +75,6 @@ describe('SSE subscription', () => {
     expect(resp.headers.get('content-type')).toContain('text/event-stream')
 
     const text = await resp.text()
-    // SSE payload: "event: next\ndata: <json>\n\nevent: complete\ndata:\n\n"
     const match = text.match(/event: next\ndata: (.+)/)
     expect(match).not.toBeNull()
     const data = JSON.parse(match![1])
