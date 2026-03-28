@@ -7,9 +7,11 @@ import { SeriesSection } from '@/components/SeriesSection'
 vi.mock('@/lib/apollo', () => ({
   postClient: { query: vi.fn() },
   getClient: { query: vi.fn() },
+  apqPostClient: { query: vi.fn() },
+  apqGetClient: { query: vi.fn() },
 }))
 
-import { getClient, postClient } from '@/lib/apollo'
+import { apqGetClient, apqPostClient, getClient, postClient } from '@/lib/apollo'
 
 const mockData = {
   series: {
@@ -131,5 +133,39 @@ describe('SeriesSection', () => {
 
     expect(screen.getByText('POST /graphql')).toBeDisabled()
     expect(screen.getByText('GET /graphql')).toBeDisabled()
+    expect(screen.getByText('APQ POST /graphql')).toBeDisabled()
+    expect(screen.getByText('APQ GET /graphql')).toBeDisabled()
+  })
+
+  it('APQ POST button queries via apqPostClient', async () => {
+    const user = userEvent.setup()
+    vi.mocked(apqPostClient.query).mockResolvedValue({ data: mockData } as never)
+
+    render(<SeriesSection />)
+    await user.click(screen.getByText('APQ POST /graphql'))
+
+    expect(apqPostClient.query).toHaveBeenCalledWith(
+      expect.objectContaining({ fetchPolicy: 'no-cache' })
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('The Original Series')).toBeInTheDocument()
+    })
+  })
+
+  it('APQ GET button queries via apqGetClient', async () => {
+    const user = userEvent.setup()
+    vi.mocked(apqGetClient.query).mockResolvedValue({ data: mockData } as never)
+
+    render(<SeriesSection />)
+    await user.click(screen.getByText('APQ GET /graphql'))
+
+    expect(apqGetClient.query).toHaveBeenCalledWith(
+      expect.objectContaining({ fetchPolicy: 'no-cache' })
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('The Original Series')).toBeInTheDocument()
+    })
   })
 })

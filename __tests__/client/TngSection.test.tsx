@@ -7,9 +7,11 @@ import { TngSection } from '@/components/TngSection'
 vi.mock('@/lib/apollo', () => ({
   postClient: { query: vi.fn() },
   getClient: { query: vi.fn() },
+  apqPostClient: { query: vi.fn() },
+  apqGetClient: { query: vi.fn() },
 }))
 
-import { getClient, postClient } from '@/lib/apollo'
+import { apqGetClient, apqPostClient, getClient, postClient } from '@/lib/apollo'
 
 const mockEpisode = {
   id: '42',
@@ -113,6 +115,44 @@ describe('TngSection', () => {
 
     await waitFor(() => {
       expect(screen.getByText(/Query failed/)).toBeInTheDocument()
+    })
+  })
+
+  it('APQ POST button queries via apqPostClient', async () => {
+    const user = userEvent.setup()
+    vi.mocked(apqPostClient.query).mockResolvedValue({ data: mockData } as never)
+
+    render(<TngSection />)
+    await user.click(screen.getByText('APQ POST /graphql'))
+
+    expect(apqPostClient.query).toHaveBeenCalledWith(
+      expect.objectContaining({
+        variables: { abbreviation: 'TNG', season: 2 },
+        fetchPolicy: 'no-cache',
+      })
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('The Measure of a Man')).toBeInTheDocument()
+    })
+  })
+
+  it('APQ GET button queries via apqGetClient', async () => {
+    const user = userEvent.setup()
+    vi.mocked(apqGetClient.query).mockResolvedValue({ data: mockData } as never)
+
+    render(<TngSection />)
+    await user.click(screen.getByText('APQ GET /graphql'))
+
+    expect(apqGetClient.query).toHaveBeenCalledWith(
+      expect.objectContaining({
+        variables: { abbreviation: 'TNG', season: 2 },
+        fetchPolicy: 'no-cache',
+      })
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('The Measure of a Man')).toBeInTheDocument()
     })
   })
 })

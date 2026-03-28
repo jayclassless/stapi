@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { ResultTable } from '@/components/utils'
-import { getClient, postClient } from '@/lib/apollo'
+import { apqGetClient, apqPostClient, getClient, postClient } from '@/lib/apollo'
 import { ALL_SERIES_QUERY } from '@/lib/operations'
 import type { SeriesNode } from '@/lib/types'
 
@@ -24,10 +24,17 @@ export function SeriesSection() {
     method: null,
   })
 
-  async function query(method: 'POST' | 'GET') {
+  const clients = {
+    POST: postClient,
+    GET: getClient,
+    'APQ POST': apqPostClient,
+    'APQ GET': apqGetClient,
+  } as const
+
+  async function query(method: keyof typeof clients) {
     setState((s) => ({ ...s, status: 'loading', method }))
     try {
-      const client = method === 'POST' ? postClient : getClient
+      const client = clients[method]
       const result = await client.query({ query: ALL_SERIES_QUERY, fetchPolicy: 'no-cache' })
       const conn = (result.data as any)?.series
       setState({
@@ -67,6 +74,20 @@ export function SeriesSection() {
             disabled={state.status === 'loading'}
           >
             GET /graphql
+          </button>
+          <button
+            className="btn btn-post"
+            onClick={() => query('APQ POST')}
+            disabled={state.status === 'loading'}
+          >
+            APQ POST /graphql
+          </button>
+          <button
+            className="btn btn-get"
+            onClick={() => query('APQ GET')}
+            disabled={state.status === 'loading'}
+          >
+            APQ GET /graphql
           </button>
           {state.method && state.status !== 'loading' && (
             <span className="method-tag">{state.method}</span>

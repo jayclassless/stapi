@@ -6,6 +6,8 @@ import Page from '@/app/page'
 vi.mock('@/lib/apollo', () => ({
   postClient: { query: vi.fn(), mutate: vi.fn() },
   getClient: { query: vi.fn() },
+  apqPostClient: { query: vi.fn() },
+  apqGetClient: { query: vi.fn() },
   wsClient: { subscribe: vi.fn() },
   sseClient: { subscribe: vi.fn() },
 }))
