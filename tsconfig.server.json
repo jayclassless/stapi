@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
+    "rootDir": "server",
     "outDir": "dist-server",
     "sourceMap": true,
     "declaration": false
