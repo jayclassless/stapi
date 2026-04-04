@@ -7,7 +7,11 @@ import { EpisodesResolver } from '../episodes.resolver.js'
 import { EpisodesService } from '../episodes.service.js'
 
 function makeConnection() {
-  return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
+  return {
+    edges: [] as never[],
+    pageInfo: { hasNextPage: false, hasPreviousPage: false },
+    totalCount: 0,
+  }
 }
 
 describe('EpisodesResolver', () => {

@@ -9,7 +9,11 @@ import { CharactersResolver } from '../characters.resolver.js'
 import { CharactersService } from '../characters.service.js'
 
 function makeConnection() {
-  return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
+  return {
+    edges: [] as never[],
+    pageInfo: { hasNextPage: false, hasPreviousPage: false },
+    totalCount: 0,
+  }
 }
 
 describe('CharactersResolver', () => {

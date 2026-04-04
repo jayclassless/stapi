@@ -10,7 +10,6 @@
     "strictNullChecks": false,
     "outDir": "dist-server",
     "sourceMap": true,
-    "baseUrl": ".",
     "declaration": false
   },
   "include": ["server/**/*"]

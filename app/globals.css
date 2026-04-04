@@ -52,7 +52,9 @@ body {
   border-radius: var(--radius);
   white-space: nowrap;
   text-transform: uppercase;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .sandbox-link:hover {

@@ -4,7 +4,11 @@ import { ShipsResolver } from '../ships.resolver.js'
 import { ShipsService } from '../ships.service.js'
 
 function makeConnection() {
-  return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
+  return {
+    edges: [] as never[],
+    pageInfo: { hasNextPage: false, hasPreviousPage: false },
+    totalCount: 0,
+  }
 }
 
 describe('ShipsResolver', () => {

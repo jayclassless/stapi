@@ -6,7 +6,11 @@ import { ActorsResolver } from '../actors.resolver.js'
 import { ActorsService } from '../actors.service.js'
 
 function makeConnection() {
-  return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
+  return {
+    edges: [] as never[],
+    pageInfo: { hasNextPage: false, hasPreviousPage: false },
+    totalCount: 0,
+  }
 }
 
 describe('ActorsResolver', () => {

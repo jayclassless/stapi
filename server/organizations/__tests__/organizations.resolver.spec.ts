@@ -6,7 +6,11 @@ import { OrganizationsResolver } from '../organizations.resolver.js'
 import { OrganizationsService } from '../organizations.service.js'
 
 function makeConnection() {
-  return { edges: [], pageInfo: { hasNextPage: false, hasPreviousPage: false }, totalCount: 0 }
+  return {
+    edges: [] as never[],
+    pageInfo: { hasNextPage: false, hasPreviousPage: false },
+    totalCount: 0,
+  }
 }
 
 describe('OrganizationsResolver', () => {
