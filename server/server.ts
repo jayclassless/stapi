@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import { createServer } from 'http'
 
 import { ApolloServer } from '@apollo/server'
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import { expressMiddleware } from '@as-integrations/express5'
 import cookieParser from 'cookie-parser'
 import express from 'express'
@@ -48,6 +49,7 @@ async function bootstrap() {
     introspection: true,
     csrfPrevention: false,
     allowBatchedHttpRequests: true,
+    plugins: [ApolloServerPluginLandingPageLocalDefault()],
   })
   await apollo.start()
 
